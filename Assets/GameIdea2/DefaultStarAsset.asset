@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4a11db3b234983b47f62fa5fabbd0e, type: 3}
+  m_Name: DefaultStarAsset
+  m_EditorClassIdentifier: 
+  StarExplosionFx: {fileID: 6930649080681704195, guid: c1a074dbbd581a644a7d48c5f3a5bf7f, type: 3}
+  StarColor:
+    serializedVersion: 2
+    key0: {r: 2.3284454, g: 2.3284454, b: 2.3284454, a: 1}
+    key1: {r: 5.9921575, g: 5.9921575, b: 5.9921575, a: 1}
+    key2: {r: 0, g: 2.8771408, b: 5.992157, a: 0}
+    key3: {r: 5.992157, g: 2.2328277, b: 0, a: 0}
+    key4: {r: 4.237095, g: 0.06605951, b: 0, a: 0}
+    key5: {r: 2.9960785, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 13878
+    ctime2: 28720
+    ctime3: 44525
+    ctime4: 56090
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 2
+    m_ColorSpace: -1
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  MaxScale: 100
+  MassInfulence: 1000
+  ColorInfluenceOperation: 3
+  AnimateTillingOffset: 1
+  TextureOffsetDir: {x: 1, y: 0}
+  MinOffsetSpeed: 0.01
+  MaxOffsetSpeed: 0.1

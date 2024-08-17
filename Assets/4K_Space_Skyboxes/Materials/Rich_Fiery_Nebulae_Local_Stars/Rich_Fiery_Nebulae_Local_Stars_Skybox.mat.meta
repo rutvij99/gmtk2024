@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6ae89ed93ff9e9447b387f50cd9b8410
+timeCreated: 1500747916
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 103868
+  packageName: 4K Space Skyboxes
+  packageVersion: 1.0
+  assetPath: Assets/4K_Space_Skyboxes/Materials/Rich_Fiery_Nebulae_Local_Stars/Rich_Fiery_Nebulae_Local_Stars_Skybox.mat
+  uploadId: 214615

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d638edf627713b245a8d3ed5283c5436
+timeCreated: 1504392831
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 103868
+  packageName: 4K Space Skyboxes
+  packageVersion: 1.0
+  assetPath: Assets/4K_Space_Skyboxes/Materials/Sparse_Monochrome_Nebulae_Local_Stars/Sparse_Monochrome_Nebulae_Local_Stars_Skybox.mat
+  uploadId: 214615

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 485adf81e4e40614cbe1f6d1af53d1bc
+timeCreated: 1498591657
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 103868
+  packageName: 4K Space Skyboxes
+  packageVersion: 1.0
+  assetPath: Assets/4K_Space_Skyboxes/Materials/Rich_Blue_Nebulae/Rich_Blue_Nebulae_Skybox.mat
+  uploadId: 214615

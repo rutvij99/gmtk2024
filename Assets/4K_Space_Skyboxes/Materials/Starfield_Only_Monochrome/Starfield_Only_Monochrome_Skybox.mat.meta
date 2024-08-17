@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fd74e43c17590c54386939f8483cbfc8
+timeCreated: 1506783243
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 103868
+  packageName: 4K Space Skyboxes
+  packageVersion: 1.0
+  assetPath: Assets/4K_Space_Skyboxes/Materials/Starfield_Only_Monochrome/Starfield_Only_Monochrome_Skybox.mat
+  uploadId: 214615

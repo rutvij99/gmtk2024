@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 64d6d7fde6ecf7b4185135710db95cfb
+timeCreated: 1499215060
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 103868
+  packageName: 4K Space Skyboxes
+  packageVersion: 1.0
+  assetPath: Assets/4K_Space_Skyboxes/Materials/Sparse_Blue_Nebulae_No_Stars/Sparse_Blue_Nebulae_No_Stars_Skybox.mat
+  uploadId: 214615

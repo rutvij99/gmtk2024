@@ -1,11 +1,7 @@
 using System;
 using System.Collections;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Task = System.Threading.Tasks.Task;
 
 namespace GameIdea2
 {
@@ -48,13 +44,18 @@ namespace GameIdea2
                     body.enabled = true;
                 }
             }
-            
-            if(!resetCamera)
+
+            if (!resetCamera)
                 EnableAllTerestialBodies();
-            else 
-                StartCoroutine(ResetCamera(0.25f, EnableAllTerestialBodies));
+            else
+                ResetCamera(EnableAllTerestialBodies);
         }
 
+        public void ResetCamera(Action onComplete=null)
+        {
+            StartCoroutine(ResetCamera(0.25f, onComplete));
+        }
+        
         IEnumerator ResetCamera(float dur, Action onComplete=null)
         {
             var mainCam = Camera.main;

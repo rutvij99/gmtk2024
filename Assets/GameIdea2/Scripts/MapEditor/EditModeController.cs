@@ -1,4 +1,5 @@
 using System;
+using GameIdea2.Gameloop;
 using GameIdea2.Scripts.Editor;
 using GameIdea2.UI;
 using UnityEngine;
@@ -161,6 +162,16 @@ namespace GameIdea2
                 Instantiate(asset, new Vector3(camera.transform.position.x, 0, camera.transform.position.z),
                     Quaternion.identity);
             }
+        }
+
+        public void ResetCamera()
+        {
+            Universe.Instance.ResetCamera();
+        }
+
+        public void ResetLevel()
+        {
+            GameManager.Instance.RestartLevel();
         }
     }
 }

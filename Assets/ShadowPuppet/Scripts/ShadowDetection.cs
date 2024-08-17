@@ -64,6 +64,9 @@ public class ShadowDetection : MonoBehaviour
         Ray ray = new Ray(transform.position, -directionalLight.forward);
         RaycastHit hit;
 
+        // Visualize the ray in the scene view
+        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red);
+
         // Raycast in the direction opposite to the light source
         if (Physics.Raycast(ray, out hit))
         {
@@ -75,17 +78,37 @@ public class ShadowDetection : MonoBehaviour
         return false;
     }
     
+    // bool IsAboveSafeArea()
+    // {
+    //     Ray ray = new Ray(transform.position + _safeAreaRaycastOffset, Vector3.down);
+    //     RaycastHit hit;
+    //
+    //     // Raycast downward to check if the player is above a safe area
+    //     if (Physics.Raycast(ray, out hit, Mathf.Infinity, safeAreaLayerMask))
+    //     {
+    //         return hit.collider != null;
+    //     }
+    //
+    //     return false;
+    // }
+    
     bool IsAboveSafeArea()
     {
-        Ray ray = new Ray(transform.position + _safeAreaRaycastOffset, Vector3.down);
-        RaycastHit hit;
-    
-        // Raycast downward to check if the player is above a safe area
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, safeAreaLayerMask))
+        // Define the radius of the overlap sphere
+        float sphereRadius = 0.5f; // Adjust the radius as needed
+
+        // Perform an overlap sphere at the player's position + offset
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position + _safeAreaRaycastOffset, sphereRadius, safeAreaLayerMask);
+
+        // Check if any of the colliders in the sphere belong to the safe area
+        foreach (Collider collider in hitColliders)
         {
-            return hit.collider != null;
+            if (collider != null)
+            {
+                return true;
+            }
         }
-    
+
         return false;
     }
     

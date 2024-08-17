@@ -12,7 +12,6 @@ namespace GameIdea2
         [FormerlySerializedAs("ExplosionFX")] [SerializeField] private GameObject explosionFX;
         [SerializeField] private Rigidbody rb;
         [SerializeField] private TerrestialCollisionRule collisionRule;
-               
         [SerializeField] private bool startWithForce;
         [SerializeField] private Vector3 startForceDir;
         [SerializeField] private float startForceMag;
@@ -23,7 +22,7 @@ namespace GameIdea2
         {
             if(!startWithForce)
                 return Vector3.zero;
-            return startForceDir.normalized * startForceMag / rb.mass;
+            return startForceDir.normalized * startForceMag;
         }
         
         private void Start()
@@ -55,7 +54,8 @@ namespace GameIdea2
                 var dist = Vector3.Distance(transform.position, terrObj.transform.position);
                 var forceMult = ComputeForce(rb.mass, objMass, dist);
                 var dir = (transform.position - terrObj.transform.position).normalized;
-                terrObj.rb.AddForce(dir * (forceMult));
+                terrObj.rb.linearVelocity += dir * (forceMult * Time.fixedDeltaTime);
+                //terrObj.rb.AddForce(dir * (forceMult), ForceMode.Acceleration);
             }
         }
 

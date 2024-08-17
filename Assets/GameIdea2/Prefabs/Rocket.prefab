@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 8481578396924047835}
   - component: {fileID: 3475399359397771912}
   - component: {fileID: 5450510934062260261}
+  - component: {fileID: 7807457190982258415}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -263,7 +264,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -312,11 +313,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 3475399359397771912}
   SimResolution: 300
+  useFixedDeltaTime: 1
   timeStep: 0.05
+  radiusError: 0.01
   lineRenderer: {fileID: 4092171346710135878}
   mask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &7807457190982258415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961138467803840564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d4e8bec20d4e10a08582fef5c5552e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6753652228063606696
 GameObject:
   m_ObjectHideFlags: 0

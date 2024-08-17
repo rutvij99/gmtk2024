@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,7 +11,11 @@ namespace GameIdea2
     {
         public TerrestialBody body;
         public int SimResolution = 200;
+        public bool useFixedDeltaTime;
         public float timeStep = 0.1f;
+
+        [SerializeField]
+        private float radiusError = 0.01f;
         
         [SerializeField]
         private LineRenderer lineRenderer;
@@ -36,19 +41,23 @@ namespace GameIdea2
         private void SimulateTrajectory()
         {
             List<Vector3> positions = new List<Vector3>();
-            Vector3 currentPosition = body.transform.position;
             Vector3 currentVelocity = body.GetComponent<TerrestialBody>().GetStartLinearVelocity();
-
+            Vector3 currentPosition = body.transform.position;
+            var radius = (GetComponent<SphereCollider>().radius * transform.localScale.x);
+            
             for (int i = 0; i < SimResolution; i++)
             {
                 positions.Add(currentPosition);
-                var collisions = Physics.OverlapSphere(currentPosition, transform.localScale.x/2,mask);
+                var collisions = Physics.OverlapSphere(currentPosition, radius,mask);
                 if (collisions.Length > 0)
                     break;
+
+                if (useFixedDeltaTime)
+                    timeStep = Time.fixedDeltaTime;
                 
-                currentPosition += currentVelocity * timeStep;
                 Vector3 acceleration = ComputeAcceleration(currentPosition);
                 currentVelocity += acceleration * timeStep;
+                currentPosition += currentVelocity * timeStep;
             }
 
             lineRenderer.positionCount = positions.Count;
@@ -67,10 +76,17 @@ namespace GameIdea2
                 var direction = otherBody.transform.position - position;
                 float distance = direction.magnitude;
                 float forceMagnitude = TerrestialBody.GravitationalConstant * (body.Mass * otherBody.Mass) / Mathf.Pow(distance, 2);
-                acceleration += direction.normalized * forceMagnitude / body.Mass;
+                acceleration += direction.normalized * forceMagnitude;
             }
 
             return acceleration;
         }
+
+        private void OnDrawGizmos()
+        {
+            var radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
+            Gizmos.DrawSphere(transform.position, radius+radiusError);
+        }
     }
+    
 }

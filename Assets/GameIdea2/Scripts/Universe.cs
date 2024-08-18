@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using GameIdea2.Gameloop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ namespace GameIdea2
 {
     public class Universe : MonoBehaviour
     {
+        public System.Action<int> OnSimStarted;
+        
         private static Universe instance;
         public static Universe Instance
         {
@@ -22,6 +25,7 @@ namespace GameIdea2
         }
 
         private bool simulateTerrestialBodies = false;
+        
         public bool Simulate
         {
             get { return simulateTerrestialBodies; }
@@ -39,12 +43,17 @@ namespace GameIdea2
         {
             void EnableAllTerestialBodies()
             {
+                int totalPlayers=0;
                 foreach (var body in FindObjectsByType<TerrestialBody>(FindObjectsSortMode.None))
                 {
                     body.enabled = true;
+                    if (body.GetComponentInChildren<Player>())
+                        totalPlayers += 1;
                 }
+                
+                OnSimStarted?.Invoke(totalPlayers);
             }
-
+            
             if (!resetCamera)
                 EnableAllTerestialBodies();
             else
@@ -86,14 +95,6 @@ namespace GameIdea2
             }
             
             onComplete?.Invoke();
-        }
-
-        public void GenerateTrajectory()
-        {
-            CreateSceneParameters sceneParameters = new CreateSceneParameters(LocalPhysicsMode.Physics3D);
-            Scene simScene = SceneManager.CreateScene("Simulation", sceneParameters);
-            var simPhysicsScene = simScene.GetPhysicsScene();
-            
         }
     }
 }

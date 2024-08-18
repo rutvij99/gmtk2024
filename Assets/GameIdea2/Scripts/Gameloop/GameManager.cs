@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using GameIdea2.Stars;
 using UnityEngine.SceneManagement;
@@ -32,9 +33,21 @@ namespace GameIdea2.Gameloop
                     OnReachedTarget();
             }
         }
+
+        private int totalPlayers;
         
+        private void Start()
+        {
+            if(Universe.Instance)
+                Universe.Instance.OnSimStarted += OnSimStarted;
+        }
+
         private async void OnReachedTarget()
         {
+            totalPlayers -= 1;
+            if (totalPlayers > 0)
+                return;
+            
             foreach (var star in FindObjectsByType<Star>(FindObjectsSortMode.None))
             {
                 star.transform.localScale = Vector3.zero;
@@ -43,6 +56,11 @@ namespace GameIdea2.Gameloop
             RestartLevel();
         }
 
+        private void OnSimStarted(int totalPlayers)
+        {
+            this.totalPlayers = totalPlayers;
+        }
+        
         public void RestartLevel()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

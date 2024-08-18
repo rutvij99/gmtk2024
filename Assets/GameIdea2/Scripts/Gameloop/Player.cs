@@ -11,7 +11,7 @@ namespace GameIdea2.Gameloop
             if (target)
             {
                 GameManager.Instance.ReachedTarget = true;
-                AudioManager.instance.PlaySoundOfType(SoundTyes.Success);
+                AudioManager.instance?.PlaySoundOfType(SoundTyes.Success);
                 Destroy(this.gameObject);
             }
         }

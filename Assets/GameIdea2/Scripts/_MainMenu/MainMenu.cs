@@ -73,7 +73,8 @@ public class MainMenu : MonoBehaviour
 
 	public void LoadFreePlay()
 	{
-		SceneManager.LoadScene($"FreePlay");
+		SceneManager.LoadScene($"GameIdea2Scene");
+		// SceneManager.LoadScene($"FreePlay");
 	}
 
 	public void Quit()

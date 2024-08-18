@@ -27,6 +27,7 @@ public class LevelSelect : MonoBehaviour
                 btn.onClick.AddListener(()=>
                 {
                     this.GetComponent<MainMenu>().LoadLevel(level);
+                    this.GetComponent<MainMenu>().ClickSFX();
                 });
             }
             levels.Add(btn);

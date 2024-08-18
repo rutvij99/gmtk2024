@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using GameIdea2.Audio;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,8 +14,16 @@ public class MainMenu : MonoBehaviour
 
 	[SerializeField] private AudioClip clickSound;
 	private AudioSource sfxSource;
+	private CanvasGroup optionsCanvasGrp;
+	private CanvasGroup levelsCanvasGrp;
+	private CanvasGroup menuCanvasGrp;
+
 	private void Start()
 	{
+		menuCanvasGrp = menuHolder.GetComponent<CanvasGroup>();
+		optionsCanvasGrp = optionsHolder.GetComponent<CanvasGroup>();
+		levelsCanvasGrp = levelSelectHolder.GetComponent<CanvasGroup>();
+		
 		menuHolder.gameObject.SetActive(true);
 		optionsHolder.gameObject.SetActive(false);
 		levelSelectHolder.gameObject.SetActive(false);
@@ -24,34 +33,48 @@ public class MainMenu : MonoBehaviour
 
 	public void ClickSFX()
 	{
-		if (!clickSound) return;
-		sfxSource.PlayOneShot(clickSound, volumeScale: 0.5f);
+		AudioManager.instance?.PlaySoundOfType(SoundTyes.UI);
+		// if (!clickSound) return;
+		// sfxSource.PlayOneShot(clickSound, volumeScale: 0.5f);
+	}
+
+	private void Reset()
+	{
+		levelsCanvasGrp.DOKill();
+		optionsCanvasGrp.DOKill();
+		menuCanvasGrp.DOKill();
 	}
 
 	public void ShowLevelSelect()
 	{
+		Reset();
 		menuHolder.GetComponent<CanvasGroup>().DOFade(0, 0.2f).OnComplete(() =>
 		{
 			menuHolder.gameObject.SetActive(false);
 		});
+		
 		levelSelectHolder.gameObject.SetActive(true);
-		levelSelectHolder.GetComponent<CanvasGroup>().alpha = 0;
-		levelSelectHolder.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+		levelsCanvasGrp.alpha = 0;
+		levelsCanvasGrp.DOFade(1, 0.5f);
 	}
 
 	public void ShowOptions()
 	{
+		Reset();
 		menuHolder.GetComponent<CanvasGroup>().DOFade(0, 0.2f).OnComplete(() =>
 		{
 			menuHolder.gameObject.SetActive(false);
 		});
+		
 		optionsHolder.gameObject.SetActive(true);
-		optionsHolder.GetComponent<CanvasGroup>().alpha = 0;
-		optionsHolder.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+		optionsCanvasGrp.alpha = 0;
+		optionsCanvasGrp.DOFade(1, 0.5f);
 	}
 
 	public void ShowMenu()
 	{
+		Reset();
+		
 		optionsHolder.GetComponent<CanvasGroup>().DOFade(0, 0.2f).OnComplete(() =>
 		{
 			optionsHolder.gameObject.SetActive(false);
@@ -60,9 +83,10 @@ public class MainMenu : MonoBehaviour
 		{
 			levelSelectHolder.gameObject.SetActive(false);
 		});
+		
 		menuHolder.gameObject.SetActive(true);
-		menuHolder.GetComponent<CanvasGroup>().alpha = 0;
-		menuHolder.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+		menuCanvasGrp.alpha = 0;
+		menuCanvasGrp.DOFade(1, 0.5f);
 	}
 	
 	public void LoadLevel(int i)

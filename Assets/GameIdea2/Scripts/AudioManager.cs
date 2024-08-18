@@ -20,9 +20,10 @@ namespace GameIdea2.Audio
         {
             if (Instance != null)
             {
-                Destroy(Instance);
+                Destroy(this.gameObject);
+                return;
             }
-
+            DontDestroyOnLoad(this.gameObject);
             Instance = this;
         }
 

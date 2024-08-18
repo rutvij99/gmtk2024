@@ -1,29 +1,23 @@
 fileFormatVersion: 2
-guid: 7f897e0b185079a48accdd823aa1c7dd
+guid: b0a11f90cdf1743b7822f1435a978a85
 AudioImporter:
   externalObjects: {}
-  serializedVersion: 6
+  serializedVersion: 8
   defaultSettings:
+    serializedVersion: 2
     loadType: 0
     sampleRateSetting: 0
     sampleRateOverride: 44100
     compressionFormat: 1
     quality: 1
     conversionMode: 0
+    preloadAudioData: 0
   platformSettingOverrides: {}
   forceToMono: 0
   normalize: 1
-  preloadAudioData: 1
   loadInBackground: 0
   ambisonic: 0
   3D: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 142508
-  packageName: Fantasy Interface Sounds
-  packageVersion: 2
-  assetPath: Assets/Fantasy Interface Sounds/UI Tight 04.wav
-  uploadId: 557980

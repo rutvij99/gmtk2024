@@ -53,6 +53,8 @@ MonoBehaviour:
     audioFile: {fileID: 8300000, guid: 4a8e5fac75d6cb04c9e8fd2cc6b6bcaa, type: 3}
   - soundType: 2
     audioFile: {fileID: 8300000, guid: 2c9845de0eed1034d885fba9190a613e, type: 3}
+  - soundType: 3
+    audioFile: {fileID: 8300000, guid: b0a11f90cdf1743b7822f1435a978a85, type: 3}
 --- !u!1 &3829329152743101842
 GameObject:
   m_ObjectHideFlags: 0

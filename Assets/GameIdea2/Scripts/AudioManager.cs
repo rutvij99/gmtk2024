@@ -14,7 +14,11 @@ namespace GameIdea2.Audio
         }
 
         [SerializeField] private AudioSource sfxSource;
+        [SerializeField] private AudioSource backgroundAudioSource;
+        [SerializeField] private AudioSource ambienceAudioSource;
         [SerializeField] private List<AudioMap> audioMapList;
+        [SerializeField] private List<AudioClip> backgroundMusicList;
+        [SerializeField] private List<AudioClip> ambienceMusicList;
 
         private void Awake()
         {
@@ -25,6 +29,15 @@ namespace GameIdea2.Audio
             }
             DontDestroyOnLoad(this.gameObject);
             instance = this;
+        }
+
+        public void ChangeBackgroundMusic(int levelNum)
+        {
+            int audioSelectIndex = levelNum % backgroundMusicList.Count;
+            int ambienceSelectIndex = levelNum % backgroundMusicList.Count;
+
+            backgroundAudioSource.clip = backgroundMusicList[audioSelectIndex];
+            ambienceAudioSource.clip = ambienceMusicList[ambienceSelectIndex];
         }
 
         public void PlaySoundOfType(SoundTyes type)

@@ -92,6 +92,7 @@ public class MainMenu : MonoBehaviour
 	public void LoadLevel(int i)
 	{
 		Debug.Log($"Loading Level {i}");
+		AudioManager.Instance?.ChangeBackgroundMusic(i);
 		SceneManager.LoadScene($"Level{i}");
 	}
 

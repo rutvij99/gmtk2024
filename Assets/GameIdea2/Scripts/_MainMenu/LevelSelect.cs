@@ -17,6 +17,7 @@ public class LevelSelect : MonoBehaviour
             var obj = Instantiate(levelSelectTemplate, levelSelectHolder);
             var btn = obj.GetComponentInChildren<Button>();
             btn.GetComponentInChildren<TMP_Text>().text = $"Level {i}";
+            var level = i;
             if (i > lastUnlocked)
             {
                 btn.interactable = false;
@@ -25,7 +26,7 @@ public class LevelSelect : MonoBehaviour
             {
                 btn.onClick.AddListener(()=>
                 {
-                    this.GetComponent<MainMenu>().LoadLevel(i);
+                    this.GetComponent<MainMenu>().LoadLevel(level);
                 });
             }
             levels.Add(btn);

@@ -1,4 +1,4 @@
-using System;
+using GameIdea2.Audio;
 using UnityEngine;
 
 namespace GameIdea2.Gameloop
@@ -11,6 +11,7 @@ namespace GameIdea2.Gameloop
             if (target)
             {
                 GameManager.Instance.ReachedTarget = true;
+                AudioManager.instance.PlaySoundOfType(SoundTyes.Success);
                 Destroy(this.gameObject);
             }
         }

@@ -1,13 +1,26 @@
 using System;
 using GameIdea2.Gameloop;
 using GameIdea2.Scripts.Editor;
+using GameIdea2.Scripts.MapEditor;
 using GameIdea2.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameIdea2
 {
     public class EditModeController : MonoBehaviour
     {
+        
+        private enum Interaction
+        {
+            Undefined=0,
+            None,
+            Pan,
+            Move, 
+            Scale
+        }
+
+        [SerializeField] private EditorCursors editorCursors;
         [SerializeField] private EditmodeGUI gui;
         [SerializeField] private Camera camera;
         [SerializeField] private float panSensitivity = 10;
@@ -21,9 +34,10 @@ namespace GameIdea2
         private const int MOVE_MOUSE_BTN = 0;
         private const int SCALE_MOUSE_BTN = 1;
         
-        private Vector3 mouseWorldStartPos = Vector3.zero;
-        private bool panning = false;
-        private float prevScaleDist = 0;
+        private bool panningBlocked = false;
+
+        private Vector3 mouseStartWorldPos;
+        private Interaction currentInteraction = Interaction.Undefined;
         
         private void Start()
         {
@@ -32,6 +46,8 @@ namespace GameIdea2
 
             if(!gui)
                 gui = GetComponent<EditmodeGUI>();
+            
+            SetCurrentInteraction(Interaction.None);
         }
 
         private void Update()
@@ -46,6 +62,60 @@ namespace GameIdea2
             ScaleSelection();
         }
 
+        private void SetCursor(Interaction type)
+        {
+            if(!editorCursors)
+                return;
+            
+            Texture2D cursorIco = null;
+            switch (type)
+            {
+                case Interaction.None:
+                    cursorIco = editorCursors.DefaultCursor;
+                    break;
+                case Interaction.Pan:
+                    cursorIco = editorCursors.PanCursor;
+                    break;
+                case Interaction.Move:
+                    cursorIco = editorCursors.MoveCursor;
+                    break;
+                case Interaction.Scale:
+                    cursorIco = editorCursors.ScaleCursor;
+                    break;
+            }
+            
+            if (!cursorIco)
+            {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                return;
+            }
+            
+            Cursor.SetCursor(cursorIco, currentInteraction == Interaction.None?Vector2.zero : Vector2.one*0.5f, CursorMode.ForceSoftware);
+        }
+
+        private bool InteractionAvailable()
+        {
+            return currentInteraction == Interaction.None || currentInteraction == Interaction.Undefined;
+        }
+
+        private void SetCurrentInteraction(Interaction myInteraction)
+        {
+            if (InteractionAvailable() && currentInteraction != myInteraction)
+            {
+                currentInteraction = myInteraction;
+                SetCursor(myInteraction);
+            }
+        }
+        
+        private void TryResetInteraction(Interaction myInteraction)
+        {
+            if (currentInteraction == myInteraction)
+            {
+                currentInteraction = Interaction.None;
+                SetCursor(Interaction.None);
+            }
+        }
+        
         private void UpdateCamera()
         {
             var zoomDelta = -Input.mouseScrollDelta.y * zoomSensitivity;
@@ -57,14 +127,14 @@ namespace GameIdea2
             
             if (!Input.GetMouseButton(PAN_MOUSE_BTN))
             {
-                panning = false;
+                TryResetInteraction(Interaction.Pan);
                 return;
             }
 
-            if (Input.GetMouseButton(PAN_MOUSE_BTN) && !panning)
+            if (Input.GetMouseButton(PAN_MOUSE_BTN) && InteractionAvailable())
             {
                 gui.Interacted = true;
-                panning = true;
+                SetCurrentInteraction(Interaction.Pan);
             }
             
             var panDelta = Input.mousePositionDelta;
@@ -76,12 +146,12 @@ namespace GameIdea2
         {
             if (Input.GetMouseButton(MOVE_MOUSE_BTN) || Input.GetMouseButton(SCALE_MOUSE_BTN))
             {
+                if(!InteractionAvailable())
+                    return;
+                
                 if(Editable.CurrentSelection)
                     return;
                 
-                var worldPos = camera.ScreenToWorldPoint(GetMousePosition());
-                var mouseWorldRawPos = new Vector3(worldPos.x, 0, worldPos.z);
-                mouseWorldStartPos = new Vector3(mouseWorldRawPos.x, 0, mouseWorldRawPos.z);
                 RaycastHit hit;
                 var ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
@@ -93,12 +163,24 @@ namespace GameIdea2
                         return;
                     gui.Interacted = true;
                     editable.Select();
+                    var pos = camera.ScreenToWorldPoint(GetMousePosition());
+                    mouseStartWorldPos = new Vector3(pos.x, 0, pos.y);
+                    if (Input.GetMouseButton(MOVE_MOUSE_BTN))
+                    {
+                        SetCurrentInteraction(Interaction.Move);
+                    }
+                    else if (Input.GetMouseButton(SCALE_MOUSE_BTN))
+                    {
+                        SetCurrentInteraction(Interaction.Scale);
+                    }
                 }
             }
             else
             {
-                if(Editable.CurrentSelection)
+                if (Editable.CurrentSelection)
+                {
                     Editable.CurrentSelection.Deselect();
+                }
             }
         }
 
@@ -114,37 +196,45 @@ namespace GameIdea2
         private void ScaleSelection()
         {
             var selected = Editable.CurrentSelection;
-            if(!selected)
+            if (!selected)
+            {
+                if( currentInteraction==Interaction.Scale)
+                    TryResetInteraction(Interaction.Scale);
                 return;
+            }
+
             if (Input.GetMouseButton(SCALE_MOUSE_BTN))
             {
-                var pos = camera.ScreenToWorldPoint(GetMousePosition());
+                /*var pos = camera.ScreenToWorldPoint(GetMousePosition());
                 var mouseWorldPos = new Vector3(pos.x, 0, pos.y);
-                var dist = Vector3.Distance(mouseWorldPos, selected.transform.position);
-                var scaledDist = dist * scaleSensitivity;
-                var currentScale = selected.transform.localScale;
-                if (prevScaleDist > scaledDist)
-                    currentScale -= Vector3.one * (scaledDist * Time.deltaTime);
-                else if(prevScaleDist < scaledDist)
-                {
-                    currentScale += Vector3.one * (scaledDist * Time.deltaTime);
-                }
+                var scaleDir = (mouseWorldPos - mouseStartWorldPos).normalized.x;*/
 
+                var mouseDelta = Input.mousePositionDelta.normalized;
+                
+                var scaleDelta = mouseDelta.x * scaleSensitivity;
+                //Debug.Log($"Scale Delta : {scaleDelta}");
+                var currentScale = selected.transform.localScale;
+                currentScale += Vector3.one * (scaleDelta * Time.deltaTime);
+                
                 if (currentScale.x > 0.5f && currentScale.x < 1f)
                     currentScale = Vector3.one;
                 else if (currentScale.x > 100)
                     currentScale = Vector3.one * 100;
 
                 selected.transform.localScale = currentScale;
-                prevScaleDist = scaledDist;
             }
         }
         
         private void MoveSelection()
         {
             var selected = Editable.CurrentSelection;
-            if(!selected)
+            if (!selected)
+            {
+                if( currentInteraction==Interaction.Move)
+                    TryResetInteraction(Interaction.Move);
                 return;
+            }
+
             if (Input.GetMouseButton(MOVE_MOUSE_BTN))
             {
                 var worldPos = camera.ScreenToWorldPoint(GetMousePosition());

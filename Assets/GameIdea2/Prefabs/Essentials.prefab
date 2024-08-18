@@ -351,10 +351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836f231a4be84cfea71480a27e25bb41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  editorCursors: {fileID: 11400000, guid: 734fea4ec213fb440ac9f24f27a08478, type: 2}
   gui: {fileID: 860286454905306686}
   camera: {fileID: 8365495245804215122}
   panSensitivity: 100
-  scaleSensitivity: 1
+  scaleSensitivity: 250
   zoomSensitivity: 1
   minZoom: 50
   maxZoom: 250
@@ -618,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4804086684487713228, guid: e9f52e0b3d20cc24db606c79163b764e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00015258789
+      value: -0.000091552734
       objectReference: {fileID: 0}
     - target: {fileID: 5148322532922177470, guid: e9f52e0b3d20cc24db606c79163b764e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

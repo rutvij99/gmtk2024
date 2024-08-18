@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: fd74e43c17590c54386939f8483cbfc8, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a10d354558ac4fc47b32b18363024e83, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -385,20 +385,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5130327492926427648, guid: 95ef320a977d580459506cee14190692, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5139899805299225898, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5139899805299225898, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5139899805299225898, guid: 95ef320a977d580459506cee14190692, type: 3}
-      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5390826990669905464, guid: 95ef320a977d580459506cee14190692, type: 3}
@@ -423,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5882073271228195831, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9063377207337204679, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_Name

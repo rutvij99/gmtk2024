@@ -1846,7 +1846,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4376416662020104413}
   m_HandleRect: {fileID: 6079383102709749521}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2596,6 +2596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditOnlyGUI: {fileID: 7541950224295728338}
   HintGUI: {fileID: 2323373906919449409}
+  blueprintPlane: {fileID: 0}
 --- !u!1 &7565769586927006452
 GameObject:
   m_ObjectHideFlags: 0

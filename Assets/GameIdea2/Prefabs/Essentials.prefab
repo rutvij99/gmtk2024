@@ -655,8 +655,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4804086684487713228, guid: e9f52e0b3d20cc24db606c79163b764e, type: 3}
-      propertyPath: m_AnchoredPosition.y
+      propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804086684487713228, guid: e9f52e0b3d20cc24db606c79163b764e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 5148322532922177470, guid: e9f52e0b3d20cc24db606c79163b764e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -664,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 8916320110230666610}
     - target: {fileID: 6068684848829018171, guid: e9f52e0b3d20cc24db606c79163b764e, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6079383102709749521, guid: e9f52e0b3d20cc24db606c79163b764e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -983,8 +987,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueprintPlane
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4596642905308397669, guid: 0e381b897bf084b638ad0d1e88ecceec, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

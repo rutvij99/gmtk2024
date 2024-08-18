@@ -13,8 +13,9 @@ namespace GameIdea2
         [SerializeField] private Rigidbody rb;
         [SerializeField] private TerrestialCollisionRule collisionRule;
         [SerializeField] private bool startWithForce;
-        [SerializeField] private Vector3 startForceDir;
         [SerializeField] private float startForceMag;
+        
+        private Vector3 _startForceDir;
 
         public float Mass => rb.mass;
         
@@ -22,9 +23,14 @@ namespace GameIdea2
         {
             if(!startWithForce)
                 return Vector3.zero;
-            return startForceDir.normalized * startForceMag;
+            return _startForceDir.normalized * startForceMag;
         }
-        
+
+        private void Awake()
+        {
+            _startForceDir = transform.forward;
+        }
+
         private void Start()
         {
             rb = GetComponent<Rigidbody>();

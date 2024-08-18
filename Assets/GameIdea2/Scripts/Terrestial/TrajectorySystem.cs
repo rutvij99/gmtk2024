@@ -77,6 +77,7 @@ namespace GameIdea2
                 float distance = direction.magnitude;
                 float forceMagnitude = TerrestialBody.GravitationalConstant * (body.Mass * otherBody.Mass) / Mathf.Pow(distance, 2);
                 acceleration += direction.normalized * forceMagnitude;
+                acceleration.y = 0;
             }
 
             return acceleration;

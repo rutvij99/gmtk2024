@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.003921569}
+  m_Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 0.89411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -537,9 +537,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5963186324990828113}
-        m_TargetAssemblyTypeName: GameIdea2.UI.EditmodeGUI, Assembly-CSharp
-        m_MethodName: RequestTerrestialBodySpawn
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameIdea2.EditModeController, Assembly-CSharp
+        m_MethodName: SpawnTerrestial
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -670,9 +670,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5963186324990828113}
-        m_TargetAssemblyTypeName: GameIdea2.UI.EditmodeGUI, Assembly-CSharp
-        m_MethodName: RequestTerrestialBodySpawn
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameIdea2.EditModeController, Assembly-CSharp
+        m_MethodName: SpawnTerrestial
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -847,12 +847,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5102552378093608451}
-  m_Father: {fileID: 7823765563359373147}
+  m_Father: {fileID: 8977848409617370044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 506.09842, y: 523.05774}
+  m_SizeDelta: {x: 747.8031, y: 33.60205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2569540833525759572
 GameObject:
@@ -1012,9 +1012,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5963186324990828113}
-        m_TargetAssemblyTypeName: GameIdea2.UI.EditmodeGUI, Assembly-CSharp
-        m_MethodName: RequestTerrestialBodySpawn
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameIdea2.EditModeController, Assembly-CSharp
+        m_MethodName: SpawnTerrestial
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1220,9 +1220,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5963186324990828113}
-        m_TargetAssemblyTypeName: GameIdea2.UI.EditmodeGUI, Assembly-CSharp
-        m_MethodName: RequestTerrestialBodySpawn
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameIdea2.EditModeController, Assembly-CSharp
+        m_MethodName: SpawnTerrestial
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1380,8 +1380,6 @@ GameObject:
   - component: {fileID: 7470311955794945400}
   - component: {fileID: 4060013594628910179}
   - component: {fileID: 4357511852445997027}
-  - component: {fileID: 5963186324990828113}
-  - component: {fileID: 4762848048852982143}
   m_Layer: 5
   m_Name: EditmodeGUI
   m_TagString: Untagged
@@ -1419,7 +1417,7 @@ Canvas:
   m_GameObject: {fileID: 3452943630281291929}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1473,39 +1471,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5963186324990828113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3452943630281291929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8fa9da9830a4af78bc4945fd9c39e91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EditOnlyGUI: {fileID: 7541950224295728338}
-  HintGUI: {fileID: 2323373906919449409}
---- !u!114 &4762848048852982143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3452943630281291929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836f231a4be84cfea71480a27e25bb41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gui: {fileID: 0}
-  camera: {fileID: 0}
-  panSensitivity: 100
-  scaleSensitivity: 1
-  zoomSensitivity: 1
-  minZoom: 50
-  maxZoom: 250
 --- !u!1 &3599512122255046630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,7 +1481,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8767622761520815993}
   - component: {fileID: 1135376400260696907}
-  - component: {fileID: 8068412703825609162}
   m_Layer: 5
   m_Name: StarGallery
   m_TagString: Untagged
@@ -1537,11 +1501,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 51793071338400138}
-  m_Father: {fileID: 7823765563359373147}
+  m_Father: {fileID: 8977848409617370044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 14, y: 16}
+  m_AnchoredPosition: {x: 146.19687, y: 522.2567}
   m_SizeDelta: {x: 292.3937, y: 1044.5134}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1135376400260696907
@@ -1552,36 +1516,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3599512122255046630}
   m_CullTransparentMesh: 1
---- !u!114 &8068412703825609162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599512122255046630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0.050980393}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4548289826711198910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1652,80 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4837424535585631617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8582611467925791384}
+  m_Layer: 5
+  m_Name: Editor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8582611467925791384
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4837424535585631617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7823765563359373147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4945503339853263899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8977848409617370044}
+  m_Layer: 5
+  m_Name: Obselete
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8977848409617370044
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945503339853263899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1652884873894181065}
+  - {fileID: 8767622761520815993}
+  - {fileID: 1223182347154812695}
+  - {fileID: 3397529656761675395}
+  m_Father: {fileID: 7823765563359373147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -506.0984, y: -523.05774}
+  m_SizeDelta: {x: 1172.1968, y: 1046.1155}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5343725390300482532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10, y: -40.109985}
+  m_AnchoredPosition: {x: -10, y: -40.110107}
   m_SizeDelta: {x: 900, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7600516715030218978
@@ -2296,12 +2304,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6240999179953451094}
-  m_Father: {fileID: 7823765563359373147}
+  m_Father: {fileID: 8977848409617370044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 506.09842, y: 523.05774}
+  m_SizeDelta: {x: 747.8031, y: 33.60205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6725785907988510702
 GameObject:
@@ -2518,8 +2526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_Material: {fileID: 2100000, guid: f6d46f1e916b3486c90a448a441fac6a, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.92156863}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2545,6 +2553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7823765563359373147}
+  - component: {fileID: 1799892709990112261}
   m_Layer: 5
   m_Name: EditOnlyGUI
   m_TagString: Untagged
@@ -2564,10 +2573,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1652884873894181065}
-  - {fileID: 8767622761520815993}
-  - {fileID: 1223182347154812695}
-  - {fileID: 3397529656761675395}
+  - {fileID: 8977848409617370044}
+  - {fileID: 8582611467925791384}
   m_Father: {fileID: 7226777553938472030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2575,6 +2582,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1799892709990112261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7541950224295728338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fa9da9830a4af78bc4945fd9c39e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EditOnlyGUI: {fileID: 7541950224295728338}
+  HintGUI: {fileID: 2323373906919449409}
 --- !u!1 &7565769586927006452
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,8 +2808,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5963186324990828113}
-        m_TargetAssemblyTypeName: GameIdea2.UI.EditmodeGUI, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameIdea2.EditModeController, Assembly-CSharp
         m_MethodName: ResetCamera
         m_Mode: 1
         m_Arguments:
@@ -2832,11 +2853,11 @@ RectTransform:
   m_Children:
   - {fileID: 8123628564089720991}
   - {fileID: 8232561068003029089}
-  m_Father: {fileID: 7823765563359373147}
+  m_Father: {fileID: 8977848409617370044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 35}
+  m_AnchoredPosition: {x: 506.09842, y: 541.2568}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7017331380917818711
@@ -2921,7 +2942,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5963186324990828113}
+      - m_Target: {fileID: 1799892709990112261}
         m_TargetAssemblyTypeName: GameIdea2.UI.EditmodeGUI, Assembly-CSharp
         m_MethodName: EnableSimulation
         m_Mode: 1
@@ -3463,8 +3484,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5963186324990828113}
-        m_TargetAssemblyTypeName: GameIdea2.UI.EditmodeGUI, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameIdea2.EditModeController, Assembly-CSharp
         m_MethodName: ResetLevel
         m_Mode: 1
         m_Arguments:

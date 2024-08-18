@@ -30,7 +30,8 @@ namespace GameIdea2
             if (!camera)
                 camera = Camera.main;
 
-            gui = GetComponent<EditmodeGUI>();
+            if(!gui)
+                gui = GetComponent<EditmodeGUI>();
         }
 
         private void Update()

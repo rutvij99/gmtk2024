@@ -83,11 +83,11 @@ namespace GameIdea2
             return acceleration;
         }
 
-        private void OnDrawGizmos()
-        {
-            var radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
-            Gizmos.DrawSphere(transform.position, radius+radiusError);
-        }
+        // private void OnDrawGizmos()
+        // {
+        //     var radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
+        //     Gizmos.DrawSphere(transform.position, radius+radiusError);
+        // }
     }
     
 }

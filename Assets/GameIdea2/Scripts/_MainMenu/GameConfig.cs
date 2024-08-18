@@ -3,6 +3,7 @@ using UnityEngine;
 public static class GameConfig
 {
     private const string LEVEL_PREF = "LevelCompletedKey";
+    public const int MAX_LEVELS = 20;
     public static void SetLevelComplete(int level)
     {
         if (PlayerPrefs.GetInt(LEVEL_PREF, 1) >= level) return;

@@ -211,16 +211,16 @@ MonoBehaviour:
     m_Value: 1.5
   streaksIntensity:
     m_OverrideState: 1
-    m_Value: 0.005
+    m_Value: 0.02
   streaksLength:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.264
   streaksOrientation:
     m_OverrideState: 1
     m_Value: 0
   streaksThreshold:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0
   resolution:
     m_OverrideState: 1
     m_Value: 4

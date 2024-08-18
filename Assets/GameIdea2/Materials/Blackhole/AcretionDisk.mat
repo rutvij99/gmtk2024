@@ -152,7 +152,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Direction: {r: -0.15, g: 0.15, b: 0, a: 0}
-    - _EmissionColor: {r: 13.048764, g: 7.9534607, b: 4.0008006, a: 1}
+    - _EmissionColor: {r: 6.524382, g: 3.9767303, b: 2.0004003, a: 1}
     - _Glow: {r: 23.96863, g: 1.8492764, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

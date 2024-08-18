@@ -49,7 +49,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.46
   scatter:
     m_OverrideState: 1
     m_Value: 0.5
@@ -75,31 +75,6 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 1
     m_Value: 1
---- !u!114 &-1274264115544269852
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
-  m_Name: MotionBlur
-  m_EditorClassIdentifier: 
-  active: 1
-  mode:
-    m_OverrideState: 1
-    m_Value: 0
-  quality:
-    m_OverrideState: 1
-    m_Value: 0
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0
-  clamp:
-    m_OverrideState: 1
-    m_Value: 0.05
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,25 +91,7 @@ MonoBehaviour:
   - {fileID: -2684674740040573888}
   - {fileID: 8681144867435675234}
   - {fileID: 8885058069717410752}
-  - {fileID: -1274264115544269852}
-  - {fileID: 7844491860862768581}
   - {fileID: -4016404154236017835}
---- !u!114 &7844491860862768581
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
-  m_Name: ChromaticAberration
-  m_EditorClassIdentifier: 
-  active: 1
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0
 --- !u!114 &8681144867435675234
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -150,10 +107,10 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 9
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.85
   response:
     m_OverrideState: 1
     m_Value: 0.8
@@ -214,7 +171,7 @@ MonoBehaviour:
     m_Value: 0.02
   streaksLength:
     m_OverrideState: 1
-    m_Value: 0.264
+    m_Value: 0.211
   streaksOrientation:
     m_OverrideState: 1
     m_Value: 0

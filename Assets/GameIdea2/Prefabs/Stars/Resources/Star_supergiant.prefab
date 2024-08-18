@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1500
       objectReference: {fileID: 0}
+    - target: {fileID: 8182737183843427030, guid: 42c02dbfb60a15b48bdb0e31c0b6e859, type: 3}
+      propertyPath: sizeAffectsMass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

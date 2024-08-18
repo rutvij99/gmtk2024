@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DataAsset: {fileID: 11400000, guid: 1a349a82f1e9de144a096dddf9eedb7e, type: 2}
+  sizeAffectsMass: 1
 --- !u!114 &4351584069520572629
 MonoBehaviour:
   m_ObjectHideFlags: 0

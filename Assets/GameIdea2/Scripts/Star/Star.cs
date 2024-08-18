@@ -15,6 +15,8 @@ namespace GameIdea2.Stars
     {
         [FormerlySerializedAs("VisaulFXAsset")] [SerializeField] private StarDataAsset DataAsset;
 
+        [SerializeField]
+        private bool sizeAffectsMass;
         private Material mainMaterial;
         private Light light;
         private Rigidbody rb;
@@ -31,16 +33,30 @@ namespace GameIdea2.Stars
 
         private void Update()
         {
+            if (sizeAffectsMass)
+            {
+                var lerpEval = transform.localScale.x / DataAsset.MaxScale;
+                rb.mass = Mathf.Lerp(DataAsset.MinMass, DataAsset.MaxMass, lerpEval);
+            }
+
             if (DataAsset.AnimateTillingOffset)
             {
 
                 mainMaterial.mainTextureOffset += DataAsset.TextureOffsetDir * (Mathf.Lerp(DataAsset.MinOffsetSpeed, DataAsset.MaxOffsetSpeed,
                     transform.localScale.magnitude / DataAsset.MaxScale) * Time.deltaTime);
             }
+
+            if (sizeAffectsMass)
+            {
+                colorValue = transform.localScale.magnitude / DataAsset.MaxScale;
+            }
+            else
+            {
+                scaleEffect = Mathf.Clamp01(transform.localScale.magnitude / DataAsset.MaxScale);
+                massEffect = (rb.mass / DataAsset.MassInfulence);
+                colorValue = Mathf.Clamp01(Operate(scaleEffect,massEffect, DataAsset.ColorInfluenceOperation));
+            }
             
-            scaleEffect = Mathf.Clamp01(transform.localScale.magnitude / DataAsset.MaxScale);
-            massEffect = (rb.mass / DataAsset.MassInfulence);
-            colorValue = Mathf.Clamp01(Operate(scaleEffect,massEffect, DataAsset.ColorInfluenceOperation));
             if (mainMaterial)
                 mainMaterial.color = DataAsset.StarColor.Evaluate(colorValue);
 

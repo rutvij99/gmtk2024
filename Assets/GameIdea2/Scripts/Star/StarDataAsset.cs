@@ -6,14 +6,29 @@ namespace GameIdea2.Stars
     [CreateAssetMenu(menuName = "GMTK24/StarColorAsset", fileName = "DefaultStarAsset")]
     public class StarDataAsset : ScriptableObject
     {
-        [SerializeField] public GameObject StarExplosionFx;
+        public GameObject StarExplosionFx;
         [GradientUsage(true)] public Gradient StarColor;
-        [FormerlySerializedAs("maxScale")] [SerializeField] public float MaxScale=100;
-        [FormerlySerializedAs("massInfulence")] [SerializeField] public float MassInfulence=1000;
-        [FormerlySerializedAs("colorInfluenceOperation")] [SerializeField] public Operation ColorInfluenceOperation = Operation.Multiply;
-        [FormerlySerializedAs("animateTillingOffset")] [SerializeField] public bool AnimateTillingOffset = true;
-        [FormerlySerializedAs("textureOffsetDir")] [SerializeField] public Vector2 TextureOffsetDir = Vector2.one;
-        [FormerlySerializedAs("minOffsetSpeed")] [SerializeField] public float MinOffsetSpeed = 0.1f;
-        [FormerlySerializedAs("maxOffsetSpeed")] [SerializeField] public float MaxOffsetSpeed = 0.5f;
+        
+        [FormerlySerializedAs("maxScale")] 
+        public float MaxScale=100;
+        
+        [FormerlySerializedAs("massInfulence")] 
+        public float MassInfulence=1000;
+        
+        [FormerlySerializedAs("colorInfluenceOperation")] 
+        public Operation ColorInfluenceOperation = Operation.Multiply;
+        
+        [FormerlySerializedAs("animateTillingOffset")] 
+        public bool AnimateTillingOffset = true;
+        
+        [FormerlySerializedAs("textureOffsetDir")] 
+        public Vector2 TextureOffsetDir = Vector2.one;
+        
+        [FormerlySerializedAs("minOffsetSpeed")]
+        public float MinOffsetSpeed = 0.1f;
+        
+        [FormerlySerializedAs("maxOffsetSpeed")] public float MaxOffsetSpeed = 0.5f;
+        public float MinMass = 1500f;
+        public float MaxMass = 7500f;
     }
 }

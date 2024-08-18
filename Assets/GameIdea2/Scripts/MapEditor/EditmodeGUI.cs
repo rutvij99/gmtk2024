@@ -7,6 +7,7 @@ namespace GameIdea2.UI
     {
         [SerializeField] private GameObject EditOnlyGUI;
         [SerializeField] private GameObject HintGUI;
+        [SerializeField] private GameObject blueprintPlane;
         public bool Interacted {
             get
             {
@@ -27,6 +28,7 @@ namespace GameIdea2.UI
         public void EnableSimulation()
         {
             EditOnlyGUI.SetActive(false);
+            blueprintPlane.SetActive(false);
             var universe = Universe.Instance;
             if (universe != null) universe.Simulate = true;
         }

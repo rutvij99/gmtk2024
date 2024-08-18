@@ -6,11 +6,11 @@ namespace GameIdea2.Audio
 {
     public class AudioManager : MonoBehaviour
     {
-        private static AudioManager Instance;
+        private static AudioManager instance;
 
-        public static AudioManager instance
+        public static AudioManager Instance
         {
-            get { return Instance; }
+            get { return instance; }
         }
 
         [SerializeField] private AudioSource sfxSource;
@@ -18,13 +18,13 @@ namespace GameIdea2.Audio
 
         private void Awake()
         {
-            if (Instance != null)
+            if (instance != null)
             {
                 Destroy(this.gameObject);
                 return;
             }
             DontDestroyOnLoad(this.gameObject);
-            Instance = this;
+            instance = this;
         }
 
         public void PlaySoundOfType(SoundTyes type)

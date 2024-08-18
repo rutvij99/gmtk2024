@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
 	public void ClickSFX()
 	{
-		AudioManager.instance?.PlaySoundOfType(SoundTyes.UI);
+		AudioManager.Instance?.PlaySoundOfType(SoundTyes.UI);
 		// if (!clickSound) return;
 		// sfxSource.PlayOneShot(clickSound, volumeScale: 0.5f);
 	}

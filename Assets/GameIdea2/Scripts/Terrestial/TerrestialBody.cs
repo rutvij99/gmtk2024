@@ -77,7 +77,7 @@ namespace GameIdea2
             {
                 Destroy(this.gameObject);
                 Debug.Log("Dishoom!!");
-                AudioManager.instance.PlaySoundOfType(SoundTyes.Boom);
+                AudioManager.Instance?.PlaySoundOfType(SoundTyes.Boom);
                 if (explosionFX)
                 {
                     var go = Instantiate(explosionFX, transform.position, Quaternion.identity);

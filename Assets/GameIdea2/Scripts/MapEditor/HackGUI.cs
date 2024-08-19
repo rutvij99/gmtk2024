@@ -33,6 +33,15 @@ namespace GameIdea2.Scripts.MapEditor
 
         private void Update()
         {
+            if (Universe.Instance.Simulate)
+            {
+                this.gameObject.SetActive(false);
+                return;
+            }
+
+            if (!mainCam)
+                mainCam = Camera.main;
+            
             var targetRot = targetObject.transform.rotation.eulerAngles;
             var newRot = Quaternion.Euler(new Vector3(startRot.x, -targetRot.y, startRot.z));
             transform.localRotation = newRot;

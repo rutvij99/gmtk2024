@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using GameIdea2.Gameloop;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,6 +16,8 @@ namespace GameIdea2
         
         private GameObject workspace;
         public System.Action<int> OnSimStarted;
+
+        private bool busy = false;
         
         private static Universe instance;
         public static Universe Instance
@@ -188,6 +191,29 @@ namespace GameIdea2
                 goInst.transform.localScale = obj.Scale;
             }
             CreateWorkspace();
+        }
+
+        public async void MarkDirty(GameObject obj)
+        {
+            if(busy)
+                return;
+            
+            var trajectory = obj.GetComponent<TrajectorySystem>();
+            if (trajectory)
+            {
+                trajectory.SimulateTrajectory();
+                busy = false;
+                return;
+            }
+            
+            busy = true;
+            foreach (var trajecorySys in FindObjectsByType<TrajectorySystem>(FindObjectsSortMode.None))
+            {
+                trajecorySys.SimulateTrajectory();
+                await Task.Delay((int)(Time.deltaTime * 1000));
+            }
+
+            busy = false;
         }
     }
 }

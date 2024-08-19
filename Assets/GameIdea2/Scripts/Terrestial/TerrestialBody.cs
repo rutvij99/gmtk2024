@@ -29,6 +29,7 @@ namespace GameIdea2
         public void UpdateStartDir()
         {
             _startForceDir = transform.forward;
+            Universe.Instance.MarkDirty(this.gameObject);
         }
         
         private void Awake()

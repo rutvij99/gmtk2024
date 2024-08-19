@@ -174,16 +174,20 @@ public class HUDManager : MonoBehaviour
     public void Button_ExitSim()
     {
         OnExitSimulationClicked?.Invoke();
+        FindFirstObjectByType<EditModeController>()?.ResetLevel();
     }
     
     public void Button_ResetCamera()
     {
         OnResetCameraClicked?.Invoke();
+        FindFirstObjectByType<EditModeController>()?.ResetCamera();
     }
     
     public void Button_ResetWorld()
     {
         OnResetWorldClicked?.Invoke();
+        Universe.Instance.CleanWorkspace();
+        FindFirstObjectByType<EditModeController>()?.ResetLevel();
     }
 
     public void Button_ExitToMainMenu()
@@ -196,6 +200,11 @@ public class HUDManager : MonoBehaviour
     public void Button_Exit()
     {
         GameConfig.Exit();
+    }
+    
+    public void ButtonTerrestrialBodySpawn(string key)
+    {
+        FindFirstObjectByType<EditModeController>()?.SpawnTerrestial(key);
     }
 
 

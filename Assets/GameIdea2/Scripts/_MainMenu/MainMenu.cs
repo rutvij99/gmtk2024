@@ -132,7 +132,7 @@ public class MainMenu : MonoBehaviour
 	{
 		Debug.Log($"Loading Level {i}");
 		AudioManager.Instance?.ChangeBackgroundMusic(i);
-		SceneManager.LoadScene($"Level{i}");
+		GameConfig.LoadLevel(i);
 	}
 
 	public void LoadFreePlay()

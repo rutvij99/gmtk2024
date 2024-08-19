@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using GameIdea2;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -36,8 +37,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private RectTransform gallery;
     [SerializeField] private GameObject galleryOpenIcon;
     [SerializeField] private GameObject galleryCloseIcon;
-    
-    
+
     [Space(10)]
     [Header("Events")]
     public UnityEvent OnResetCameraClicked = new UnityEvent();
@@ -47,7 +47,14 @@ public class HUDManager : MonoBehaviour
     public UnityEvent OnLoadNextLevelClicked = new UnityEvent();
     public UnityEvent OnEnterSimulationClicked = new UnityEvent();
     public UnityEvent<string,string> OnUploadClicked = new UnityEvent<string,string>();
-    
+
+    public static HUDManager instance;
+
+    private void Start()
+    {
+        instance = this;
+    }
+
     public void EnableEditorView()
     {
         
@@ -195,6 +202,8 @@ public class HUDManager : MonoBehaviour
     public void Button_Simulate()
     {
         OnEnterSimulationClicked?.Invoke();
+        var universe = Universe.Instance;
+        if (universe != null) universe.Simulate = true;
     }
 
 

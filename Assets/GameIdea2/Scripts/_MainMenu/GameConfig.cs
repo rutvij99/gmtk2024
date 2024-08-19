@@ -8,10 +8,12 @@ public static class GameConfig
 {
     private const string LEVEL_PREF = "LevelCompletedKey";
     public const int MAX_LEVELS = 20;
-    public static void SetLevelComplete(int level)
+    public static int CurrentLevel;
+    
+    public static void SetLevelComplete()
     {
-        if (PlayerPrefs.GetInt(LEVEL_PREF, 1) >= level) return;
-        PlayerPrefs.SetInt(LEVEL_PREF, level);
+        if (PlayerPrefs.GetInt(LEVEL_PREF, 1) >= CurrentLevel) return;
+        PlayerPrefs.SetInt(LEVEL_PREF, CurrentLevel);
         PlayerPrefs.Save();
     }
 
@@ -20,9 +22,18 @@ public static class GameConfig
        return PlayerPrefs.GetInt(LEVEL_PREF, 1);
     }
 
+    public static void LevelFinished()
+    {
+	    SetLevelComplete();
+	    
+	    if(CurrentLevel + 1 < MAX_LEVELS)
+			LoadLevel(CurrentLevel + 1);
+    }
+
     public static void LoadLevel(int id)
     {
-	    SceneManager.LoadScene($"Level {id.ToString("00")}");
+	    CurrentLevel = id;
+	    SceneManager.LoadScene($"Level {id - 1:00}");
     }
     
     public static void LoadLevel(string name)

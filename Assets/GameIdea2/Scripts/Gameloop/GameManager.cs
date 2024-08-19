@@ -55,7 +55,7 @@ namespace GameIdea2.Gameloop
             await Task.Delay(1500);
             
             Universe.Instance?.CleanWorkspace();
-            RestartLevel();
+            GameConfig.LevelFinished();
         }
 
         private void OnSimStarted(int totalPlayers)

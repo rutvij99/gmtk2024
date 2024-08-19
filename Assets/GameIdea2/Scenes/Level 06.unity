@@ -118,6 +118,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &1080040695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 452107834655898787, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_Name
+      value: Asteroid_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.799997
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823111331981051003, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935107726263575872, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 451385130580940260, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d4ba3d9780082524eba0347b4a197d62, type: 3}
 --- !u!1001 &1258765611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,15 +194,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 823111331981051003, guid: 9565c499c40143647a73be83c6bcef06, type: 3}
       propertyPath: m_LocalScale.x
-      value: 90
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 823111331981051003, guid: 9565c499c40143647a73be83c6bcef06, type: 3}
       propertyPath: m_LocalScale.y
-      value: 90
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 823111331981051003, guid: 9565c499c40143647a73be83c6bcef06, type: 3}
       propertyPath: m_LocalScale.z
-      value: 90
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 823111331981051003, guid: 9565c499c40143647a73be83c6bcef06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,11 +786,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7041397260834554843, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.929207
+      value: 47.444347
       objectReference: {fileID: 0}
     - target: {fileID: 7041397260834554843, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.603798
+      value: -14.150491
       objectReference: {fileID: 0}
     - target: {fileID: 8365495245804215122, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: orthographic
@@ -791,3 +853,4 @@ SceneRoots:
   - {fileID: 6674568108820414364}
   - {fileID: 1123893510911076990}
   - {fileID: 1258765611}
+  - {fileID: 1080040695}

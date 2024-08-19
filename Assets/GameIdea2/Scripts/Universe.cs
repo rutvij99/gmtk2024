@@ -47,8 +47,12 @@ namespace GameIdea2
                 foreach (var body in FindObjectsByType<TerrestialBody>(FindObjectsSortMode.None))
                 {
                     body.enabled = true;
-                    if (body.GetComponentInChildren<Player>())
+                    var player = body.GetComponentInChildren<Player>();
+                    if (player)
+                    {
                         totalPlayers += 1;
+                        player.GetComponent<SphereCollider>().enabled = true;
+                    }
                 }
                 
                 OnSimStarted?.Invoke(totalPlayers);

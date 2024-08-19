@@ -250,7 +250,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -297,7 +297,6 @@ MonoBehaviour:
   rb: {fileID: 8481578396924047835}
   collisionRule: 0
   startWithForce: 1
-  startForceDir: {x: -1, y: 0, z: 0}
   startForceMag: 125
 --- !u!114 &5450510934062260261
 MonoBehaviour:

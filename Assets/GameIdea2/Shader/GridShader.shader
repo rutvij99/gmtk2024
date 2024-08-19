@@ -17,6 +17,9 @@ Shader "Custom/TransparentDualGridShader"
 
         Pass
         {
+            // Disable lighting for this pass
+            Lighting Off
+            
             Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma vertex vert
@@ -73,7 +76,7 @@ Shader "Custom/TransparentDualGridShader"
             ENDCG
         }
     }
-    FallBack "Diffuse"
+    // Removed fallback to "Diffuse"
 }
 //Shader "Custom/TransparentTripleGridShader"
 //{

@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace GameIdea2.Audio
 {
@@ -14,11 +17,14 @@ namespace GameIdea2.Audio
         }
 
         [SerializeField] private AudioSource sfxSource;
+        [SerializeField] private AudioSource bsAudioSource;
         [SerializeField] private AudioSource backgroundAudioSource;
         [SerializeField] private AudioSource ambienceAudioSource;
         [SerializeField] private List<AudioMap> audioMapList;
         [SerializeField] private List<AudioClip> backgroundMusicList;
         [SerializeField] private List<AudioClip> ambienceMusicList;
+
+        [SerializeField] private List<AudioClip> bsClipsList;
 
         private void Awake()
         {
@@ -29,6 +35,16 @@ namespace GameIdea2.Audio
             }
             DontDestroyOnLoad(this.gameObject);
             instance = this;
+            StartCoroutine(BsClipsPlayRoutine());
+        }
+
+        private IEnumerator BsClipsPlayRoutine()
+        {
+            while (true)
+            {
+                yield return new WaitForSecondsRealtime(10.0f);
+                bsAudioSource.PlayOneShot(bsClipsList[Random.Range(0, bsClipsList.Count)]);
+            }
         }
 
         public void ChangeBackgroundMusic(int levelNum)

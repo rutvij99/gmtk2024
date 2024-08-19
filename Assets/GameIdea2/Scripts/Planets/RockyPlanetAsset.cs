@@ -16,5 +16,7 @@ namespace GameIdea2.Scripts.Planets
 
         public float MinElevation = 0.0f;
         public float MaxElevation = 0.15f;
+
+        [Range(0, 1f)] public float WaterProbability = 0.5f;
     }
 }

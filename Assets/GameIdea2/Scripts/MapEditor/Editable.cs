@@ -8,9 +8,6 @@ namespace GameIdea2.Scripts.Editor
         [SerializeField] private GameObject SelectedGUI; 
         
         public static Editable CurrentSelection;
-
-        public float MaxScale = 100;
-        
         private void Start()
         {
             SelectedGUI.SetActive(false);

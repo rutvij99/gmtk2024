@@ -205,6 +205,7 @@ namespace GameIdea2
         private void ScaleSelection()
         {
             var selected = Editable.CurrentSelection;
+           
             if (!selected)
             {
                 if( currentInteraction==Interaction.Scale)
@@ -212,6 +213,14 @@ namespace GameIdea2
                 return;
             }
 
+            var scaleHeler = selected.GetComponent<ScaleHelper>();
+            if (!scaleHeler)
+            {
+                if( currentInteraction==Interaction.Scale)
+                    TryResetInteraction(Interaction.Scale);
+                return;
+            }
+            
             if (Input.GetMouseButton(SCALE_MOUSE_BTN))
             {
                 /*var pos = camera.ScreenToWorldPoint(GetMousePosition());
@@ -227,8 +236,8 @@ namespace GameIdea2
                 
                 if (currentScale.x > 0.5f && currentScale.x < 1f)
                     currentScale = Vector3.one;
-                else if (currentScale.x > 100)
-                    currentScale = Vector3.one * selected.MaxScale;
+                else if (currentScale.x > scaleHeler.MaxScale)
+                    currentScale = Vector3.one * scaleHeler.MaxScale;
 
                 selected.transform.localScale = currentScale;
             }
@@ -259,8 +268,9 @@ namespace GameIdea2
             var asset = Resources.Load<GameObject>(key);
             if (asset)
             {
-                Instantiate(asset, new Vector3(camera.transform.position.x, 0, camera.transform.position.z),
+                var go = Instantiate(asset, new Vector3(camera.transform.position.x, 0, camera.transform.position.z),
                     Quaternion.identity);
+                go.AddComponent<Editable>();
             }
         }
 

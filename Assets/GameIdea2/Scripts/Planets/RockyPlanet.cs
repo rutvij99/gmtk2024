@@ -15,14 +15,24 @@ namespace GameIdea2.Scripts.Planets
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
+            var waterBody = transform.GetChild(0);
             var mat = GetComponent<MeshRenderer>().material;
-            var waterMat = transform.GetChild(0).GetComponent<MeshRenderer>().material;
+            var waterMat = waterBody.GetComponent<MeshRenderer>().material;
             
             mat.SetColor("_Base", DataAsset.LandColors[Random.Range(0, DataAsset.LandColors.Count)]);
             waterMat.SetColor("_Base", DataAsset.WaterColors[Random.Range(0, DataAsset.WaterColors.Count)]);
             
             mat.SetFloat("_NoiseStrength", Mathf.Lerp(DataAsset.MinNoiseStr, DataAsset.MaxNoiseStr, Random.Range(0,1f)));
             mat.SetFloat("_MaxElevation", Mathf.Lerp(DataAsset.MinElevation, DataAsset.MaxElevation, Random.Range(0,1f)));
+
+            if (Random.Range(0f, 1f) <= DataAsset.WaterProbability)
+            {
+                waterBody.gameObject.SetActive(true);
+            }
+            else
+            {
+                waterBody.gameObject.SetActive(false);
+            }
         }
 
         private void Update()

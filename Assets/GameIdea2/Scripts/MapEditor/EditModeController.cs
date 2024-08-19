@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using GameIdea2.Gameloop;
 using GameIdea2.Scripts.Editor;
 using GameIdea2.Scripts.MapEditor;
@@ -135,7 +136,7 @@ namespace GameIdea2
         {
             var zoomDelta = -Input.mouseScrollDelta.y * zoomSensitivity;
             if (zoomDelta != 0)
-                gui.Interacted = true;
+                HUDManager.instance.Interacted = true;
             
             camera.orthographicSize += zoomDelta;
             camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minZoom, maxZoom);
@@ -148,7 +149,7 @@ namespace GameIdea2
 
             if (Input.GetMouseButton(PAN_MOUSE_BTN) && InteractionAvailable())
             {
-                gui.Interacted = true;
+                HUDManager.instance.Interacted = true;
                 SetCurrentInteraction(Interaction.Pan);
             }
             
@@ -176,7 +177,7 @@ namespace GameIdea2
                     var editable = hit.collider.GetComponentInChildren<Editable>();
                     if(!editable)
                         return;
-                    gui.Interacted = true;
+                    HUDManager.instance.Interacted = true;
                     editable.Select();
                     var pos = camera.ScreenToWorldPoint(GetMousePosition());
                     mouseStartWorldPos = new Vector3(pos.x, 0, pos.y);
@@ -273,7 +274,7 @@ namespace GameIdea2
                     Universe.Instance.MarkDirty(selected.gameObject);
             }
         }
-        
+
         public void  SpawnTerrestial(string key)
         {
             if (!currentWorkspace)
@@ -284,14 +285,16 @@ namespace GameIdea2
             }
             
             
-            gui.Interacted = true;
+            HUDManager.instance.Interacted = true;
             var asset = Resources.Load<GameObject>(key);
             if (asset)
             {
                 var go = Instantiate(asset, new Vector3(camera.transform.position.x, 0, camera.transform.position.z),
                     Quaternion.identity, currentWorkspace.transform);
                 go.AddComponent<Editable>();
+                Universe.Instance.MarkDirty(go);
             }
+            
             
             Debug.Log($"Json: {Universe.Instance.SerializeLevel("test-name","test-author")}");
         }

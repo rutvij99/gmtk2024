@@ -1,10 +1,6 @@
 using System;
 using System.Collections;
-using System.Threading.Tasks;
 using GameIdea2.Gameloop;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +13,7 @@ namespace GameIdea2
         private GameObject workspace;
         public System.Action<int> OnSimStarted;
 
-        private bool busy = false;
+        private Coroutine recalcRoutine;
         
         private static Universe instance;
         public static Universe Instance
@@ -194,27 +190,31 @@ namespace GameIdea2
                 CreateWorkspace();
         }
 
-        public async void MarkDirty(GameObject obj)
+        public void MarkDirty(GameObject obj)
         {
-            if(busy)
+            if(recalcRoutine != null)
                 return;
-            
+
+            recalcRoutine = StartCoroutine(RecalculateTrajectory(obj));
+        }
+
+        IEnumerator RecalculateTrajectory(GameObject obj)
+        {
+            yield return new WaitForEndOfFrame();
             var trajectory = obj.GetComponent<TrajectorySystem>();
             if (trajectory)
             {
                 trajectory.SimulateTrajectory();
-                busy = false;
-                return;
+                recalcRoutine = null;
+                yield break;
             }
             
-            busy = true;
             foreach (var trajecorySys in FindObjectsByType<TrajectorySystem>(FindObjectsSortMode.None))
             {
                 trajecorySys.SimulateTrajectory();
-                await Task.Delay((int)(Time.deltaTime * 1000));
+                yield return new WaitForEndOfFrame();
             }
-
-            busy = false;
+            recalcRoutine = null;
         }
     }
 }

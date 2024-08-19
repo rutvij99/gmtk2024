@@ -143,7 +143,6 @@ namespace GameIdea2
                 if (go.name.Equals(WORKSPACE_NAME))
                     return go;
             }
-
             return null;
         }
         
@@ -175,7 +174,7 @@ namespace GameIdea2
             return LevelMap.SerialiseWorkspace(workspace, levelName, authorName);
         }
 
-        public void LoadLevelFromJson(string json)
+        public void LoadLevelFromJson(string json, bool keepWorkspace)
         {
             if(String.IsNullOrEmpty(json))
                 return;
@@ -190,7 +189,9 @@ namespace GameIdea2
                 var goInst = Instantiate(goRef, obj.Position, Quaternion.Euler(obj.Rotation));
                 goInst.transform.localScale = obj.Scale;
             }
-            CreateWorkspace();
+            
+            if(!keepWorkspace)
+                CreateWorkspace();
         }
 
         public async void MarkDirty(GameObject obj)

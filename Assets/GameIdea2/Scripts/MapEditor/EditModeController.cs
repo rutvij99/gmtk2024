@@ -52,7 +52,6 @@ namespace GameIdea2
                 gui = GetComponent<EditmodeGUI>();
             
             SetCurrentInteraction(Interaction.None);
-
             currentWorkspace = Universe.Instance.GetWorkspace();
             if (!currentWorkspace)
                 currentWorkspace = Universe.Instance.CreateWorkspace();

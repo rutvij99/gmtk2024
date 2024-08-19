@@ -29,7 +29,7 @@ namespace GameIdea2
         public void UpdateStartDir()
         {
             _startForceDir = transform.forward;
-            Universe.Instance.MarkDirty(this.gameObject);
+            Universe.Instance?.MarkDirty(this.gameObject);
         }
         
         private void Awake()
@@ -81,6 +81,9 @@ namespace GameIdea2
 
         private void OnCollisionEnter(Collision other)
         {
+            if(!Universe.Instance.Simulate)
+                return;
+            
             var terrestialBody = other.gameObject.GetComponent<TerrestialBody>();
             if (terrestialBody && collisionRule== TerrestialCollisionRule.Destroyable)
             {

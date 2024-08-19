@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-namespace GameIdea2.Audio.CustomPlay
+namespace GameIdea2.CustomPlay
 {
     public class CustomLevelLoader : MonoBehaviour
     {
@@ -13,12 +13,14 @@ namespace GameIdea2.Audio.CustomPlay
         [SerializeField] private string overrideLevelId;
         [SerializeField] private GameObject loadingScreen;
         
-        private Dictionary<string, CustomLevel> cachedLevels;
+        private static Dictionary<string, CustomLevel> cachedLevels;
         
         private static string activeLevelId;
+        private static bool keepWorkspace;
         public static void LoadLevel(string levelId)
         {
             activeLevelId = levelId;
+            keepWorkspace = true;
             SceneManager.LoadScene("CustomLevelPlayer");
         }
         
@@ -52,7 +54,7 @@ namespace GameIdea2.Audio.CustomPlay
             if(!cachedLevels.ContainsKey(activeLevelId))
                 cachedLevels.Add(activeLevelId, data);
             
-            Universe.Instance.LoadLevelFromJson(data.levelData);
+            Universe.Instance.LoadLevelFromJson(data.levelData, keepWorkspace);
             loadingScreen.SetActive(false);
         }
 

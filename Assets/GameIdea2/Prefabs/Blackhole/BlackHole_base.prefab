@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3050136223269483691}
   - component: {fileID: 7659939444172125285}
   - component: {fileID: 4572776115126874325}
+  - component: {fileID: 1489180004196191005}
   m_Layer: 6
   m_Name: BlackHole_base
   m_TagString: Untagged
@@ -116,6 +117,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxScale: 150
+--- !u!114 &1489180004196191005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034059109014702821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7346496f0f4241b4ab24802676bdf64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionFx: {fileID: 6930649080681704195, guid: c1a074dbbd581a644a7d48c5f3a5bf7f, type: 3}
 --- !u!1 &2192980444162030217
 GameObject:
   m_ObjectHideFlags: 0

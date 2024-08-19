@@ -16,7 +16,7 @@ public class MongoHelper : MonoBehaviour
 {
     private static string apiKey = "GoeYj6grOygNnuU711v1Yryph7ApqKh2S1gsfB0vGhuzGpDH9Hxyh8hrePB28kdk";
 
-    public IEnumerator GetLevelNames(string apiURL, Action<string> onComplete, Action onFail)
+    public static IEnumerator GetLevelNames(string apiURL, Action<string> onComplete, Action onFail)
     {
         UnityWebRequest request = UnityWebRequest.Get(apiURL);
         request.SetRequestHeader("api-key", apiKey);
@@ -59,7 +59,7 @@ public class MongoHelper : MonoBehaviour
         }
     }
     
-    public IEnumerator InsertLevelData(string apiURL, string jsonData, Action onComplete, Action onError)
+    public static IEnumerator InsertLevelData(string apiURL, string jsonData, Action onComplete, Action onError)
     {
         CustomLevel customLevel = new CustomLevel();
         customLevel.author = "ww_";

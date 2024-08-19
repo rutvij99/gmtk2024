@@ -7,6 +7,9 @@ namespace GameIdea2.Gameloop
     {
         private void OnCollisionEnter(Collision other)
         {
+            if (!Universe.Instance.Simulate)
+                return;
+            
             var target = other.collider.GetComponent<Target>();
             if (target)
             {

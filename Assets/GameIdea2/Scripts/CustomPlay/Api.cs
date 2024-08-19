@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameIdea2.Audio.CustomPlay
+namespace GameIdea2.CustomPlay
 {
     [CreateAssetMenu(menuName = "GMTK24/APIDataAsset", fileName = "DefaultAPIDataAsset")]
     public class Api : ScriptableObject

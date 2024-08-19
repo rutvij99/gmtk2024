@@ -49,7 +49,7 @@ namespace GameIdea2.Scripts.MapEditor
             var orthPerc = (mainCam.orthographicSize - minZoom) / (maxZoom - minZoom);
             var scaleMult = Mathf.Lerp(minScaleMult, maxScaleMult, orthPerc);
             transform.localScale = startScale * scaleMult;
-            transform.position = targetObject.transform.position + new Vector3(0, 0, minDist + (maxDistFromTarget * orthPerc));
+            transform.position = targetObject.transform.position + new Vector3(0, transform.position.y, minDist + (maxDistFromTarget * orthPerc));
         }
 
         public void RotateMe(float yRot)

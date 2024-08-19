@@ -11,8 +11,14 @@ namespace GameIdea2.Scripts.Editor
         
         private List<GameObject> HideList;
         public static Editable CurrentSelection;
+        private bool ogState;
+        private Rigidbody rb;
         private void Start()
         {
+            rb = GetComponent<Rigidbody>();
+            if(rb)
+                ogState = rb.isKinematic;
+            
             HideList = new List<GameObject>();
             SelectedGUI = transform.Find("Selected")?.gameObject;
             SelectedGUI?.SetActive(false);
@@ -26,6 +32,18 @@ namespace GameIdea2.Scripts.Editor
                 
                 if(!HideList.Contains(child.gameObject))
                     HideList.Add(child.gameObject);
+            }
+        }
+
+        private void Update()
+        {
+            if (Universe.Instance.Simulate && rb)
+            {
+                rb.isKinematic = ogState;
+            }
+            else if (!Universe.Instance.Simulate && rb)
+            {
+                rb.isKinematic = true;
             }
         }
 
@@ -45,7 +63,7 @@ namespace GameIdea2.Scripts.Editor
         {
             if(CurrentSelection)
                 CurrentSelection.Deselect();
-
+            
             CurrentSelection = this;
             SelectedGUI?.SetActive(true);
             foreach (var go in HideList)

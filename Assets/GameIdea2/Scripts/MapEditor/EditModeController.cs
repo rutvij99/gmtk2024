@@ -245,7 +245,7 @@ namespace GameIdea2
                 else if (currentScale.x > scaleHeler.MaxScale)
                     currentScale = Vector3.one * scaleHeler.MaxScale;
 
-                var dirty = !Mathf.Approximately(Vector3.Distance(selected.transform.localScale, currentScale), 0.01f);
+                var dirty = Vector3.Distance(selected.transform.localScale, currentScale) >= 0.01f;
                 selected.transform.localScale = currentScale;
                 if(dirty)
                     Universe.Instance.MarkDirty(selected.gameObject);

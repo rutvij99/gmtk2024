@@ -29,8 +29,7 @@ namespace GameIdea2
         [SerializeField] private float zoomSensitivity = 10;
         [SerializeField] private float minZoom = 50;
         [SerializeField] private float maxZoom = 250;
-
-
+        
         private const int PAN_MOUSE_BTN = 2;
         private const int MOVE_MOUSE_BTN = 0;
         private const int SCALE_MOUSE_BTN = 1;
@@ -39,6 +38,8 @@ namespace GameIdea2
 
         private Vector3 mouseStartWorldPos;
         private Interaction currentInteraction = Interaction.Undefined;
+
+        private GameObject currentWorkspace;
         
         private void Start()
         {
@@ -49,6 +50,10 @@ namespace GameIdea2
                 gui = GetComponent<EditmodeGUI>();
             
             SetCurrentInteraction(Interaction.None);
+
+            currentWorkspace = Universe.Instance.GetWorkspace();
+            if (!currentWorkspace)
+                currentWorkspace = Universe.Instance.CreateWorkspace();
         }
 
         private bool IsUIOverGUI()
@@ -264,14 +269,19 @@ namespace GameIdea2
         
         public void  SpawnTerrestial(string key)
         {
+            if (currentWorkspace == null)
+                currentWorkspace = new GameObject();
+            
             gui.Interacted = true;
             var asset = Resources.Load<GameObject>(key);
             if (asset)
             {
                 var go = Instantiate(asset, new Vector3(camera.transform.position.x, 0, camera.transform.position.z),
-                    Quaternion.identity);
+                    Quaternion.identity, currentWorkspace.transform);
                 go.AddComponent<Editable>();
             }
+            
+            Debug.Log($"Json: {Universe.Instance.SerializeLevel("test-name","test-author")}");
         }
 
         public void ResetCamera()
@@ -283,5 +293,6 @@ namespace GameIdea2
         {
             GameManager.Instance.RestartLevel();
         }
+        
     }
 }

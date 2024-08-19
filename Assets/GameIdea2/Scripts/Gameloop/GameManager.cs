@@ -53,6 +53,8 @@ namespace GameIdea2.Gameloop
                 star.transform.localScale = Vector3.zero;
             }
             await Task.Delay(1500);
+            
+            Universe.Instance?.CleanWorkspace();
             RestartLevel();
         }
 

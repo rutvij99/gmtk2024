@@ -10,7 +10,8 @@ namespace GameIdea2.Scripts.Editor
         public static Editable CurrentSelection;
         private void Start()
         {
-            SelectedGUI.SetActive(false);
+            SelectedGUI = transform.Find("Selected")?.gameObject;
+            SelectedGUI?.SetActive(false);
         }
 
         public void Deselect()
@@ -18,7 +19,7 @@ namespace GameIdea2.Scripts.Editor
             if (CurrentSelection == this)
                 CurrentSelection = null;
             
-            SelectedGUI.SetActive(false);
+            SelectedGUI?.SetActive(false);
         }
         
         public void Select()
@@ -27,7 +28,7 @@ namespace GameIdea2.Scripts.Editor
                 CurrentSelection.Deselect();
 
             CurrentSelection = this;
-            SelectedGUI.SetActive(true);
+            SelectedGUI?.SetActive(true);
         }
     }
 }

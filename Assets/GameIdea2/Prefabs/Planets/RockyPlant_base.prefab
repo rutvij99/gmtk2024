@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: -6584957072337963047}
   - component: {fileID: -3783771429976084844}
   - component: {fileID: 1335962445240896096}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RockyPlant_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,4 +796,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33705b607b13496a8e95b77fdecadcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxScale: 100
+  MaxScale: 35

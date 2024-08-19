@@ -118,197 +118,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &428984906
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1034059109014702821, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_Name
-      value: BlackHole
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -81.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129471816430365327, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b98f348ece3c5a64eba08ff216ceb9c2, type: 3}
---- !u!1001 &1123893510911076990
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5576680142876827678, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_Name
-      value: Target
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -96.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 72.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308933659024490089, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6826352644929776875, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 47541f5595488c64f82cb1783289e84d, type: 3}
---- !u!1001 &1491512029890852305
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4961138467803840564, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_Name
-      value: Rocket
-      objectReference: {fileID: 0}
-    - target: {fileID: 4961138467803840564, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
 --- !u!1001 &3660245525575611017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -706,6 +515,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5139899805299225898, guid: 95ef320a977d580459506cee14190692, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5315185650675384605, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -803,6 +616,120 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7675667692368667162, guid: 95ef320a977d580459506cee14190692, type: 3}
+      propertyPath: json
+      value: "{\r\n    \"Name\": \"test-name\",\r\n    \"Author\": \"test-author\",\r\n   
+        \"CreatedOn\": \"19-08-2024\",\r\n    \"TerrestrialObjects\": [\r\n     
+        {\r\n        \"Key\": \"Target\",\r\n        \"Position\": {\r\n         
+        \"x\": -107.615829,\r\n          \"y\": 0.0,\r\n          \"z\": 75.69044,\r\n         
+        \"normalized\": {\r\n            \"x\": -0.8179467,\r\n            \"y\":
+        0.0,\r\n            \"z\": 0.575294,\r\n            \"magnitude\": 1.0,\r\n           
+        \"sqrMagnitude\": 0.99999994\r\n          },\r\n          \"magnitude\":
+        131.568268,\r\n          \"sqrMagnitude\": 17310.209\r\n        },\r\n       
+        \"Rotation\": {\r\n          \"x\": 0.0,\r\n          \"y\": 0.0,\r\n         
+        \"z\": 0.0,\r\n          \"magnitude\": 0.0,\r\n          \"sqrMagnitude\":
+        0.0\r\n        },\r\n        \"Scale\": {\r\n          \"x\": 5.0,\r\n         
+        \"y\": 5.0,\r\n          \"z\": 5.0,\r\n          \"normalized\": {\r\n           
+        \"x\": 0.577350259,\r\n            \"y\": 0.577350259,\r\n            \"z\":
+        0.577350259,\r\n            \"magnitude\": 1.0,\r\n            \"sqrMagnitude\":
+        0.99999994\r\n          },\r\n          \"magnitude\": 8.66025448,\r\n         
+        \"sqrMagnitude\": 75.0\r\n        }\r\n      },\r\n      {\r\n        \"Key\":
+        \"BlackHole\",\r\n        \"Position\": {\r\n          \"x\": -153.494186,\r\n         
+        \"y\": 0.0,\r\n          \"z\": -137.755463,\r\n          \"normalized\":
+        {\r\n            \"x\": -0.744231939,\r\n            \"y\": 0.0,\r\n           
+        \"z\": -0.6679212,\r\n            \"normalized\": {\r\n              \"x\":
+        -0.744232,\r\n              \"y\": 0.0,\r\n              \"z\": -0.667921245,\r\n             
+        \"magnitude\": 1.0,\r\n              \"sqrMagnitude\": 1.0\r\n           
+        },\r\n            \"magnitude\": 0.99999994,\r\n            \"sqrMagnitude\":
+        0.9999999\r\n          },\r\n          \"magnitude\": 206.245087,\r\n         
+        \"sqrMagnitude\": 42537.03\r\n        },\r\n        \"Rotation\": {\r\n         
+        \"x\": 0.0,\r\n          \"y\": 0.0,\r\n          \"z\": 0.0,\r\n         
+        \"magnitude\": 0.0,\r\n          \"sqrMagnitude\": 0.0\r\n        },\r\n       
+        \"Scale\": {\r\n          \"x\": 150.0,\r\n          \"y\": 150.0,\r\n         
+        \"z\": 150.0,\r\n          \"normalized\": {\r\n            \"x\": 0.577350259,\r\n           
+        \"y\": 0.577350259,\r\n            \"z\": 0.577350259,\r\n            \"magnitude\":
+        1.0,\r\n            \"sqrMagnitude\": 0.99999994\r\n          },\r\n         
+        \"magnitude\": 259.807617,\r\n          \"sqrMagnitude\": 67500.0\r\n       
+        }\r\n      },\r\n      {\r\n        \"Key\": \"RockyPlanet\",\r\n       
+        \"Position\": {\r\n          \"x\": 29.4895248,\r\n          \"y\": 0.0,\r\n         
+        \"z\": -125.534073,\r\n          \"normalized\": {\r\n            \"x\":
+        0.228687316,\r\n            \"y\": 0.0,\r\n            \"z\": -0.9734999,\r\n           
+        \"normalized\": {\r\n              \"x\": 0.228687331,\r\n              \"y\":
+        0.0,\r\n              \"z\": -0.973499954,\r\n              \"magnitude\":
+        1.0,\r\n              \"sqrMagnitude\": 1.0\r\n            },\r\n           
+        \"magnitude\": 0.99999994,\r\n            \"sqrMagnitude\": 0.99999994\r\n         
+        },\r\n          \"magnitude\": 128.9513,\r\n          \"sqrMagnitude\": 16628.4355\r\n       
+        },\r\n        \"Rotation\": {\r\n          \"x\": 0.0,\r\n          \"y\":
+        0.0,\r\n          \"z\": 0.0,\r\n          \"magnitude\": 0.0,\r\n         
+        \"sqrMagnitude\": 0.0\r\n        },\r\n        \"Scale\": {\r\n         
+        \"x\": 10.0,\r\n          \"y\": 10.0,\r\n          \"z\": 10.0,\r\n         
+        \"normalized\": {\r\n            \"x\": 0.577350259,\r\n            \"y\":
+        0.577350259,\r\n            \"z\": 0.577350259,\r\n            \"magnitude\":
+        1.0,\r\n            \"sqrMagnitude\": 0.99999994\r\n          },\r\n         
+        \"magnitude\": 17.320509,\r\n          \"sqrMagnitude\": 300.0\r\n       
+        }\r\n      },\r\n      {\r\n        \"Key\": \"GassyPlanet\",\r\n       
+        \"Position\": {\r\n          \"x\": -53.75373,\r\n          \"y\": 0.0,\r\n         
+        \"z\": 0.7496699,\r\n          \"normalized\": {\r\n            \"x\": -0.9999028,\r\n           
+        \"y\": 0.0,\r\n            \"z\": 0.0139450235,\r\n            \"magnitude\":
+        1.0,\r\n            \"sqrMagnitude\": 1.0\r\n          },\r\n          \"magnitude\":
+        53.7589569,\r\n          \"sqrMagnitude\": 2890.02563\r\n        },\r\n       
+        \"Rotation\": {\r\n          \"x\": 0.0,\r\n          \"y\": 0.0,\r\n         
+        \"z\": 0.0,\r\n          \"magnitude\": 0.0,\r\n          \"sqrMagnitude\":
+        0.0\r\n        },\r\n        \"Scale\": {\r\n          \"x\": 50.0,\r\n         
+        \"y\": 50.0,\r\n          \"z\": 50.0,\r\n          \"normalized\": {\r\n           
+        \"x\": 0.577350259,\r\n            \"y\": 0.577350259,\r\n            \"z\":
+        0.577350259,\r\n            \"magnitude\": 1.0,\r\n            \"sqrMagnitude\":
+        0.99999994\r\n          },\r\n          \"magnitude\": 86.60254,\r\n         
+        \"sqrMagnitude\": 7500.0\r\n        }\r\n      },\r\n      {\r\n        \"Key\":
+        \"Rocket\",\r\n        \"Position\": {\r\n          \"x\": 284.580658,\r\n         
+        \"y\": 0.0,\r\n          \"z\": 55.4976044,\r\n          \"normalized\":
+        {\r\n            \"x\": 0.9815102,\r\n            \"y\": 0.0,\r\n           
+        \"z\": 0.191409588,\r\n            \"magnitude\": 1.0,\r\n            \"sqrMagnitude\":
+        0.99999994\r\n          },\r\n          \"magnitude\": 289.94162,\r\n         
+        \"sqrMagnitude\": 84066.13\r\n        },\r\n        \"Rotation\": {\r\n         
+        \"x\": 0.0,\r\n          \"y\": 255.000031,\r\n          \"z\": 0.0,\r\n         
+        \"normalized\": {\r\n            \"x\": 0.0,\r\n            \"y\": 1.0,\r\n           
+        \"z\": 0.0,\r\n            \"magnitude\": 1.0,\r\n            \"sqrMagnitude\":
+        1.0\r\n          },\r\n          \"magnitude\": 255.000031,\r\n         
+        \"sqrMagnitude\": 65025.0156\r\n        },\r\n        \"Scale\": {\r\n         
+        \"x\": 6.21231365,\r\n          \"y\": 6.21231365,\r\n          \"z\": 6.21231365,\r\n         
+        \"normalized\": {\r\n            \"x\": 0.577350259,\r\n            \"y\":
+        0.577350259,\r\n            \"z\": 0.577350259,\r\n            \"magnitude\":
+        1.0,\r\n            \"sqrMagnitude\": 0.99999994\r\n          },\r\n         
+        \"magnitude\": 10.7600431,\r\n          \"sqrMagnitude\": 115.778526\r\n       
+        }\r\n      },\r\n      {\r\n        \"Key\": \"Star_giant\",\r\n        \"Position\":
+        {\r\n          \"x\": 215.1196,\r\n          \"y\": 0.0,\r\n          \"z\":
+        54.80398,\r\n          \"normalized\": {\r\n            \"x\": 0.969047368,\r\n           
+        \"y\": 0.0,\r\n            \"z\": 0.246875018,\r\n            \"magnitude\":
+        1.0,\r\n            \"sqrMagnitude\": 1.00000012\r\n          },\r\n         
+        \"magnitude\": 221.9908,\r\n          \"sqrMagnitude\": 49279.918\r\n       
+        },\r\n        \"Rotation\": {\r\n          \"x\": 0.0,\r\n          \"y\":
+        0.0,\r\n          \"z\": 0.0,\r\n          \"magnitude\": 0.0,\r\n         
+        \"sqrMagnitude\": 0.0\r\n        },\r\n        \"Scale\": {\r\n         
+        \"x\": 18.6403236,\r\n          \"y\": 18.6403236,\r\n          \"z\": 18.6403236,\r\n         
+        \"normalized\": {\r\n            \"x\": 0.577350259,\r\n            \"y\":
+        0.577350259,\r\n            \"z\": 0.577350259,\r\n            \"magnitude\":
+        1.0,\r\n            \"sqrMagnitude\": 0.99999994\r\n          },\r\n         
+        \"magnitude\": 32.2859879,\r\n          \"sqrMagnitude\": 1042.385\r\n       
+        }\r\n      },\r\n      {\r\n        \"Key\": \"Star_giant\",\r\n        \"Position\":
+        {\r\n          \"x\": 270.721436,\r\n          \"y\": 0.0,\r\n          \"z\":
+        -201.080948,\r\n          \"normalized\": {\r\n            \"x\": 0.8027813,\r\n           
+        \"y\": 0.0,\r\n            \"z\": -0.596273541,\r\n            \"normalized\":
+        {\r\n              \"x\": 0.802781343,\r\n              \"y\": 0.0,\r\n             
+        \"z\": -0.5962736,\r\n              \"magnitude\": 1.0,\r\n             
+        \"sqrMagnitude\": 1.00000012\r\n            },\r\n            \"magnitude\":
+        0.99999994,\r\n            \"sqrMagnitude\": 0.99999994\r\n          },\r\n         
+        \"magnitude\": 337.22937,\r\n          \"sqrMagnitude\": 113723.641\r\n       
+        },\r\n        \"Rotation\": {\r\n          \"x\": 0.0,\r\n          \"y\":
+        0.0,\r\n          \"z\": 0.0,\r\n          \"magnitude\": 0.0,\r\n         
+        \"sqrMagnitude\": 0.0\r\n        },\r\n        \"Scale\": {\r\n         
+        \"x\": 50.0,\r\n          \"y\": 50.0,\r\n          \"z\": 50.0,\r\n         
+        \"normalized\": {\r\n            \"x\": 0.577350259,\r\n            \"y\":
+        0.577350259,\r\n            \"z\": 0.577350259,\r\n            \"magnitude\":
+        1.0,\r\n            \"sqrMagnitude\": 0.99999994\r\n          },\r\n         
+        \"magnitude\": 86.60254,\r\n          \"sqrMagnitude\": 7500.0\r\n       
+        }\r\n      }\r\n    ]\r\n  }\r\n  "
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675667692368667162, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: testJson
       value: "{\r\n  \"Name\": \"test-name\",\r\n  \"Author\": \"test-author\",\r\n 
         \"CreatedOn\": \"19-08-2024\",\r\n  \"TerrestrialObjects\": [\r\n    {\r\n     
@@ -814,6 +741,12 @@ PrefabInstance:
         \"z\": 0.577350259,\r\n          \"magnitude\": 1.0,\r\n          \"sqrMagnitude\":
         0.99999994\r\n        },\r\n        \"magnitude\": 86.60254,\r\n        \"sqrMagnitude\":
         7500.0\r\n      }\r\n    }\r\n  ]\r\n}"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207003225583589707, guid: 95ef320a977d580459506cee14190692, type: 3}
+      propertyPath: m_text
+      value: 'Start making levels by adding
+
+        items from the gallery'
       objectReference: {fileID: 0}
     - target: {fileID: 8685916112046505114, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchorMax.y
@@ -888,8 +821,5 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1491512029890852305}
   - {fileID: 6674568108820414364}
-  - {fileID: 1123893510911076990}
-  - {fileID: 428984906}
   - {fileID: 3660245525575611017}

@@ -7,6 +7,16 @@ namespace GameIdea2.Gameloop
     {
         [SerializeField] private GameObject ReachHereText;
 
+        private void Awake()
+        {
+            var others = FindObjectsByType<Target>(FindObjectsSortMode.None);
+            foreach (var other in others)
+            {
+                if(other && other != this)
+                    Destroy(other.gameObject);
+            }
+        }
+
         private void Update()
         {
             if(!ReachHereText || !Universe.Instance)

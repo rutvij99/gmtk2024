@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using GameIdea2.Gameloop;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +11,9 @@ namespace GameIdea2
 {
     public class Universe : MonoBehaviour
     {
+        private const string WORKSPACE_NAME = "UniverseWorkspace";
+        
+        private GameObject workspace;
         public System.Action<int> OnSimStarted;
         
         private static Universe instance;
@@ -46,6 +52,9 @@ namespace GameIdea2
                 int totalPlayers=0;
                 foreach (var body in FindObjectsByType<TerrestialBody>(FindObjectsSortMode.None))
                 {
+                    if(body.transform.IsChildOf(workspace.transform))
+                        continue;
+                    
                     body.enabled = true;
                     var player = body.GetComponentInChildren<Player>();
                     if (player)
@@ -56,6 +65,14 @@ namespace GameIdea2
                 }
                 
                 OnSimStarted?.Invoke(totalPlayers);
+            }
+
+            if (workspace)
+            {
+                Instantiate(workspace);
+                workspace.SetActive(false);
+                
+                DontDestroyOnLoad(workspace);    
             }
             
             if (!resetCamera)
@@ -99,6 +116,87 @@ namespace GameIdea2
             }
             
             onComplete?.Invoke();
+        }
+
+        public GameObject GetWorkspace()
+        {
+            if (workspace)
+                return workspace;
+
+            workspace = FindWorkspace();
+            if (workspace)
+            {
+                workspace.SetActive(true);
+                SceneManager.MoveGameObjectToScene(workspace, SceneManager.GetActiveScene());
+            }
+            
+            return workspace;
+        }
+
+        private GameObject FindWorkspace()
+        {
+            foreach (var go in Resources.FindObjectsOfTypeAll<GameObject>())
+            {
+                if (go.name.Equals(WORKSPACE_NAME))
+                    return go;
+            }
+
+            return null;
+        }
+        
+        public GameObject CreateWorkspace()
+        {
+            if (!workspace)
+            {
+                workspace = FindWorkspace();
+            }
+            
+            if(workspace)
+                Destroy(workspace);
+
+            workspace = new GameObject(WORKSPACE_NAME);
+            return workspace;
+        }
+
+        public void CleanWorkspace()
+        {
+            if(workspace)
+                Destroy(workspace);
+        }
+        
+        public string SerializeLevel(string levelName, string authorName)
+        {
+            if (!workspace)
+                return null;
+            
+            return LevelMap.SerialiseWorkspace(workspace, levelName, authorName);
+        }
+
+        public void LoadLevelFromJson(string json)
+        {
+            if(String.IsNullOrEmpty(json))
+                return;
+
+            var map = LevelMap.LoadMapFromJson(json);
+            if (map == null)
+                return;
+
+            workspace = CreateWorkspace();
+            foreach (var obj in map.TerrestrialObjects)
+            {
+                var goRef = Resources.Load<GameObject>(obj.Key);
+                var goInst = Instantiate(goRef, obj.Position, Quaternion.Euler(obj.Rotation));
+                goInst.transform.localScale = obj.Scale;
+            }
+        }
+
+
+        [SerializeField, TextArea] private string json;
+        private void Start()
+        {
+           if(String.IsNullOrEmpty(json))
+               return;
+           LoadLevelFromJson(json);
         }
     }
 }

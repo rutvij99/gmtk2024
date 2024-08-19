@@ -26,9 +26,14 @@ namespace GameIdea2
             return _startForceDir.normalized * startForceMag;
         }
 
-        private void Awake()
+        public void UpdateStartDir()
         {
             _startForceDir = transform.forward;
+        }
+        
+        private void Awake()
+        {
+            UpdateStartDir();
         }
 
         private void Start()
@@ -42,6 +47,9 @@ namespace GameIdea2
 
         private void Update()
         {
+            if (!Universe.Instance.Simulate)
+                UpdateStartDir();
+                
             var velocity = rb.linearVelocity.normalized;
             if(velocity.magnitude > 0)
                 transform.forward = velocity;

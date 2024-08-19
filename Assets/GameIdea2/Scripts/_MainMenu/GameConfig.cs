@@ -20,6 +20,17 @@ public static class GameConfig
        return PlayerPrefs.GetInt(LEVEL_PREF, 1);
     }
 
+    public static void LoadLevel(int id)
+    {
+	    SceneManager.LoadScene($"Level {id.ToString("00")}");
+    }
+    
+    public static void LoadLevel(string name)
+    {
+	    if (SceneManager.GetSceneByName(name).IsValid())
+		    SceneManager.LoadScene(name);
+    }
+
     public static void Exit()
     {
 #if UNITY_EDITOR

@@ -8,9 +8,10 @@ using UnityEngine.Serialization;
 [System.Serializable]
 public class UploadMetaData
 {
-    private string authorName;
-    private string leveName;
+    public string authorName;
+    public string leveName;
 }
+
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private GameObject resetWorldButton;
@@ -26,8 +27,18 @@ public class HUDManager : MonoBehaviour
     public UnityEvent OnExitSimulationClicked = new UnityEvent();
     public UnityEvent OnExitToMainMenuClicked = new UnityEvent();
     public UnityEvent OnLoadNextLevelClicked = new UnityEvent();
-    public UnityEvent<UploadMetaData> OnUploadClicked = new UnityEvent<UploadMetaData>();
+    public UnityEvent<string,string> OnUploadClicked = new UnityEvent<string,string>();
+
     
+    public void EnableEditorView()
+    {
+        
+    }
+
+    public void EnableSimView()
+    {
+        
+    }
     
     public void OnEnterEditor()
     {
@@ -88,7 +99,7 @@ public class HUDManager : MonoBehaviour
 
     public void Button_UploadConfirm()
     {
-        OnUploadClicked?.Invoke(uploadMeta);
+        OnUploadClicked?.Invoke(uploadMeta.leveName, uploadMeta.authorName);
     }
     
     public void Button_ExitSim()

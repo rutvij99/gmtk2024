@@ -29,7 +29,13 @@ namespace GameIdea2.Audio.CustomPlay
 
             if (cachedLevels == null)
                 cachedLevels = new Dictionary<string, CustomLevel>();
-            
+
+            if (String.IsNullOrEmpty(activeLevelId))
+            {
+                OnLevelDataLoadFailed();
+                return;
+            }
+
             if (cachedLevels.ContainsKey(activeLevelId))
             {
                 OnLevelDataLoaded(cachedLevels[activeLevelId]);

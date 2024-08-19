@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   api: {fileID: 11400000, guid: 93ff1f6e52060654fbbbe4ea6e4d7959, type: 2}
-  overrideLevelId: 66c32bc77f1ab4540fe1ad2b
+  overrideLevelId: 
   loadingScreen: {fileID: 2096205762}
 --- !u!4 &339753670
 Transform:

@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Background:
-        m_Texture: {fileID: 2800000, guid: 30074b48eb21d7a41bfe76c827a8e2f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2d39b5e15ba14ce4e8519591e9d5397f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -50,9 +50,10 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RotateSpeed: -0.1
+    - _SecondaryChannelClipping: 0.5
     - _TwirlStrength: 10
     m_Colors:
-    - _Glow: {r: 1, g: 1, b: 1, a: 1}
+    - _Glow: {r: 0.23809871, g: 0.23809871, b: 0.23809871, a: 0.40392157}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

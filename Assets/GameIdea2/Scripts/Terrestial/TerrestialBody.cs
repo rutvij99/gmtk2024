@@ -14,6 +14,8 @@ namespace GameIdea2
         [SerializeField] private TerrestialCollisionRule collisionRule;
         [SerializeField] private bool startWithForce;
         [SerializeField] private float startForceMag;
+
+        private TerrestialBody[] bodies = null;
         
         private Vector3 _startForceDir;
 
@@ -48,9 +50,12 @@ namespace GameIdea2
 
         private void Update()
         {
-            if (!Universe.Instance.Simulate)
+            if (!Universe.Instance.Simulate && (Vector3.Distance(transform.forward, _startForceDir) >= 0.01f))
+            {
                 UpdateStartDir();
-                
+                return;
+            }
+            
             var velocity = rb.linearVelocity.normalized;
             if(velocity.magnitude > 0)
                 transform.forward = velocity;
@@ -59,12 +64,20 @@ namespace GameIdea2
 
         private void FixedUpdate()
         {
-            var terrestialBodies = FindObjectsByType<TerrestialBody>(FindObjectsSortMode.None);
-            foreach (var terrObj in terrestialBodies)
+            if (!Universe.Instance.Simulate)
+                return;
+            
+            if(bodies == null)
+                bodies = FindObjectsByType<TerrestialBody>(FindObjectsSortMode.None);
+            
+            foreach (var terrObj in bodies)
             {
+                if(!terrObj)
+                    continue;
+                
                 if(terrObj.Equals(this))
                     continue;
-            
+                
                 var objMass = terrObj.rb.mass;
                 var dist = Vector3.Distance(transform.position, terrObj.transform.position);
                 var forceMult = ComputeForce(rb.mass, objMass, dist);

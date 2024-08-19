@@ -17,23 +17,6 @@ namespace GameIdea2.UI
             
         private bool galleryOpen = true;
         private Coroutine galleryLerpRoutine;
-        
-        public bool Interacted {
-            get
-            {
-                if (!HintGUI)
-                    return false;
-
-                return HintGUI.activeSelf;
-            }
-            set
-            {
-                if(!HintGUI)
-                    return;
-                
-                HintGUI.SetActive(!value);
-            }
-        }
 
         public void EnableSimulation()
         {

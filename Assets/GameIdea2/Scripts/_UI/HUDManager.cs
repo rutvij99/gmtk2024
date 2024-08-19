@@ -19,8 +19,9 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private CanvasGroup editorView;
     [SerializeField] private CanvasGroup simView;
     [SerializeField] private CanvasGroup hud;
-    
-    [Header("hud stuff")]
+
+    [Header("hud stuff")] 
+    [SerializeField] private GameObject hintGUI;
     [SerializeField] private GameObject resetWorldButton;
     [SerializeField] private GameObject exitSimulationButton;
     [SerializeField] private CanvasGroup pauseMenu;
@@ -49,6 +50,23 @@ public class HUDManager : MonoBehaviour
     public UnityEvent<string,string> OnUploadClicked = new UnityEvent<string,string>();
 
     public static HUDManager instance;
+    
+    public bool Interacted {
+        get
+        {
+            if (!hintGUI)
+                return false;
+
+            return hintGUI.activeSelf;
+        }
+        set
+        {
+            if(!hintGUI)
+                return;
+                
+            hintGUI.SetActive(!value);
+        }
+    }
 
     private void Start()
     {
@@ -210,6 +228,7 @@ public class HUDManager : MonoBehaviour
 
     public void Button_Simulate()
     {
+        exitSimulationButton.SetActive(true);
         OnEnterSimulationClicked?.Invoke();
         var universe = Universe.Instance;
         if (universe != null) universe.Simulate = true;

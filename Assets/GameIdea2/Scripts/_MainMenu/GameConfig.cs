@@ -1,4 +1,8 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GameConfig
 {
@@ -14,5 +18,23 @@ public static class GameConfig
     public static int GetLastCompletedLevel()
     {
        return PlayerPrefs.GetInt(LEVEL_PREF, 1);
+    }
+
+    public static void Exit()
+    {
+#if UNITY_EDITOR
+	    // Check if the editor is currently in Play Mode
+	    if (EditorApplication.isPlaying)
+	    {
+		    // Stop Play Mode
+		    EditorApplication.isPlaying = false;
+	    }
+#endif
+	    Application.Quit();
+    }
+
+    public static void LoadMainMenu()
+    {
+	    SceneManager.LoadScene("MainMenu");
     }
 }

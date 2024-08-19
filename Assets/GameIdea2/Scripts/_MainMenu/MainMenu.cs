@@ -143,14 +143,6 @@ public class MainMenu : MonoBehaviour
 
 	public void Quit()
 	{
-#if UNITY_EDITOR
-		// Check if the editor is currently in Play Mode
-		if (EditorApplication.isPlaying)
-		{
-			// Stop Play Mode
-			EditorApplication.isPlaying = false;
-		}
-#endif
-		Application.Quit();
+		GameConfig.Exit();
 	}
 }

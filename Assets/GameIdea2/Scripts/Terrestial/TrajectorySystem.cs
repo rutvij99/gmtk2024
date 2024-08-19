@@ -26,19 +26,16 @@ namespace GameIdea2
         private void Start()
         {
             lineRenderer.positionCount = SimResolution;
+            SimulateTrajectory();
         }
 
         private void FixedUpdate()
         {
-            if(!Universe.Instance.Simulate)
-                SimulateTrajectory();
-            else
-            {
+            if(Universe.Instance.Simulate)
                 lineRenderer.positionCount = 0;
-            }
         }
 
-        private void SimulateTrajectory()
+        public void SimulateTrajectory()
         {
             List<Vector3> positions = new List<Vector3>();
             Vector3 currentVelocity = body.GetComponent<TerrestialBody>().GetStartLinearVelocity();

@@ -21,6 +21,7 @@ namespace GameIdea2
             Scale
         }
 
+        [SerializeField] private GameObject savePanel;
         [SerializeField] private EditorCursors editorCursors;
         [SerializeField] private EditmodeGUI gui;
         [SerializeField] private Camera camera;
@@ -269,8 +270,13 @@ namespace GameIdea2
         
         public void  SpawnTerrestial(string key)
         {
-            if (currentWorkspace == null)
-                currentWorkspace = new GameObject();
+            if (!currentWorkspace)
+            {
+                currentWorkspace = Universe.Instance.GetWorkspace();
+                if (!currentWorkspace)
+                    currentWorkspace = Universe.Instance.CreateWorkspace();
+            }
+            
             
             gui.Interacted = true;
             var asset = Resources.Load<GameObject>(key);
@@ -293,6 +299,10 @@ namespace GameIdea2
         {
             GameManager.Instance.RestartLevel();
         }
-        
+
+        public void SaveLevel()
+        {
+            savePanel.SetActive(true);
+        }
     }
 }

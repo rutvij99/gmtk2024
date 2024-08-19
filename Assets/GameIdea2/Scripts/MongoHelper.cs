@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
-using System.Security.AccessControl;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
-class CustomLevel
+public class CustomLevel
 {
     public string title;
     public string author;
@@ -12,21 +14,11 @@ class CustomLevel
 
 public class MongoHelper : MonoBehaviour
 {
-    private string getLevelNames = "https://ap-south-1.aws.data.mongodb-api.com/app/data-gywoypa/endpoint/getLevelNames";
-    private string getLevelData = "https://ap-south-1.aws.data.mongodb-api.com/app/data-gywoypa/endpoint/getLevelData";
-    private string insertLevel = "https://ap-south-1.aws.data.mongodb-api.com/app/data-gywoypa/endpoint/insertLevel";
-    private string apiKey = "GoeYj6grOygNnuU711v1Yryph7ApqKh2S1gsfB0vGhuzGpDH9Hxyh8hrePB28kdk";
+    private static string apiKey = "GoeYj6grOygNnuU711v1Yryph7ApqKh2S1gsfB0vGhuzGpDH9Hxyh8hrePB28kdk";
 
-    public void Start()
+    public IEnumerator GetLevelNames(string apiURL, Action<string> onComplete, Action onFail)
     {
-        // StartCoroutine(GetLevelNames());
-        // StartCoroutine(GetLevelData());
-        StartCoroutine(InsertLevelData());
-    }
-
-    IEnumerator GetLevelNames()
-    {
-        UnityWebRequest request = UnityWebRequest.Get(getLevelNames);
+        UnityWebRequest request = UnityWebRequest.Get(apiURL);
         request.SetRequestHeader("api-key", apiKey);
 
         yield return request.SendWebRequest();
@@ -36,17 +28,18 @@ public class MongoHelper : MonoBehaviour
             // Parse the JSON response
             string jsonResponse = request.downloadHandler.text;
             // Process the data as needed
-            Debug.Log(jsonResponse);
+            onComplete?.Invoke(jsonResponse);
         }
         else
         {
             Debug.LogError(request.error);
+            onFail?.Invoke();
         }
     }
     
-    IEnumerator GetLevelData(string levelID = "66c2fd850126c59efd2268b8")
+    public static IEnumerator GetLevelData(string apiURL, string levelID, Action<CustomLevel> onComplete, Action onFail)
     {
-        UnityWebRequest request = UnityWebRequest.Get(getLevelData+"?arg1="+levelID);
+        UnityWebRequest request = UnityWebRequest.Get(apiURL+"?arg1="+levelID);
         request.SetRequestHeader("api-key", apiKey);
 
         yield return request.SendWebRequest();
@@ -56,22 +49,24 @@ public class MongoHelper : MonoBehaviour
             // Parse the JSON response
             string jsonResponse = request.downloadHandler.text;
             // Process the data as needed
-            Debug.Log(jsonResponse);
+            var obj = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonResponse);
+            onComplete?.Invoke(new CustomLevel(){levelData = obj["level_data"]});
         }
         else
         {
             Debug.LogError(request.error);
+            onFail?.Invoke();
         }
     }
     
-    IEnumerator InsertLevelData()
+    public IEnumerator InsertLevelData(string apiURL, string jsonData, Action onComplete, Action onError)
     {
         CustomLevel customLevel = new CustomLevel();
-        customLevel.author = "ww";
-        customLevel.title = "testLevel";
-        customLevel.levelData = "123456";
+        customLevel.author = "ww_";
+        customLevel.title = "level_data";
+        customLevel.levelData = jsonData;
         UnityWebRequest request =
-            UnityWebRequest.Post(insertLevel,  JsonUtility.ToJson(customLevel), "application/json");
+            UnityWebRequest.Post(apiURL,  JsonUtility.ToJson(customLevel), "application/json");
         
         Debug.Log(JsonUtility.ToJson(customLevel));
         request.SetRequestHeader("api-key", apiKey);
@@ -84,10 +79,12 @@ public class MongoHelper : MonoBehaviour
             string jsonResponse = request.downloadHandler.text;
             // Process the data as needed
             Debug.Log(jsonResponse);
+            onComplete?.Invoke();
         }
         else
         {
             Debug.LogError(request.error);
+            onError?.Invoke();
         }
     }
 }

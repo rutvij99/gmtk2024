@@ -180,23 +180,14 @@ namespace GameIdea2
             var map = LevelMap.LoadMapFromJson(json);
             if (map == null)
                 return;
-
-            workspace = CreateWorkspace();
+            
             foreach (var obj in map.TerrestrialObjects)
             {
                 var goRef = Resources.Load<GameObject>(obj.Key);
                 var goInst = Instantiate(goRef, obj.Position, Quaternion.Euler(obj.Rotation));
                 goInst.transform.localScale = obj.Scale;
             }
-        }
-
-
-        [SerializeField, TextArea] private string json;
-        private void Start()
-        {
-           if(String.IsNullOrEmpty(json))
-               return;
-           LoadLevelFromJson(json);
+            CreateWorkspace();
         }
     }
 }

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5507b3da10f4bf6a9f402e80cd087e1, type: 3}
+  m_Name: DefaultRockPlanetAsset
+  m_EditorClassIdentifier: 
+  WaterColors:
+  - {r: 0.45296368, g: 0.8207547, b: 0.7951409, a: 1}
+  - {r: 0.47592562, g: 0.70441526, b: 0.8773585, a: 1}
+  - {r: 0.2979708, g: 0.40667805, b: 0.6792453, a: 1}
+  LandColors:
+  - {r: 0.3207547, g: 0.054283757, b: 0, a: 1}
+  - {r: 0.027650936, g: 0.24528301, b: 0, a: 1}
+  - {r: 0.20754719, g: 0.07120776, b: 0, a: 1}
+  - {r: 0.38679248, g: 0.20341684, b: 0, a: 1}
+  - {r: 0.41509432, g: 0.24924597, b: 0, a: 1}
+  MinNoiseStr: 10
+  MaxNoiseStr: 35
+  MinMass: 50
+  MaxMass: 100
+  MaxScale: 75
+  MinElevation: 0
+  MaxElevation: 0.15

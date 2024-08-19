@@ -9,6 +9,8 @@ namespace GameIdea2.Scripts.Editor
         
         public static Editable CurrentSelection;
 
+        public float MaxScale = 100;
+        
         private void Start()
         {
             SelectedGUI.SetActive(false);

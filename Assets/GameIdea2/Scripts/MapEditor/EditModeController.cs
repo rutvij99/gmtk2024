@@ -4,6 +4,7 @@ using GameIdea2.Scripts.Editor;
 using GameIdea2.Scripts.MapEditor;
 using GameIdea2.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
 namespace GameIdea2
@@ -50,8 +51,16 @@ namespace GameIdea2
             SetCurrentInteraction(Interaction.None);
         }
 
+        private bool IsUIOverGUI()
+        {
+            return EventSystem.current.IsPointerOverGameObject();
+        }
+        
         private void Update()
         {
+            if(IsUIOverGUI())
+                return;
+            
             UpdateCamera();
             
             if(Universe.Instance.Simulate)
@@ -219,7 +228,7 @@ namespace GameIdea2
                 if (currentScale.x > 0.5f && currentScale.x < 1f)
                     currentScale = Vector3.one;
                 else if (currentScale.x > 100)
-                    currentScale = Vector3.one * 100;
+                    currentScale = Vector3.one * selected.MaxScale;
 
                 selected.transform.localScale = currentScale;
             }

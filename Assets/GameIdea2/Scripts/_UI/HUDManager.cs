@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using GameIdea2;
+using GameIdea2.Gameloop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -75,14 +76,15 @@ public class HUDManager : MonoBehaviour
 
     public void EnableEditorView()
     {
-        
+        simView.gameObject.SetActive(false);
         resetWorldButton?.gameObject.SetActive(true);
         exitSimulationButton?.gameObject.SetActive(false);
     }
 
     public void EnableSimView()
     {
-        
+        simView.gameObject.SetActive(true);
+        editorView.gameObject.SetActive(false);
         resetWorldButton?.gameObject.SetActive(false);
         exitSimulationButton?.gameObject.SetActive(true);
     }
@@ -228,6 +230,7 @@ public class HUDManager : MonoBehaviour
 
     public void Button_Simulate()
     {
+        EnableSimView();
         exitSimulationButton.SetActive(true);
         OnEnterSimulationClicked?.Invoke();
         var universe = Universe.Instance;
@@ -235,8 +238,15 @@ public class HUDManager : MonoBehaviour
     }
 
 
+    public void Button_RestartLevel()
+    {
+        Universe.Instance.CleanWorkspace();
+        GameManager.Instance.RestartLevel();
+    }
+
     public void Button_LoadNextLevel()
     {
+        GameManager.Instance.NextLevelLoad();
         OnLoadNextLevelClicked?.Invoke();
     }
 }

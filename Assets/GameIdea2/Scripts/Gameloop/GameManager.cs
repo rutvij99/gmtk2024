@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using GameIdea2.Stars;
 using UnityEngine.SceneManagement;
@@ -52,8 +53,11 @@ namespace GameIdea2.Gameloop
             {
                 star.transform.localScale = Vector3.zero;
             }
-            await Task.Delay(1500);
-            
+            HUDManager.instance.EnableLevelComplete();
+        }
+
+        public void NextLevelLoad()
+        {
             Universe.Instance?.CleanWorkspace();
             GameConfig.LevelFinished();
         }

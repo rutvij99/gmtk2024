@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: 2a619a9609984be49b53b928dd94e61b, type: 2}
   overrideColors: 0
-  overrideFonts: 0
+  overrideFonts: 1
   images:
   - {fileID: 4803981770452065333}
   - {fileID: 7407631506866451207}
@@ -407,8 +407,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Selector Item
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
-  m_sharedMaterial: {fileID: 21539420542967178, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3028c3cafeaad4627a1876d988309f19, type: 2}
+  m_sharedMaterial: {fileID: 2365349174997521095, guid: 3028c3cafeaad4627a1876d988309f19, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -40,11 +40,11 @@ namespace GameIdea2.Audio
 
         private IEnumerator BsClipsPlayRoutine()
         {
-            Debug.Log("BS1");
+            //Debug.Log("BS1");
             while (true)
             {
                 yield return new WaitForSeconds(Random.Range(10, 15));
-                Debug.Log("BS");
+                //Debug.Log("BS");
                 bsAudioSource.PlayOneShot(bsClipsList[Random.Range(0, bsClipsList.Count)]);
             }
         }

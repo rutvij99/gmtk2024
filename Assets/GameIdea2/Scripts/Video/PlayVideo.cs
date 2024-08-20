@@ -27,7 +27,7 @@ namespace GameIdea2.Video
             PlaySelectedVideo(PAN);
             if (descriptionBox != null)
             {
-                descriptionBox.text = "Hold middle mouse button to scroll.";
+                descriptionBox.text = "WASD or Press and Hold middle mouse button.";
             }
         }
 
@@ -36,7 +36,7 @@ namespace GameIdea2.Video
             PlaySelectedVideo(ZOOM_IN_OUT);
             if (descriptionBox != null)
             {
-                descriptionBox.text = "Scroll up and down to zoom in and out.";
+                descriptionBox.text = "Use Scroll Wheel.";
             }
         }
         
@@ -45,7 +45,7 @@ namespace GameIdea2.Video
             PlaySelectedVideo(SCALING);
             if (descriptionBox != null)
             {
-                descriptionBox.text = "Hold right mouse button and drag to scale up or down.";
+                descriptionBox.text = "Hold right mouse button and drag.";
             }
         }
         
@@ -54,7 +54,7 @@ namespace GameIdea2.Video
             PlaySelectedVideo(MOVE_OBJECT);
             if (descriptionBox != null)
             {
-                descriptionBox.text = "Hold left mouse button to move.";
+                descriptionBox.text = "Hold left mouse button.";
             }
         }
         

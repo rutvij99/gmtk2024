@@ -292,11 +292,9 @@ namespace GameIdea2
                 var go = Instantiate(asset, new Vector3(camera.transform.position.x, 0, camera.transform.position.z),
                     Quaternion.identity, currentWorkspace.transform);
                 go.AddComponent<Editable>();
+                go.AddComponent<Spawned>();
                 Universe.Instance.MarkDirty(go);
             }
-            
-            
-            Debug.Log($"Json: {Universe.Instance.SerializeLevel("test-name","test-author")}");
         }
 
         public void ResetCamera()

@@ -201,6 +201,20 @@ namespace GameIdea2
         IEnumerator RecalculateTrajectory(GameObject obj)
         {
             yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            
+            if (!obj)
+            {
+                foreach (var trajecorySys in FindObjectsByType<TrajectorySystem>(FindObjectsSortMode.None))
+                {
+                    trajecorySys.SimulateTrajectory();
+                    yield return new WaitForEndOfFrame();
+                }
+
+                recalcRoutine = null;
+                yield break;
+            }
+            
             var trajectory = obj.GetComponent<TrajectorySystem>();
             if (trajectory)
             {

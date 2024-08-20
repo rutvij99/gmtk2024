@@ -40,9 +40,11 @@ namespace GameIdea2.Audio
 
         private IEnumerator BsClipsPlayRoutine()
         {
+            Debug.Log("BS1");
             while (true)
             {
-                yield return new WaitForSecondsRealtime(10.0f);
+                yield return new WaitForSeconds(Random.Range(10, 15));
+                Debug.Log("BS");
                 bsAudioSource.PlayOneShot(bsClipsList[Random.Range(0, bsClipsList.Count)]);
             }
         }
@@ -54,6 +56,13 @@ namespace GameIdea2.Audio
 
             backgroundAudioSource.clip = backgroundMusicList[audioSelectIndex];
             ambienceAudioSource.clip = ambienceMusicList[ambienceSelectIndex];
+        }
+
+        public void ChangeBackgroundMusic()
+        {
+            int random = Random.Range(0, backgroundMusicList.Count);
+            backgroundAudioSource.clip = backgroundMusicList[random];
+            ambienceAudioSource.clip = ambienceMusicList[random];
         }
 
         public void PlaySoundOfType(SoundTyes type)

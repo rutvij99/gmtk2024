@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using GameIdea2.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,6 +43,7 @@ public static class GameConfig
     public static void LoadLevel(string name)
     {
 	    // if (SceneManager.GetSceneByName(name).IsValid())
+	    AudioManager.Instance?.ChangeBackgroundMusic();
 		    SceneManager.LoadScene(name);
     }
 

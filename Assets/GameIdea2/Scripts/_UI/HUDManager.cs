@@ -251,4 +251,9 @@ public class HUDManager : MonoBehaviour
         GameManager.Instance.NextLevelLoad();
         OnLoadNextLevelClicked?.Invoke();
     }
+    
+    public void Button_LoadLevelComunity()
+    {
+        GameConfig.LoadLevel("CustomLevelSelector");
+    }
 }

@@ -35,18 +35,19 @@ namespace GameIdea2.Audio
             }
             DontDestroyOnLoad(this.gameObject);
             instance = this;
-            StartCoroutine(BsClipsPlayRoutine());
+            //StartCoroutine(BsClipsPlayRoutine());
         }
 
-        private IEnumerator BsClipsPlayRoutine()
+        public void PlayBsClips()
         {
             //Debug.Log("BS1");
-            while (true)
+            bsAudioSource.PlayOneShot(bsClipsList[Random.Range(0, bsClipsList.Count)]);
+            /*while (true)
             {
                 yield return new WaitForSeconds(Random.Range(10, 15));
                 //Debug.Log("BS");
                 bsAudioSource.PlayOneShot(bsClipsList[Random.Range(0, bsClipsList.Count)]);
-            }
+            }*/
         }
 
         public void ChangeBackgroundMusic(int levelNum)

@@ -293,7 +293,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2093321528799747267}
-  m_Father: {fileID: 6960044841562722564}
+  m_Father: {fileID: 7850436225209035949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1516,8 +1516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputFields:
-  - {fileID: 374929346850224956}
-  - {fileID: 531102474006982998}
+  - {fileID: 2139111475183750034}
+  - {fileID: 3363962102226620933}
   targetButtons:
   - {fileID: 4291821165921078324}
 --- !u!1 &983845588507329815
@@ -1568,14 +1568,15 @@ MonoBehaviour:
   editorView: {fileID: 6990664867090180905}
   simView: {fileID: 7986145047348953920}
   hud: {fileID: 8541407539327193398}
+  simulateButton: {fileID: 0}
   hintGUI: {fileID: 104063505795432450}
   resetWorldButton: {fileID: 2999282952421000503}
   exitSimulationButton: {fileID: 8271744286928993671}
   pauseMenu: {fileID: 7322947403018147165}
   controlsMenu: {fileID: 3653884809350911273}
   uploadWindow: {fileID: 7287280345252268785}
-  authorInput: {fileID: 374929346850224956}
-  levelInput: {fileID: 531102474006982998}
+  authorInput: {fileID: 2139111475183750034}
+  levelInput: {fileID: 3363962102226620933}
   levelCompleteWindow: {fileID: 5526127642809536098}
   gallery: {fileID: 744601363836244033}
   galleryOpenIcon: {fileID: 9175036181686988395}
@@ -4661,7 +4662,6 @@ RectTransform:
   m_Children:
   - {fileID: 744601363836244033}
   - {fileID: 1108966559583047142}
-  - {fileID: 7970686049362492343}
   m_Father: {fileID: 7850436225209035949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -15230,7 +15230,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2291536048238934143}
   m_HandleRect: {fileID: 4916702888385104872}
   m_Direction: 2
-  m_Value: 1.0000004
+  m_Value: 1
   m_Size: 0.5106101
   m_NumberOfSteps: 0
   m_OnValueChanged:

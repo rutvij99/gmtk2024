@@ -189,7 +189,7 @@ public class HUDManager : MonoBehaviour
     
     public void Button_UploadConfirm()
     {
-        OnUploadClicked?.Invoke(uploadMeta.leveName, uploadMeta.authorName);
+        OnUploadClicked?.Invoke(levelInput.text, authorInput.text);
     }
     
     public void Button_ExitSim()

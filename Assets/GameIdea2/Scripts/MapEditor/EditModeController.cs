@@ -305,7 +305,7 @@ namespace GameIdea2
         public void SaveLevel(string name, string author)
         {
             var json = Universe.Instance.SerializeLevel(name, author);
-            StartCoroutine(MongoHelper.InsertLevelData(api.UploadLevelAPI, json, OnUploadComplete, OnUploadFailed));
+            StartCoroutine(MongoHelper.InsertLevelData(api.UploadLevelAPI, name, author,json, OnUploadComplete, OnUploadFailed));
         }
 
         private void OnUploadComplete()

@@ -59,11 +59,11 @@ public class MongoHelper : MonoBehaviour
         }
     }
     
-    public static IEnumerator InsertLevelData(string apiURL, string jsonData, Action onComplete, Action onError)
+    public static IEnumerator InsertLevelData(string apiURL,string title, string author, string jsonData, Action onComplete, Action onError)
     {
         CustomLevel customLevel = new CustomLevel();
-        customLevel.author = "ww_";
-        customLevel.title = "level_data";
+        customLevel.author = author;
+        customLevel.title = title;
         customLevel.levelData = jsonData;
         UnityWebRequest request =
             UnityWebRequest.Post(apiURL,  JsonUtility.ToJson(customLevel), "application/json");

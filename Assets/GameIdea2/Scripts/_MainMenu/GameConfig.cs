@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public static class GameConfig
 {
     private const string LEVEL_PREF = "LevelCompletedKey";
-    public const int MAX_LEVELS = 20;
+    public const int MAX_LEVELS = 15;
     public static int CurrentLevel;
     
     public static void SetLevelComplete()

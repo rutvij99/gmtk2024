@@ -21,7 +21,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private CanvasGroup simView;
     [SerializeField] private CanvasGroup hud;
 
-    [Header("hud stuff")] 
+    [Header("hud stuff")]
+    [SerializeField] private GameObject simulateButton;
     [SerializeField] private GameObject hintGUI;
     [SerializeField] private GameObject resetWorldButton;
     [SerializeField] private GameObject exitSimulationButton;
@@ -231,6 +232,7 @@ public class HUDManager : MonoBehaviour
     public void Button_Simulate()
     {
         EnableSimView();
+        simulateButton.gameObject.SetActive(false);
         exitSimulationButton.SetActive(true);
         OnEnterSimulationClicked?.Invoke();
         var universe = Universe.Instance;

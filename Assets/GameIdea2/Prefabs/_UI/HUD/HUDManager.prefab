@@ -18142,7 +18142,7 @@ MonoBehaviour:
   gui: {fileID: 0}
   Title: Target
   Desc: 'Desc: The goal or objective the player aims to reach or achieve.'
-  MassRange: N/A
+  MassRange: 'Mass: N/A'
 --- !u!114 &5920755803036379122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22033,7 +22033,7 @@ MonoBehaviour:
   gui: {fileID: 7587287023923153590}
   Title: Rocket
   Desc: 'Desc: A spacecraft designed to propel itself toward a designated target.'
-  MassRange: N/A
+  MassRange: 'Mass: N/A'
 --- !u!114 &1551382881024029988
 MonoBehaviour:
   m_ObjectHideFlags: 0

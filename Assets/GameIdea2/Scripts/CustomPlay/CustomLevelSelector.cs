@@ -34,11 +34,11 @@ namespace GameIdea2.CustomPlay
             {
                 var id = kv["_id"];
                 var title = kv["title"];
-                // var author = kv["author"];
+                var author = kv["author"];
                 var bttn = Instantiate(bttnRef, guiParent);
                 bttn.SetActive(true);
                 bttn.transform.GetChild(1).GetComponent<TMPro.TMP_Text>().text = title;
-                // bttn.transform.GetChild(2).GetComponent<TMPro.TMP_Text>().text = author;
+                bttn.transform.GetChild(2).GetComponent<TMPro.TMP_Text>().text = author;
                 bttn.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     Debug.Log($"Loading level {title}");

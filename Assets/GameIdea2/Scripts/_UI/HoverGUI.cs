@@ -30,6 +30,9 @@ namespace GameIdea2.Audio._UI
 
         private void Update()
         {
+            if(!parentRt)
+                return;
+            
             var mousePos = Input.mousePosition;
             var midX = Screen.width / 2;
             var midY = Screen.height / 2;

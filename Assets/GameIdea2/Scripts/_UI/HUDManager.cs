@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using GameIdea2;
+using GameIdea2.Audio;
 using GameIdea2.Gameloop;
 using TMPro;
 using UnityEngine;
@@ -70,8 +71,14 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
+        if (instance && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
         instance = this;
     }
 
@@ -88,6 +95,7 @@ public class HUDManager : MonoBehaviour
         editorView.gameObject.SetActive(false);
         resetWorldButton?.gameObject.SetActive(false);
         exitSimulationButton?.gameObject.SetActive(true);
+        PlayClick();
     }
 
     public void EnableLevelComplete()
@@ -117,6 +125,7 @@ public class HUDManager : MonoBehaviour
             galleryCloseIcon.gameObject.SetActive(false);
             gallery.DOSizeDelta(new Vector2(gallery.sizeDelta.x, 60), 0.5f);
         }
+        PlayClick();
     }
     
     public void TogglePause()
@@ -138,6 +147,7 @@ public class HUDManager : MonoBehaviour
                 
             });
         }
+        PlayClick();
     }
 
     public void ToggleUploadWindow()
@@ -162,6 +172,7 @@ public class HUDManager : MonoBehaviour
 
             });
         }
+        PlayClick();
     }
     
     public void Button_ToggleControlsMenu()
@@ -185,23 +196,27 @@ public class HUDManager : MonoBehaviour
 
             });
         }
+        PlayClick();
     }
     
     public void Button_UploadConfirm()
     {
         OnUploadClicked?.Invoke(levelInput.text, authorInput.text);
+        PlayClick();
     }
     
     public void Button_ExitSim()
     {
         OnExitSimulationClicked?.Invoke();
         FindFirstObjectByType<EditModeController>()?.ResetLevel();
+        PlayClick();
     }
     
     public void Button_ResetCamera()
     {
         OnResetCameraClicked?.Invoke();
         FindFirstObjectByType<EditModeController>()?.ResetCamera();
+        PlayClick();
     }
     
     public void Button_ResetWorld()
@@ -209,6 +224,7 @@ public class HUDManager : MonoBehaviour
         OnResetWorldClicked?.Invoke();
         Universe.Instance.CleanWorkspace();
         FindFirstObjectByType<EditModeController>()?.ResetLevel();
+        PlayClick();
     }
 
     public void Button_ExitToMainMenu()
@@ -216,18 +232,26 @@ public class HUDManager : MonoBehaviour
         OnExitToMainMenuClicked?.Invoke();
         // do other cleanup
         GameConfig.LoadMainMenu();
+        PlayClick();
     }
 
     public void Button_Exit()
     {
         GameConfig.Exit();
+        PlayClick();
     }
     
     public void ButtonTerrestrialBodySpawn(string key)
     {
+        PlayClick();
         FindFirstObjectByType<EditModeController>()?.SpawnTerrestial(key);
     }
 
+    public void PlayClick()
+    {
+        AudioManager.Instance?.PlaySoundOfType(SoundTyes.UI);
+    }
+    
 
     public void Button_Simulate()
     {
@@ -237,6 +261,7 @@ public class HUDManager : MonoBehaviour
         OnEnterSimulationClicked?.Invoke();
         var universe = Universe.Instance;
         if (universe != null) universe.Simulate = true;
+        PlayClick();
     }
 
 
@@ -244,16 +269,19 @@ public class HUDManager : MonoBehaviour
     {
         Universe.Instance.CleanWorkspace();
         GameManager.Instance.RestartLevel();
+        PlayClick();
     }
 
     public void Button_LoadNextLevel()
     {
         GameManager.Instance.NextLevelLoad();
         OnLoadNextLevelClicked?.Invoke();
+        PlayClick();
     }
     
     public void Button_LoadLevelComunity()
     {
         GameConfig.LoadLevel("CustomLevelSelector");
+        PlayClick();
     }
 }

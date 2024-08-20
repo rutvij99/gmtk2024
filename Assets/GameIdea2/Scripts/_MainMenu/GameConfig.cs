@@ -32,8 +32,11 @@ public static class GameConfig
 
     public static void LoadLevel(int id)
     {
-	    CurrentLevel = id;
-	    SceneManager.LoadScene($"Level {id - 1:00}");
+	    if (id + 1 < MAX_LEVELS)
+	    {
+		    CurrentLevel = id;
+		    SceneManager.LoadScene($"Level {id - 1:00}");
+	    }
     }
     
     public static void LoadLevel(string name)

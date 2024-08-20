@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 	[SerializeField] private GameObject menuHolder;
+	[SerializeField] private GameObject levelMenuHolder;
 	[SerializeField] private GameObject levelSelectHolder;
 	[SerializeField] private GameObject optionsHolder;	
 	[SerializeField] private GameObject creditsHolder;
@@ -17,11 +18,13 @@ public class MainMenu : MonoBehaviour
 	private CanvasGroup optionsCanvasGrp;
 	private CanvasGroup levelsCanvasGrp;
 	private CanvasGroup menuCanvasGrp;
+	private CanvasGroup levelMenuCanvasGrp;
 	private CanvasGroup creditsCanvasGrp;
 
 	private void Start()
 	{
 		menuCanvasGrp = menuHolder.GetComponent<CanvasGroup>();
+		levelMenuCanvasGrp = levelMenuHolder.GetComponent<CanvasGroup>();
 		optionsCanvasGrp = optionsHolder.GetComponent<CanvasGroup>();
 		levelsCanvasGrp = levelSelectHolder.GetComponent<CanvasGroup>();
 		creditsCanvasGrp = creditsHolder.GetComponent<CanvasGroup>();
@@ -47,6 +50,32 @@ public class MainMenu : MonoBehaviour
 		optionsCanvasGrp.DOKill();
 		menuCanvasGrp.DOKill();
 	}
+	
+	public void ShowLevelMenu()
+	{
+		Reset();
+		optionsCanvasGrp.DOFade(0, 0.2f).OnComplete(() =>
+		{
+			optionsCanvasGrp.gameObject.SetActive(false);
+		});
+		creditsCanvasGrp.DOFade(0, 0.2f).OnComplete(() =>
+		{
+			creditsCanvasGrp.gameObject.SetActive(false);
+		});
+		levelsCanvasGrp.DOFade(0, 0.2f).OnComplete(() =>
+		{
+			levelSelectHolder.gameObject.SetActive(false);
+		});
+		menuCanvasGrp.DOFade(0, 0.2f).OnComplete(() =>
+		{
+			menuHolder.gameObject.SetActive(false);
+		});
+		
+		levelMenuCanvasGrp.gameObject.SetActive(true);
+		levelMenuCanvasGrp.alpha = 0;
+		levelMenuCanvasGrp.DOFade(1, 0.5f);
+	}
+
 
 	public void ShowLevelSelect()
 	{
@@ -122,10 +151,14 @@ public class MainMenu : MonoBehaviour
 		{
 			creditsCanvasGrp.gameObject.SetActive(false);
 		});
+		levelMenuCanvasGrp.DOFade(0, 0.2f).OnComplete(() =>
+		{
+			levelMenuCanvasGrp.gameObject.SetActive(false);
+		});
 		
 		menuHolder.gameObject.SetActive(true);
 		// menuCanvasGrp.alpha = 0;
-		// menuCanvasGrp.DOFade(1, 0.5f);
+		menuCanvasGrp.DOFade(1, 0.5f);
 	}
 	
 	public void LoadLevel(int i)
@@ -137,12 +170,28 @@ public class MainMenu : MonoBehaviour
 
 	public void LoadFreePlay()
 	{
-		SceneManager.LoadScene($"GameIdea2Scene");
-		// SceneManager.LoadScene($"FreePlay");
+		// SceneManager.LoadScene($"GameIdea2Scene");
+		SceneManager.LoadScene($"FreePlay");
 	}
 
 	public void Quit()
 	{
 		GameConfig.Exit();
+	}
+
+	public void LoadCommunitySelectScene()
+	{
+		GameConfig.LoadLevel("CustomLevelSelector");
+
+	}
+
+	public void LoadLevelEditor()
+	{
+		GameConfig.LoadLevel("LevelEditor");
+	}
+
+	public void LoadLastestLevel()
+	{
+		GameConfig.LoadLevel(GameConfig.GetLastCompletedLevel() + 1);
 	}
 }

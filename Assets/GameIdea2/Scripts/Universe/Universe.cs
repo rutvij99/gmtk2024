@@ -8,7 +8,7 @@ namespace GameIdea2
 {
     public class Universe : MonoBehaviour
     {
-        private const string WORKSPACE_NAME = "UniverseWorkspace";
+        public const string WORKSPACE_NAME = "UniverseWorkspace";
         
         private GameObject workspace;
         public System.Action<int> OnSimStarted;

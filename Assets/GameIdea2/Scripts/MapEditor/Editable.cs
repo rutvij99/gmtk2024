@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GameIdea2.Gameloop;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,12 +14,18 @@ namespace GameIdea2.Scripts.Editor
         public static Editable CurrentSelection;
         private bool ogState;
         private Rigidbody rb;
-        private void Start()
+
+        private void Awake()
         {
             rb = GetComponent<Rigidbody>();
-            if(rb)
+            if (rb)
                 ogState = rb.isKinematic;
             
+            UpdateKinematics();
+        }
+
+        private void Start()
+        {
             HideList = new List<GameObject>();
             SelectedGUI = transform.Find("Selected")?.gameObject;
             SelectedGUI?.SetActive(false);
@@ -35,18 +42,23 @@ namespace GameIdea2.Scripts.Editor
             }
         }
 
-        private void Update()
+        private void UpdateKinematics()
         {
             if (Universe.Instance.Simulate && rb)
             {
-                rb.isKinematic = ogState;
+                if(GetComponent<Player>())
+                    rb.isKinematic = false;
+                else
+                {
+                    rb.isKinematic = ogState;
+                }
             }
             else if (!Universe.Instance.Simulate && rb)
             {
                 rb.isKinematic = true;
             }
         }
-
+        
         public void Deselect()
         {
             if (CurrentSelection == this)

@@ -1246,6 +1246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3168686939230712885}
   - component: {fileID: 7287280345252268785}
+  - component: {fileID: 865098424068464354}
   m_Layer: 5
   m_Name: UploadCustomLevelPopup
   m_TagString: Untagged
@@ -1287,6 +1288,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &865098424068464354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981257916397679587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2055ca2fd96471a930b55f233d1731d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFields:
+  - {fileID: 374929346850224956}
+  - {fileID: 531102474006982998}
+  targetButtons:
+  - {fileID: 4291821165921078324}
 --- !u!1 &983845588507329815
 GameObject:
   m_ObjectHideFlags: 0
@@ -11786,7 +11804,7 @@ MonoBehaviour:
   renderOnTop: 1
   centered: 0
   isPreset: 1
-  latestTabIndex: 0
+  latestTabIndex: 1
 --- !u!114 &2340508982782663695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12752,12 +12770,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2617351495980925425}
+  - {fileID: 7970686049362492343}
   - {fileID: 6960044841562722564}
   - {fileID: 4968875794942481541}
   - {fileID: 5073469206816403457}
   - {fileID: 6101699225315826161}
   - {fileID: 3168686939230712885}
-  - {fileID: 7970686049362492343}
   - {fileID: 4494041955218108018}
   - {fileID: 8518957773527696229}
   - {fileID: 1862970127037215983}
@@ -18534,7 +18552,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &7587287023923153590
 MonoBehaviour:
@@ -18548,7 +18566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e12e980a2f4f5a9a22f2a90e3ad800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posDelta: {x: 30, y: 0, z: 0}
+  posDelta: {x: 20, y: 0, z: 0}
   delay: 1
   cg: {fileID: 1557254860524660462}
   sideTolerance: 100

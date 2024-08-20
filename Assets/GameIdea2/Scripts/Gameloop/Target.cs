@@ -12,8 +12,13 @@ namespace GameIdea2.Gameloop
             var others = FindObjectsByType<Target>(FindObjectsSortMode.None);
             foreach (var other in others)
             {
-                if(other && other != this)
+                if(!other)
+                    continue;
+
+                if (!Universe.Instance.Simulate && other != this)
+                {
                     Destroy(other.gameObject);
+                }
             }
         }
 

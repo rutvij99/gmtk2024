@@ -1,13 +1,10 @@
-using System;
-using System.Threading.Tasks;
+using GameIdea2.CustomPlay;
 using GameIdea2.Gameloop;
 using GameIdea2.Scripts.Editor;
 using GameIdea2.Scripts.MapEditor;
 using GameIdea2.UI;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace GameIdea2
 {
@@ -23,7 +20,7 @@ namespace GameIdea2
             Scale
         }
 
-        [SerializeField] private GameObject savePanel;
+        [SerializeField] private Api api;
         [SerializeField] private EditorCursors editorCursors;
         [SerializeField] private EditmodeGUI gui;
         [SerializeField] private Camera camera;
@@ -36,10 +33,8 @@ namespace GameIdea2
         private const int PAN_MOUSE_BTN = 2;
         private const int MOVE_MOUSE_BTN = 0;
         private const int SCALE_MOUSE_BTN = 1;
-        
         private bool panningBlocked = false;
-
-        private Vector3 mouseStartWorldPos;
+        
         private Interaction currentInteraction = Interaction.Undefined;
 
         private GameObject currentWorkspace;
@@ -56,6 +51,8 @@ namespace GameIdea2
             currentWorkspace = Universe.Instance.GetWorkspace();
             if (!currentWorkspace)
                 currentWorkspace = Universe.Instance.CreateWorkspace();
+
+            HUDManager.instance.OnUploadClicked.AddListener(SaveLevel);
         }
 
         private bool IsUIOverGUI()
@@ -179,8 +176,6 @@ namespace GameIdea2
                         return;
                     HUDManager.instance.Interacted = true;
                     editable.Select();
-                    var pos = camera.ScreenToWorldPoint(GetMousePosition());
-                    mouseStartWorldPos = new Vector3(pos.x, 0, pos.y);
                     if (Input.GetMouseButton(MOVE_MOUSE_BTN))
                     {
                         SetCurrentInteraction(Interaction.Move);
@@ -307,9 +302,22 @@ namespace GameIdea2
             GameManager.Instance.RestartLevel();
         }
 
-        public void SaveLevel()
+        public void SaveLevel(string name, string author)
         {
-            savePanel.SetActive(true);
+            var json = Universe.Instance.SerializeLevel(name, author);
+            StartCoroutine(MongoHelper.InsertLevelData(api.UploadLevelAPI, json, OnUploadComplete, OnUploadFailed));
+        }
+
+        private void OnUploadComplete()
+        {
+            HUDManager.instance.ToggleUploadWindow();
+            Debug.Log("Upload Success");
+        }
+        
+        private void OnUploadFailed()
+        {
+            HUDManager.instance.ToggleUploadWindow();
+            Debug.Log("Upload Failed");
         }
     }
 }

@@ -20,10 +20,12 @@ namespace GameIdea2.Audio._UI
 
         private RectTransform rt;
         private Coroutine hoverRoutine;
-
+        private RectTransform parentRt;
+        
         private void Start()
         {
             rt = GetComponent<RectTransform>();
+            parentRt = HUDManager.instance.gameObject.transform.GetChild(0) as RectTransform;
         }
 
         private void Update()
@@ -32,20 +34,14 @@ namespace GameIdea2.Audio._UI
             var midX = Screen.width / 2;
             var midY = Screen.height / 2;
             
-            float anchorX = 0;
-            float anchorY = 0;
-
-            float posX;
-            float posY;
-
-            anchorX = mousePos.x < midX + sideTolerance?0:1;
-            anchorY = mousePos.y < midY - sideTolerance?0:1;
-
-            posX = (mousePos.x < midX + sideTolerance) ? (Input.mousePosition.x + posDelta.x) : (Input.mousePosition.x - Screen.width - posDelta.x);
-            posY = (mousePos.y < midY - sideTolerance) ? (Input.mousePosition.y + posDelta.y) : (Input.mousePosition.y - Screen.height - posDelta.y);
-
+            float anchorX = mousePos.x < midX + sideTolerance?0:1;
+            float anchorY = mousePos.y < midY - sideTolerance?0:1;
+            
             rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(anchorX, anchorY);
-            rt.anchoredPosition = new Vector2(posX, posY); 
+            
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRt, Input.mousePosition, null,
+                out var localPoint);
+            transform.localPosition = new Vector3(localPoint.x, localPoint.y, 0) + posDelta * (anchorX == 0?1:-1);
         }
 
         public void ShowHoverGUI(HoverWindowData hoverData)
@@ -83,7 +79,7 @@ namespace GameIdea2.Audio._UI
             float timeStep = 0;
             while (timeStep <= 1)
             {
-                timeStep += Time.deltaTime / 0.25f;
+                timeStep += Time.deltaTime / 0.15f;
                 cg.alpha = Mathf.Lerp(currCgAlpha, newAlphs, timeStep);
                 yield return new WaitForEndOfFrame();
             }

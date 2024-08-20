@@ -190,6 +190,11 @@ public class MainMenu : MonoBehaviour
 		GameConfig.LoadLevel("LevelEditor");
 	}
 
+	public void ShowControls()
+	{
+		
+	}
+
 	public void LoadLastestLevel()
 	{
 		GameConfig.LoadLevel(GameConfig.GetLastCompletedLevel() + 1);

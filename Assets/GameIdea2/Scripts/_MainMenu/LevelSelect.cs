@@ -11,12 +11,12 @@ public class LevelSelect : MonoBehaviour
     
     private void Start()
     {
-        var lastUnlocked = GameConfig.GetLastCompletedLevel(); 
-        for (int i = 1; i <= GameConfig.MAX_LEVELS; i++)
+        var lastUnlocked = GameConfig.GetLastCompletedLevel();
+        for (int i = 0; i < GameConfig.MAX_LEVELS; i++)
         {
             var obj = Instantiate(levelSelectTemplate, levelSelectHolder);
             var btn = obj.GetComponentInChildren<Button>();
-            btn.GetComponentInChildren<TMP_Text>().text = $"Level {i}";
+            btn.GetComponentInChildren<TMP_Text>().text = $"Level {i + 1}";
             var level = i;
             if (i > lastUnlocked)
             {

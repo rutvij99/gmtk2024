@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using GameIdea2.Audio;
 using UnityEngine;
 using GameIdea2.Stars;
@@ -56,6 +57,22 @@ namespace GameIdea2.Gameloop
             }
 
             AudioManager.Instance?.PlayBsClips();
+            var scenes = new List<string>()
+            {
+                "FreePLay",
+                "LevelEditor",
+                "CustomLevelPlayer"
+            };
+            Debug.Log($"check update {this.gameObject.scene.name}");
+            if (!scenes.Contains(this.gameObject.scene.name))
+            {
+                GameConfig.SetLevelComplete();
+                Debug.Log($"can update level pref");
+            }
+            else
+            {
+                Debug.Log($"can't update level pref");
+            }
             HUDManager.instance.EnableLevelComplete();
         }
 

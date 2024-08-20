@@ -13,20 +13,19 @@ public static class GameConfig
     
     public static void SetLevelComplete()
     {
-        if (PlayerPrefs.GetInt(LEVEL_PREF, 1) >= CurrentLevel) return;
-        PlayerPrefs.SetInt(LEVEL_PREF, CurrentLevel);
+        if (PlayerPrefs.GetInt(LEVEL_PREF, 0) > CurrentLevel) return;
+        Debug.Log($"setting level complete {CurrentLevel}");
+        PlayerPrefs.SetInt(LEVEL_PREF, CurrentLevel + 1);
         PlayerPrefs.Save();
     }
 
     public static int GetLastCompletedLevel()
     {
-       return PlayerPrefs.GetInt(LEVEL_PREF, 1);
+       return PlayerPrefs.GetInt(LEVEL_PREF, 0);
     }
 
     public static void LevelFinished()
     {
-	    SetLevelComplete();
-	    
 	    if(CurrentLevel + 1 < MAX_LEVELS)
 			LoadLevel(CurrentLevel + 1);
     }
@@ -36,7 +35,7 @@ public static class GameConfig
 	    if (id + 1 < MAX_LEVELS)
 	    {
 		    CurrentLevel = id;
-		    SceneManager.LoadScene($"Level {id - 1:00}");
+		    SceneManager.LoadScene($"Level {id:00}");
 	    }
     }
     

@@ -197,6 +197,6 @@ public class MainMenu : MonoBehaviour
 
 	public void LoadLastestLevel()
 	{
-		GameConfig.LoadLevel(GameConfig.GetLastCompletedLevel() + 1);
+		GameConfig.LoadLevel(GameConfig.GetLastCompletedLevel());
 	}
 }

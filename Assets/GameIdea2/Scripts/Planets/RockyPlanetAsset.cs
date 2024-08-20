@@ -6,7 +6,9 @@ namespace GameIdea2.Scripts.Planets
     [CreateAssetMenu(menuName = "GMTK24/RockyPlanetAsset", fileName = "DefaultRockPlanetAsset")]
     public class RockyPlanetAsset : ScriptableObject
     {
+        [ColorUsage(true, true)]
         public List<Color> WaterColors;
+        [ColorUsage(true, true)]
         public List<Color> LandColors;
         public float MinNoiseStr = 10;
         public float MaxNoiseStr = 35;

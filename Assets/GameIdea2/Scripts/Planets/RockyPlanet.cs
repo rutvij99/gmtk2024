@@ -15,6 +15,9 @@ namespace GameIdea2.Scripts.Planets
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
+            if(Universe.Instance.Simulate)
+                return;
+            
             var waterBody = transform.GetChild(0);
             var mat = GetComponent<MeshRenderer>().material;
             var waterMat = waterBody.GetComponent<MeshRenderer>().material;

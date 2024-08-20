@@ -12,6 +12,9 @@ namespace GameIdea2.Scripts.Planets
         private void Start()
         {
             rb = GetComponentInChildren<Rigidbody>();
+            if(Universe.Instance.Simulate)
+                return;
+            
             var mat = GetComponentInChildren<MeshRenderer>().material;
             mat.SetColor("_PrimaryColor", DataAsset.PrimaryColors[Random.Range(0, DataAsset.PrimaryColors.Count)]);
             mat.SetColor("_SecondaryColor", DataAsset.SecondaryColors[Random.Range(0, DataAsset.SecondaryColors.Count)]);

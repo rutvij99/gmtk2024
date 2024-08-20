@@ -1,3 +1,4 @@
+using System;
 using GameIdea2.Audio;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -109,6 +110,12 @@ namespace GameIdea2
                     Destroy(go, 1);
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            if(Universe.Instance && !Universe.Instance.Simulate)
+                Universe.Instance.MarkDirty(null);
         }
     }
     

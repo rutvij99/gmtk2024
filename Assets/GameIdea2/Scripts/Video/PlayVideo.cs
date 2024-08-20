@@ -54,7 +54,7 @@ namespace GameIdea2.Video
             PlaySelectedVideo(MOVE_OBJECT);
             if (descriptionBox != null)
             {
-                descriptionBox.text = "Hold left mouse button to move and reach the target location to win.";
+                descriptionBox.text = "Hold left mouse button to move.";
             }
         }
         

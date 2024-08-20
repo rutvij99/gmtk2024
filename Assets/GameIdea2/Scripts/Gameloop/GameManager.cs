@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using GameIdea2.Audio;
 using UnityEngine;
 using GameIdea2.Stars;
 using UnityEngine.SceneManagement;
@@ -39,7 +40,7 @@ namespace GameIdea2.Gameloop
         
         private void Start()
         {
-            if(Universe.Instance)
+            if (Universe.Instance)
                 Universe.Instance.OnSimStarted += OnSimStarted;
         }
 
@@ -53,6 +54,8 @@ namespace GameIdea2.Gameloop
             {
                 star.transform.localScale = Vector3.zero;
             }
+
+            AudioManager.Instance?.PlayBsClips();
             HUDManager.instance.EnableLevelComplete();
         }
 

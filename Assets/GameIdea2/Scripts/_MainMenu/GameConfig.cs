@@ -41,7 +41,7 @@ public static class GameConfig
     
     public static void LoadLevel(string name)
     {
-	    if (SceneManager.GetSceneByName(name).IsValid())
+	    // if (SceneManager.GetSceneByName(name).IsValid())
 		    SceneManager.LoadScene(name);
     }
 

@@ -137,6 +137,18 @@ namespace GameIdea2
             
             camera.orthographicSize += zoomDelta;
             camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minZoom, maxZoom);
+
+            var xAxis = Input.GetAxis("Horizontal");
+            var yAxis = Input.GetAxis("Vertical");
+
+            if ((yAxis != 0 || xAxis != 0) && !Input.GetMouseButton(PAN_MOUSE_BTN))
+            {
+                HUDManager.instance.Interacted = true;
+                var pD = new Vector3(xAxis, yAxis) * -1f;
+                var tD = new Vector3(-pD.x * Time.deltaTime * panSensitivity, 0, -pD.y * panSensitivity * Time.deltaTime);
+                camera.transform.position += tD;
+                return;
+            }
             
             if (!Input.GetMouseButton(PAN_MOUSE_BTN))
             {

@@ -57,6 +57,8 @@ namespace GameIdea2.Audio
 
             backgroundAudioSource.clip = backgroundMusicList[audioSelectIndex];
             ambienceAudioSource.clip = ambienceMusicList[ambienceSelectIndex];
+            backgroundAudioSource.Play();
+            ambienceAudioSource.Play();
         }
 
         public void ChangeBackgroundMusic()
@@ -64,6 +66,8 @@ namespace GameIdea2.Audio
             int random = Random.Range(0, backgroundMusicList.Count);
             backgroundAudioSource.clip = backgroundMusicList[random];
             ambienceAudioSource.clip = ambienceMusicList[random];
+            backgroundAudioSource.Play();
+            ambienceAudioSource.Play();
         }
 
         public void PlaySoundOfType(SoundTyes type)

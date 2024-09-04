@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/GameIdea2/Scenes/FreePlay.unity
     guid: 13f34d129ddca43c584a5fafea870674
   - enabled: 1
+    path: Assets/GameIdea2/Scenes/LevelPlayer.unity
+    guid: a38794ede1db34a6d87da57662cec3a0
+  - enabled: 1
     path: Assets/GameIdea2/Scenes/Level 00.unity
     guid: 019e8c7ccb29b9d438900946f7c5d915
   - enabled: 1

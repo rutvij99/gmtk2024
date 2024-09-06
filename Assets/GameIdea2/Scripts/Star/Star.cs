@@ -1,4 +1,5 @@
 using System;
+using GameIdea2.Scripts.Terrestial;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -23,12 +24,15 @@ namespace GameIdea2.Stars
         private float colorValue=0;
         private float massEffect = 0;
         private float scaleEffect = 0;
+
+        private IDirtyableBehaviour dirtyable;
         
         private void Start()
         {
             mainMaterial = GetComponentInChildren<MeshRenderer>().material;
             light = GetComponentInChildren<Light>();
             rb = GetComponent<Rigidbody>();
+            dirtyable = GetComponent<IDirtyableBehaviour>();
         }
 
         private void Update()
@@ -37,6 +41,7 @@ namespace GameIdea2.Stars
             {
                 var lerpEval = transform.localScale.x / DataAsset.MaxScale;
                 rb.mass = Mathf.Lerp(DataAsset.MinMass, DataAsset.MaxMass, lerpEval);
+                dirtyable.MarkDirty();
             }
 
             if (DataAsset.AnimateTillingOffset)

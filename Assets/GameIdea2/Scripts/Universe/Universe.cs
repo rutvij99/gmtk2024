@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using GameIdea2.Gameloop;
+using GameIdea2.Scripts.Terrestial;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -194,6 +195,12 @@ namespace GameIdea2
         {
             if(recalcRoutine != null)
                 return;
+
+            if (obj)
+            {
+                var dirtyableBehaviour = obj.GetComponent<IDirtyableBehaviour>();
+                dirtyableBehaviour?.MarkDirty();
+            }
 
             recalcRoutine = StartCoroutine(RecalculateTrajectory(obj));
         }

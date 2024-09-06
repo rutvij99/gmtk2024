@@ -1,12 +1,15 @@
 using System;
+using System.Collections.Generic;
 using GameIdea2.Audio;
+using GameIdea2.Scripts.Terrestial;
+using GameIdea2.Terrestial;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace GameIdea2
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class TerrestialBody : MonoBehaviour
+    public class TerrestialBody : MonoBehaviour, IDirtyableBehaviour
     {
         public const float GravitationalConstant = 1000;
         
@@ -16,10 +19,14 @@ namespace GameIdea2
         [SerializeField] private bool startWithForce;
         [SerializeField] private float startForceMag;
 
-        private TerrestialBody[] bodies = null;
+        public TerrestrialDataObject DataObject { get; private set; }
         
+        private TerrestialBody[] bodies = null;
         private Vector3 _startForceDir;
-
+        private string DataObjectId;
+        private SphereCollider Collider;
+        
+        
         public float Mass => rb.mass;
         
         public Vector3 GetStartLinearVelocity()
@@ -37,7 +44,13 @@ namespace GameIdea2
         
         private void Awake()
         {
+            Collider = GetComponent<SphereCollider>();
+            DataObjectId = Guid.NewGuid().ToString();
+            DataObject = new TerrestrialDataObject(DataObjectId);
+
+            TerrestrialDataObjectPool.GetPool().Add(DataObjectId, DataObject);
             UpdateStartDir();
+            UpdateDataObject();
         }
 
         private void Start()
@@ -49,11 +62,23 @@ namespace GameIdea2
             }
         }
 
+        private void UpdateDataObject()
+        {
+            DataObject.Position = transform.position;
+            DataObject.StartLinearVelocity = GetStartLinearVelocity();
+            DataObject.Mass = rb.mass;
+            DataObject.CollisionRadius = Collider.radius;
+            DataObject.ObjectScale = transform.localScale.x;
+        }
+        
         private void Update()
         {
-            if (!Universe.Instance.Simulate && (Vector3.Distance(transform.forward, _startForceDir) >= 0.01f))
+            if (!Universe.Instance.Simulate)
             {
-                UpdateStartDir();
+                if((Vector3.Distance(transform.forward, _startForceDir) >= 0.01f))
+                    UpdateStartDir(); 
+             
+                UpdateDataObject();
                 return;
             }
             
@@ -116,6 +141,14 @@ namespace GameIdea2
         {
             if(Universe.Instance && !Universe.Instance.Simulate)
                 Universe.Instance.MarkDirty(null);
+
+            if (DataObject != null)
+                TerrestrialDataObjectPool.GetPool().Remove(DataObjectId);
+        }
+
+        public void MarkDirty()
+        {
+            UpdateDataObject();
         }
     }
     

@@ -1,4 +1,5 @@
 using System;
+using GameIdea2.Scripts.Terrestial;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,10 +12,12 @@ namespace GameIdea2.Scripts.Planets
         [SerializeField] private RockyPlanetAsset DataAsset;
 
         private Rigidbody rb;
+        private IDirtyableBehaviour dirtyable;
         
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
+            dirtyable = GetComponent<IDirtyableBehaviour>();
             if(Universe.Instance.Simulate)
                 return;
             
@@ -46,6 +49,7 @@ namespace GameIdea2.Scripts.Planets
                 return;
             }
             rb.mass = Mathf.Lerp(DataAsset.MinMass, DataAsset.MaxMass, transform.localScale.x/ DataAsset.MaxScale);
+            dirtyable.MarkDirty();
         }
 
         private void DestroyPlanet()

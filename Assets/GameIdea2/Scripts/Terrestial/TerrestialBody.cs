@@ -45,7 +45,7 @@ namespace GameIdea2
             rb = GetComponent<Rigidbody>();
             if (startWithForce)
             {
-                rb.linearVelocity = GetStartLinearVelocity();
+                rb.velocity = GetStartLinearVelocity();
             }
         }
 
@@ -57,7 +57,7 @@ namespace GameIdea2
                 return;
             }
             
-            var velocity = rb.linearVelocity.normalized;
+            var velocity = rb.velocity.normalized;
             if(velocity.magnitude > 0)
                 transform.forward = velocity;
 
@@ -83,7 +83,7 @@ namespace GameIdea2
                 var dist = Vector3.Distance(transform.position, terrObj.transform.position);
                 var forceMult = ComputeForce(rb.mass, objMass, dist);
                 var dir = (transform.position - terrObj.transform.position).normalized;
-                terrObj.rb.linearVelocity += dir * (forceMult * Time.fixedDeltaTime);
+                terrObj.rb.velocity += dir * (forceMult * Time.fixedDeltaTime);
                 //terrObj.rb.AddForce(dir * (forceMult), ForceMode.Acceleration);
             }
         }

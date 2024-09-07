@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!28 &-3060920902641802129
+--- !u!28 &-9216484408833581607
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,17 +10,19 @@ Texture2D:
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
-  m_Width: 1
-  m_Height: 1
-  m_CompleteImageSize: 1
+  serializedVersion: 2
+  m_Width: 0
+  m_Height: 0
+  m_CompleteImageSize: 0
   m_MipsStripped: 0
   m_TextureFormat: 1
   m_MipCount: 1
   m_IsReadable: 1
   m_IsPreProcessed: 0
-  m_IgnoreMipmapLimit: 1
+  m_IgnoreMipmapLimit: 0
   m_MipmapLimitGroupName: 
   m_StreamingMipmaps: 0
   m_StreamingMipmapsPriority: 0
@@ -39,8 +41,8 @@ Texture2D:
   m_LightmapFormat: 0
   m_ColorSpace: 1
   m_PlatformBlob: 
-  image data: 1
-  _typelessdata: cd
+  image data: 0
+  _typelessdata: 
   m_StreamData:
     serializedVersion: 2
     offset: 0
@@ -58,7 +60,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Futura Bold Italic font SDF
   m_EditorClassIdentifier: 
+  hashCode: 0
+  material: {fileID: 8067713937987608953}
+  materialHashCode: 0
   m_Version: 1.1.0
+  m_SourceFontFileGUID: 429873454215d48eeb938d00399ddb2e
+  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 429873454215d48eeb938d00399ddb2e,
+    type: 3}
+  m_SourceFontFile: {fileID: 12800000, guid: 429873454215d48eeb938d00399ddb2e, type: 3}
+  m_AtlasPopulationMode: 1
   m_FaceInfo:
     m_FaceIndex: 0
     m_FamilyName: Futura Md BT
@@ -81,16 +91,59 @@ MonoBehaviour:
     m_StrikethroughOffset: 17.6
     m_StrikethroughThickness: 11.6015625
     m_TabWidth: 28
-  m_Material: {fileID: 7551311969121632322}
-  m_SourceFontFileGUID: 429873454215d48eeb938d00399ddb2e
+  m_GlyphTable: []
+  m_CharacterTable: []
+  m_AtlasTextures:
+  - {fileID: -9216484408833581607}
+  m_AtlasTextureIndex: 0
+  m_IsMultiAtlasTexturesEnabled: 0
+  m_ClearDynamicDataOnBuild: 0
+  m_UsedGlyphRects: []
+  m_FreeGlyphRects:
+  - m_X: 0
+    m_Y: 0
+    m_Width: 1023
+    m_Height: 1023
+  m_fontInfo:
+    Name: 
+    PointSize: 0
+    Scale: 0
+    CharacterCount: 0
+    LineHeight: 0
+    Baseline: 0
+    Ascender: 0
+    CapHeight: 0
+    Descender: 0
+    CenterLine: 0
+    SuperscriptOffset: 0
+    SubscriptOffset: 0
+    SubSize: 0
+    Underline: 0
+    UnderlineThickness: 0
+    strikethrough: 0
+    strikethroughThickness: 0
+    TabWidth: 0
+    Padding: 0
+    AtlasWidth: 0
+    AtlasHeight: 0
+  atlas: {fileID: 0}
+  m_AtlasWidth: 1024
+  m_AtlasHeight: 1024
+  m_AtlasPadding: 9
+  m_AtlasRenderMode: 4165
+  m_glyphInfoList: []
+  m_KerningTable:
+    kerningPairs: []
+  m_FontFeatureTable:
+    m_GlyphPairAdjustmentRecords: []
+  fallbackFontAssets: []
+  m_FallbackFontAssetTable: []
   m_CreationSettings:
     sourceFontFileName: 
     sourceFontFileGUID: 429873454215d48eeb938d00399ddb2e
-    faceIndex: 0
     pointSizeSamplingMode: 0
     pointSize: 90
     padding: 9
-    paddingMode: 2
     packingMode: 0
     atlasWidth: 1024
     atlasHeight: 1024
@@ -102,36 +155,6 @@ MonoBehaviour:
     fontStyleModifier: 0
     renderMode: 4165
     includeFontFeatures: 0
-  m_SourceFontFile: {fileID: 12800000, guid: 429873454215d48eeb938d00399ddb2e, type: 3}
-  m_SourceFontFilePath: 
-  m_AtlasPopulationMode: 1
-  InternalDynamicOS: 0
-  m_GlyphTable: []
-  m_CharacterTable: []
-  m_AtlasTextures:
-  - {fileID: -3060920902641802129}
-  m_AtlasTextureIndex: 0
-  m_IsMultiAtlasTexturesEnabled: 0
-  m_GetFontFeatures: 1
-  m_ClearDynamicDataOnBuild: 1
-  m_AtlasWidth: 1024
-  m_AtlasHeight: 1024
-  m_AtlasPadding: 9
-  m_AtlasRenderMode: 4165
-  m_UsedGlyphRects: []
-  m_FreeGlyphRects:
-  - m_X: 0
-    m_Y: 0
-    m_Width: 1023
-    m_Height: 1023
-  m_FontFeatureTable:
-    m_MultipleSubstitutionRecords: []
-    m_LigatureSubstitutionRecords: []
-    m_GlyphPairAdjustmentRecords: []
-    m_MarkToBaseAdjustmentRecords: []
-    m_MarkToMarkAdjustmentRecords: []
-  m_ShouldReimportFontFeatures: 0
-  m_FallbackFontAssetTable: []
   m_FontWeightTable:
   - regularTypeface: {fileID: 0}
     italicTypeface: {fileID: 0}
@@ -160,34 +183,7 @@ MonoBehaviour:
   boldSpacing: 7
   italicStyle: 35
   tabSize: 10
-  m_fontInfo:
-    Name: 
-    PointSize: 0
-    Scale: 0
-    CharacterCount: 0
-    LineHeight: 0
-    Baseline: 0
-    Ascender: 0
-    CapHeight: 0
-    Descender: 0
-    CenterLine: 0
-    SuperscriptOffset: 0
-    SubscriptOffset: 0
-    SubSize: 0
-    Underline: 0
-    UnderlineThickness: 0
-    strikethrough: 0
-    strikethroughThickness: 0
-    TabWidth: 0
-    Padding: 0
-    AtlasWidth: 0
-    AtlasHeight: 0
-  m_glyphInfoList: []
-  m_KerningTable:
-    kerningPairs: []
-  fallbackFontAssets: []
-  atlas: {fileID: 0}
---- !u!21 &7551311969121632322
+--- !u!21 &8067713937987608953
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -223,7 +219,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: -3060920902641802129}
+        m_Texture: {fileID: -9216484408833581607}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
@@ -295,4 +291,3 @@ Material:
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1

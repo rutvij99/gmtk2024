@@ -162,7 +162,7 @@ namespace GameIdea2
                 SetCurrentInteraction(Interaction.Pan);
             }
             
-            var panDelta = Input.mousePositionDelta;
+            var panDelta = Input.mousePosition;
             var translationDelta = new Vector3(-panDelta.x * Time.deltaTime * panSensitivity, 0, -panDelta.y * panSensitivity * Time.deltaTime);
             camera.transform.position += translationDelta;
         }
@@ -241,7 +241,7 @@ namespace GameIdea2
                 var mouseWorldPos = new Vector3(pos.x, 0, pos.y);
                 var scaleDir = (mouseWorldPos - mouseStartWorldPos).normalized.x;*/
 
-                var mouseDelta = Input.mousePositionDelta.normalized;
+                var mouseDelta = Input.mousePosition.normalized;
                 
                 var scaleDelta = mouseDelta.x * scaleSensitivity;
                 //Debug.Log($"Scale Delta : {scaleDelta}");

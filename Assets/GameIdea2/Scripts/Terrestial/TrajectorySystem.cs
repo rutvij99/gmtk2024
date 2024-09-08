@@ -11,12 +11,6 @@ namespace GameIdea2
     
     public class TrajectorySystem : MonoBehaviour
     {
-        enum SimulationState
-        {
-            Idle,
-            Requested
-        }
-        
         public TerrestialBody body;
         public int SimResolution = 200;
         public bool useFixedDeltaTime;
@@ -32,8 +26,6 @@ namespace GameIdea2
         private LayerMask mask;
 
         private TerrestrialDataObject parentDataObject;
-        private Thread simulationThread;
-        private SimulationState simState;
         private List<Vector3> simBuffer;
         private float fixedDeltaTime;
         private bool redrawNeeded = false;
@@ -41,10 +33,8 @@ namespace GameIdea2
         private void Start()
         {
             simBuffer = new List<Vector3>();
-            simulationThread = new Thread(SimulationLoop);
             lineRenderer.positionCount = SimResolution;
             parentDataObject = GetComponent<TerrestialBody>().DataObject;
-            simulationThread.Start();
             SimulateTrajectory();
         }
 
@@ -54,7 +44,6 @@ namespace GameIdea2
             if (Universe.Instance.Simulate)
             {
                 lineRenderer.positionCount = 0;
-                simulationThread.Abort();
             }
             else
             {
@@ -98,6 +87,7 @@ namespace GameIdea2
                 currentVelocity += acceleration * timeStep;
                 currentPosition += currentVelocity * timeStep;
             }
+            redrawNeeded = true;
         }
         
         private Vector3 ComputeAcceleration(Vector3 position)
@@ -120,32 +110,10 @@ namespace GameIdea2
 
         public void SimulateTrajectory()
         {
-            simState = SimulationState.Requested;
-        }
-        
-        private async void SimulationLoop()
-        {
-            while (true)
+            TrajectoryJobsQueue.GetQueue().Add(new TrajectoryJob()
             {
-                if (simState == SimulationState.Requested)
-                {
-                    try
-                    {
-                        Debug.Log("Trajectory Computation Triggered!!");
-                        TrajectorySimulationOperation();
-                        simState = SimulationState.Idle;
-                        Debug.Log("Trajectory Computed!!");
-                        redrawNeeded = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.LogException(ex);
-                    }
-                }
-
-                int sleepTime = (int)fixedDeltaTime * 1000;
-                await Task.Delay(sleepTime);
-            }
+                InvokeableAction = TrajectorySimulationOperation
+            });
         }
     }
     

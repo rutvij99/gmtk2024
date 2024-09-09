@@ -1,3 +1,5 @@
+using System.Text;
+using GameIdea2.Compression;
 using GameIdea2.CustomPlay;
 using GameIdea2.Gameloop;
 using GameIdea2.Scripts.Editor;

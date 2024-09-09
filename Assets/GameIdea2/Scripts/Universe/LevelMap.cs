@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using GameIdea2.Constants;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -20,16 +21,18 @@ namespace GameIdea2
         public string Name;
         public string Author;
         public string CreatedOn;
+        public string Version;
         public List<LevelObject> TerrestrialObjects;
 
         public static string SerialiseWorkspace(GameObject workspace, string name, string author)
         {
             var mapData = new LevelMap() {Name = name, Author = author};
             mapData.CreatedOn = DateTime.Now.ToShortDateString();
+            mapData.Version = LevelMapConstants.LEVEL_MAP_FILE_VERSION;
             mapData.TerrestrialObjects = new List<LevelObject>();
             foreach (Transform child in workspace.transform)
             {
-                var indx = child.name.IndexOf("(Clone", StringComparison.Ordinal);
+                var indx = child.name.IndexOf(LevelMapConstants.CONCAT_STR_SYMB, StringComparison.Ordinal);
                 var assetKey = child.name.Substring(0, indx);
                 var position = child.position;
                 var rotation = child.rotation.eulerAngles;

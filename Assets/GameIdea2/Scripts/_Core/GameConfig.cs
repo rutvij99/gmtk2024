@@ -10,22 +10,23 @@ namespace GravityWell.Core.Config
     [DefaultExecutionOrder(-100)]
     public class GameConfig : Singleton<GameConfig>
     {
-        private SettingsHandler _SettingsHandler;
+        private SettingsHandler _settingsHandler;
         
         [SerializeField] private SettingsPreset _defaultSettingsPreset;
         [SerializeField] private List<GraphicsPresetSO> _graphicsPresets;
         
         
-        public ISettingsProvider SettingsProvider => _SettingsHandler;
+        public ISettingsProvider SettingsProvider => _settingsHandler;
+        internal ISettingsModifier SettingsModifier => _settingsHandler;
         
         protected override void Awake()
         {
             base.Awake();
             if(Instance != this) return;
             DOTween.Init();
-            _SettingsHandler = new SettingsHandler(this);
+            _settingsHandler = new SettingsHandler(this);
             // _SettingsHandler.Testing();
-            _SettingsHandler.LoadAllSettings();
+            // _settingsHandler.LoadAllSettings();
         }
 
 

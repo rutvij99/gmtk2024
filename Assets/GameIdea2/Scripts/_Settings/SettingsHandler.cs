@@ -10,7 +10,7 @@ using UnityEngine;
 namespace GravityWell.Core.Config
 {
 	[System.Serializable]
-	public class SettingsHandler : ISettingsProvider
+	public class SettingsHandler : ISettingsProvider , ISettingsModifier
 	{
 		private GameConfig _config;
 		private SettingsData _settingsData;
@@ -23,6 +23,7 @@ namespace GravityWell.Core.Config
 		internal SettingsHandler(GameConfig config)
 		{
 			_config = config;
+			LoadAllSettings();
 		}
 		
 		#region Provider Setup
@@ -37,7 +38,83 @@ namespace GravityWell.Core.Config
 		public IReadOnlyGraphicsSettings GraphicsSettings => _settingsData.Graphics;
 		#endregion
 		
-		internal void SaveAllSettings()
+		#region Mofidier Setup
+		public void ModifyAudioSettings(Action<AudioSettings> modifyAction)
+		{
+			if (modifyAction == null) return;
+			var originalSettings = _settingsData.Audio.Clone();
+			modifyAction(_settingsData.Audio);
+			if (!originalSettings.Equals(_settingsData.Audio))
+			{
+				OnAudioSettingsChanged?.Invoke(_settingsData.Audio);
+			}
+		}
+		public void ModifyGameplaySettings(Action<GameplaySettings> modifyAction)
+		{
+			if (modifyAction == null) return;
+			var originalSettings = _settingsData.Gameplay.Clone();
+			modifyAction(_settingsData.Gameplay);
+			if (!originalSettings.Equals(_settingsData.Gameplay))
+			{
+				OnGamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			}
+		}
+
+		public void ModifyDisplaySettings(Action<DisplaySettings> modifyAction)
+		{
+			if (modifyAction == null) return;
+			var originalSettings = _settingsData.Display.Clone();
+			modifyAction(_settingsData.Display);
+			if (!originalSettings.Equals(_settingsData.Display))
+			{
+				OnDisplaySettingsChanged?.Invoke(_settingsData.Display);
+			}
+		}
+
+		public void ModifyGraphicsSettings(Action<GraphicsSettings> modifyAction)
+		{
+			if (modifyAction == null) return;
+			var originalSettings = _settingsData.Graphics.Clone();
+			modifyAction(_settingsData.Graphics);
+			if (!originalSettings.Equals(_settingsData.Graphics))
+			{
+				OnGraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
+			}
+		}
+		
+		public void ApplySettings()
+		{
+			if (_settingsData == null) return;
+			SaveAllSettings();
+			OnGamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			OnAudioSettingsChanged?.Invoke(_settingsData.Audio);
+			OnDisplaySettingsChanged?.Invoke(_settingsData.Display);
+			OnGraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
+		}
+
+		public void CancelChanges()
+		{
+			LoadAllSettings();
+			OnGamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			OnAudioSettingsChanged?.Invoke(_settingsData.Audio);
+			OnDisplaySettingsChanged?.Invoke(_settingsData.Display);
+			OnGraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
+		}
+		
+		public void ResetToDefaults()
+		{
+			_settingsData = new SettingsData()
+			{
+				Audio = _config.GetDefaultSettingsPreset().Audio,
+				Display = _config.GetDefaultSettingsPreset().Display,
+				Gameplay = _config.GetDefaultSettingsPreset().Gameplay,
+				Graphics = _config.GetGraphicsSO(_config.GetDefaultSettingsPreset().defaultGraphicsPreset).settings,
+			};
+		}
+		#endregion
+
+		
+		private void SaveAllSettings()
 		{
 			List<string> iniData = new List<string>();
 			iniData.AddRange(SaveSettings<GameplaySettings>(_settingsData.Gameplay));
@@ -52,7 +129,7 @@ namespace GravityWell.Core.Config
 			Debug.Log("Settings saved to: " + configFilePath);
 		}
 
-		internal List<string> LoadAllSettings()
+		private List<string> LoadAllSettings()
 		{
 			if (!File.Exists(configFilePath))
 			{
@@ -158,8 +235,6 @@ namespace GravityWell.Core.Config
 			return settings;
 		}
 		
-		
-		
 		internal void Testing()
 		{
 			_settingsData = new SettingsData()
@@ -169,7 +244,17 @@ namespace GravityWell.Core.Config
 				Gameplay = _config.GetDefaultSettingsPreset().Gameplay,
 				Graphics = _config.GetGraphicsSO(_config.GetDefaultSettingsPreset().defaultGraphicsPreset).settings,
 			};
-			_settingsData.Audio.Music = 0f;
+			
+			
+			ModifyAudioSettings(audioSettings => audioSettings.MasterVolume += 0.1f);
+
+			ModifyGraphicsSettings(graphicsSettings =>
+			{
+				graphicsSettings.RenderScale = 1.5f;
+				graphicsSettings.TextureQuality = GraphicsQualityType.ultra;
+			});
+			
+			ModifyAudioSettings(audioSettings => audioSettings.Subtitles = !audioSettings.Subtitles);
 
 			List<string> iniData = new List<string>();
 			iniData.AddRange(SaveSettings<GameplaySettings>(_settingsData.Gameplay));
@@ -193,16 +278,6 @@ namespace GravityWell.Core.Config
 			};
 			Debug.Log($"r: reloaded -> \n{JsonConvert.SerializeObject(loadedSettings, Formatting.Indented)}");
 		}
-		
-		public void ResetToDefaults()
-		{
-			_settingsData = new SettingsData()
-			{
-				Audio = _config.GetDefaultSettingsPreset().Audio,
-				Display = _config.GetDefaultSettingsPreset().Display,
-				Gameplay = _config.GetDefaultSettingsPreset().Gameplay,
-				Graphics = _config.GetGraphicsSO(_config.GetDefaultSettingsPreset().defaultGraphicsPreset).settings,
-			};
-		}
+
 	}
 }

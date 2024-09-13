@@ -64,6 +64,24 @@ namespace GravityWell.Core.Config
 		{
 			return (AudioSettings)this.MemberwiseClone();
 		}
+		
+		public bool Equals(AudioSettings other)
+		{
+			if (other == null) return false;
+			return MasterVolume == other.MasterVolume &&
+			       Music == other.Music &&
+			       SFX == other.SFX &&
+			       Subtitles == other.Subtitles;
+		}
+		
+		public override int GetHashCode()
+		{
+			// Combine hash codes of all properties
+			return MasterVolume.GetHashCode() ^
+			       Music.GetHashCode() ^
+			       SFX.GetHashCode() ^
+			       Subtitles.GetHashCode();
+		}
 	}
 	
 	[System.Serializable]
@@ -103,12 +121,14 @@ namespace GravityWell.Core.Config
 		[SerializeField] private GraphicsQualityType textureQuality = GraphicsQualityType.high;
 		[SerializeField] private bool fxaa = true;
 		[SerializeField] private MSAAType msaa = MSAAType.off;
+
+
+		public float RenderScale { get => renderScale; internal set => renderScale = value; }
+		public GraphicsQualityType TextureQuality { get => textureQuality; internal set => textureQuality = value;  }
+		public bool Fxaa { get => fxaa; internal set => fxaa = value; }
+		public MSAAType Msaa { get => msaa; internal set => msaa = value; }
 		
 		
-		public float RenderScale { get { return renderScale; } internal set { renderScale = value; } }
-		public GraphicsQualityType TextureQuality { get { return textureQuality; } internal set { textureQuality = value; } }
-		public bool Fxaa { get { return fxaa; } internal set { fxaa = value; } }
-		public MSAAType Msaa { get { return msaa; } set { msaa = value; } }
 
 		public GraphicsSettings Clone()
 		{

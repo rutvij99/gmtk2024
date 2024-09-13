@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/GameIdea2/Scenes/_Core/InitialLoader.unity
+    guid: c0f77cfe3e65c444183ed39f24a568a3
+  - enabled: 1
+    path: Assets/GameIdea2/Scenes/_Core/SplashScreen.unity
+    guid: 01249891d7b4e4f29b13a9d40eb6fb20
+  - enabled: 1
+    path: Assets/GameIdea2/Scenes/_Core/MainMenu_New.unity
+    guid: 31b4ac825b10b43988b787b449186fa0
+  - enabled: 1
     path: Assets/GameIdea2/Scenes/MainMenu.unity
     guid: 3193ee1225d034d00826980a3bc2229e
   - enabled: 1

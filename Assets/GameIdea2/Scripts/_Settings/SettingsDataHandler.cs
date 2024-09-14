@@ -10,27 +10,36 @@ using UnityEngine;
 namespace GravityWell.Core.Config
 {
 	[System.Serializable]
-	public class SettingsHandler : ISettingsProvider , ISettingsModifier
+	internal class SettingsDataHandler : ISettingsProvider , ISettingsModifier
 	{
 		private GameConfig _config;
 		private SettingsData _settingsData;
 		
 		private SettingsData _readOnlySettingsData;
+
+		public Resolution[] AvailableScreenResolutions => Screen.resolutions;
 		
 		private string configFilePath = Path.Combine(Application.persistentDataPath, "GameData", "config.ini");
-
 		
-		internal SettingsHandler(GameConfig config)
+
+		internal SettingsDataHandler(GameConfig config)
 		{
 			_config = config;
 			LoadAllSettings();
+			GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			AudioSettingsChanged?.Invoke(_settingsData.Audio);
+			DisplaySettingsChanged?.Invoke(_settingsData.Display);
+			GraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
+			SettingsChangeConfirmed?.Invoke();
 		}
 		
 		#region Provider Setup
-		public event Action<IReadOnlyGameplaySettings> OnGamplaySettingsChanged;
-		public event Action<IReadOnlyAudioSettings> OnAudioSettingsChanged;
-		public event Action<IReadOnlyDisplaySettings> OnDisplaySettingsChanged;
-		public event Action<IReadOnlyGraphicsSettings> OnGraphicsSettingsChanged;
+
+		public event Action SettingsChangeConfirmed;
+		public event Action<IReadOnlyGameplaySettings> GamplaySettingsChanged;
+		public event Action<IReadOnlyAudioSettings> AudioSettingsChanged;
+		public event Action<IReadOnlyDisplaySettings> DisplaySettingsChanged;
+		public event Action<IReadOnlyGraphicsSettings> GraphicsSettingsChanged;
 		
 		public IReadOnlyGameplaySettings GameplaySettings => _settingsData.Gameplay;
 		public IReadOnlyAudioSettings AudioSettings => _settingsData.Audio;
@@ -46,7 +55,7 @@ namespace GravityWell.Core.Config
 			modifyAction(_settingsData.Audio);
 			if (!originalSettings.Equals(_settingsData.Audio))
 			{
-				OnAudioSettingsChanged?.Invoke(_settingsData.Audio);
+				AudioSettingsChanged?.Invoke(_settingsData.Audio);
 			}
 		}
 		public void ModifyGameplaySettings(Action<GameplaySettings> modifyAction)
@@ -56,7 +65,7 @@ namespace GravityWell.Core.Config
 			modifyAction(_settingsData.Gameplay);
 			if (!originalSettings.Equals(_settingsData.Gameplay))
 			{
-				OnGamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+				GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
 			}
 		}
 
@@ -67,7 +76,7 @@ namespace GravityWell.Core.Config
 			modifyAction(_settingsData.Display);
 			if (!originalSettings.Equals(_settingsData.Display))
 			{
-				OnDisplaySettingsChanged?.Invoke(_settingsData.Display);
+				DisplaySettingsChanged?.Invoke(_settingsData.Display);
 			}
 		}
 
@@ -78,7 +87,7 @@ namespace GravityWell.Core.Config
 			modifyAction(_settingsData.Graphics);
 			if (!originalSettings.Equals(_settingsData.Graphics))
 			{
-				OnGraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
+				GraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
 			}
 		}
 		
@@ -86,29 +95,29 @@ namespace GravityWell.Core.Config
 		{
 			if (_settingsData == null) return;
 			SaveAllSettings();
-			OnGamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
-			OnAudioSettingsChanged?.Invoke(_settingsData.Audio);
-			OnDisplaySettingsChanged?.Invoke(_settingsData.Display);
-			OnGraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
+			GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			AudioSettingsChanged?.Invoke(_settingsData.Audio);
+			DisplaySettingsChanged?.Invoke(_settingsData.Display);
+			GraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
 		}
 
 		public void CancelChanges()
 		{
 			LoadAllSettings();
-			OnGamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
-			OnAudioSettingsChanged?.Invoke(_settingsData.Audio);
-			OnDisplaySettingsChanged?.Invoke(_settingsData.Display);
-			OnGraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
+			GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			AudioSettingsChanged?.Invoke(_settingsData.Audio);
+			DisplaySettingsChanged?.Invoke(_settingsData.Display);
+			GraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
 		}
 		
 		public void ResetToDefaults()
 		{
 			_settingsData = new SettingsData()
 			{
-				Audio = _config.GetDefaultSettingsPreset().Audio,
-				Display = _config.GetDefaultSettingsPreset().Display,
-				Gameplay = _config.GetDefaultSettingsPreset().Gameplay,
-				Graphics = _config.GetGraphicsSO(_config.GetDefaultSettingsPreset().defaultGraphicsPreset).settings,
+				Audio = _config.GetDefaultSettingsPreset().Audio.Clone(),
+				Display = _config.GetDefaultSettingsPreset().Display.Clone(),
+				Gameplay = _config.GetDefaultSettingsPreset().Gameplay.Clone(),
+				Graphics = _config.GetGraphicsSO(_config.GetDefaultSettingsPreset().defaultGraphicsPreset).settings.Clone(),
 			};
 		}
 		#endregion
@@ -129,13 +138,13 @@ namespace GravityWell.Core.Config
 			Debug.Log("Settings saved to: " + configFilePath);
 		}
 
-		private List<string> LoadAllSettings()
+		private void LoadAllSettings()
 		{
 			if (!File.Exists(configFilePath))
 			{
 				Debug.LogWarning("Config file not found, performing first-time setup.");
 				FirstTimeSetup();
-				return null;
+				return;
 			}
 
 			string[] iniLines = File.ReadAllLines(configFilePath);
@@ -144,7 +153,7 @@ namespace GravityWell.Core.Config
 			{
 				Debug.LogWarning("empty ini file, performing first-time setup.");
 				FirstTimeSetup();
-				return null;
+				return;
 			}
 			
 			_settingsData = new SettingsData
@@ -154,13 +163,12 @@ namespace GravityWell.Core.Config
 				Display = LoadSettings<DisplaySettings>(iniLines),
 				Graphics = LoadSettings<GraphicsSettings>(iniLines)
 			};
-
-			return iniLines.ToList();
 		}
 		
 		private void FirstTimeSetup()
 		{
 			ResetToDefaults();
+			_settingsData.Display.Resolution = GetCurrentResolutionIndex();
 			SaveAllSettings();
 		}
 		
@@ -237,6 +245,20 @@ namespace GravityWell.Core.Config
 		
 		internal void Testing()
 		{
+			for (var index = 0; index < AvailableScreenResolutions.Length; index++)
+			{
+				var resolution = AvailableScreenResolutions[index];
+				Debug.Log($"r: {index} {resolution.width}x{resolution.height}");
+			}
+			Debug.Log($"r: current res ->s {GetCurrentResolutionIndex()} {Screen.currentResolution.width}x{Screen.currentResolution.height}");
+
+			string[] names = QualitySettings.names;
+			for (int i = 0; i < names.Length; i++)
+			{
+				Debug.Log($"r: quality settings: {i} -> {names[i]}");
+			}
+			Debug.Log($"current quality settings -> {QualitySettings.GetQualityLevel()}");
+
 			_settingsData = new SettingsData()
 			{
 				Audio = _config.GetDefaultSettingsPreset().Audio,
@@ -244,7 +266,8 @@ namespace GravityWell.Core.Config
 				Gameplay = _config.GetDefaultSettingsPreset().Gameplay,
 				Graphics = _config.GetGraphicsSO(_config.GetDefaultSettingsPreset().defaultGraphicsPreset).settings,
 			};
-			
+			_settingsData.Display.Resolution = GetCurrentResolutionIndex();
+
 			
 			ModifyAudioSettings(audioSettings => audioSettings.MasterVolume += 0.1f);
 
@@ -277,6 +300,24 @@ namespace GravityWell.Core.Config
 				Graphics = LoadSettings<GraphicsSettings>(iniDataArray)
 			};
 			Debug.Log($"r: reloaded -> \n{JsonConvert.SerializeObject(loadedSettings, Formatting.Indented)}");
+		}
+		
+		private int GetCurrentResolutionIndex()
+		{
+			var resolutions = Screen.resolutions;
+			Resolution currentResolution = Screen.currentResolution;
+			for (int i = 0; i < resolutions.Length; i++)
+			{
+				if (resolutions[i].width == currentResolution.width &&
+				    resolutions[i].height == currentResolution.height &&
+				    resolutions[i].refreshRate == currentResolution.refreshRate)
+				{
+					return i;
+				}
+			}
+
+			// If no exact match is found, return a default index (e.g., 0)
+			return 0;
 		}
 
 	}

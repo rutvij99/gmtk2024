@@ -48,4 +48,13 @@ namespace GravityWell.Core.Config
 		x4,
 		x8
 	}
+	
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum FullscreenMode
+	{
+		exclusiveFullscreen,
+		fullscreen,
+		windowed,
+		borderless,
+	}
 }

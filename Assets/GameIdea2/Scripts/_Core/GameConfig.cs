@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -10,23 +11,24 @@ namespace GravityWell.Core.Config
     [DefaultExecutionOrder(-100)]
     public class GameConfig : Singleton<GameConfig>
     {
-        private SettingsHandler _settingsHandler;
+        private SettingsDataHandler _settingsDataHandler;
+        private GraphicsController _graphicsController;
         
         [SerializeField] private SettingsPreset _defaultSettingsPreset;
         [SerializeField] private List<GraphicsPresetSO> _graphicsPresets;
         
         
-        public ISettingsProvider SettingsProvider => _settingsHandler;
-        internal ISettingsModifier SettingsModifier => _settingsHandler;
+        public ISettingsProvider SettingsDataProvider => _settingsDataHandler;
+        internal ISettingsModifier SettingsDataModifier => _settingsDataHandler;
         
         protected override void Awake()
         {
             base.Awake();
             if(Instance != this) return;
             DOTween.Init();
-            _settingsHandler = new SettingsHandler(this);
+            _settingsDataHandler = new SettingsDataHandler(this);
+            _graphicsController = new GraphicsController(this, _settingsDataHandler);
             // _SettingsHandler.Testing();
-            // _settingsHandler.LoadAllSettings();
         }
 
 

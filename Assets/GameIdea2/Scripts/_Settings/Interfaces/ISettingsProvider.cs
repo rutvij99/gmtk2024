@@ -5,10 +5,12 @@ namespace GravityWell.Core.Config
 {
 	public interface ISettingsProvider
 	{
-		event Action<IReadOnlyGameplaySettings> OnGamplaySettingsChanged;
-		event Action<IReadOnlyAudioSettings> OnAudioSettingsChanged; 
-		event Action<IReadOnlyDisplaySettings> OnDisplaySettingsChanged; 
-		event Action<IReadOnlyGraphicsSettings> OnGraphicsSettingsChanged; 
+		Resolution[] AvailableScreenResolutions { get; }
+		event Action SettingsChangeConfirmed; 
+		event Action<IReadOnlyGameplaySettings> GamplaySettingsChanged;
+		event Action<IReadOnlyAudioSettings> AudioSettingsChanged; 
+		event Action<IReadOnlyDisplaySettings> DisplaySettingsChanged; 
+		event Action<IReadOnlyGraphicsSettings> GraphicsSettingsChanged; 
 		
 		IReadOnlyAudioSettings AudioSettings { get; }
 		IReadOnlyGameplaySettings GameplaySettings { get; }
@@ -32,6 +34,11 @@ namespace GravityWell.Core.Config
 	
 	public interface IReadOnlyDisplaySettings
 	{
+		int Resolution { get; }
+		FullscreenMode FullscreenMode { get; }
+		// int OutputMonitor { get; }
+		
+		
 		float Brightness { get; }
 		float Contrast { get; }
 		bool Hdr { get; }
@@ -45,6 +52,8 @@ namespace GravityWell.Core.Config
 	
 	public interface IReadOnlyGraphicsSettings
 	{
+		GraphicsPresets Preset { get; }
+
 		float RenderScale { get; }
 		GraphicsQualityType TextureQuality { get; }
 		bool Fxaa { get; }

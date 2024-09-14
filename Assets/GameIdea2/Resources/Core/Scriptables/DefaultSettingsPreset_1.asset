@@ -21,11 +21,13 @@ MonoBehaviour:
     panSensitivity: 0.5
     zoomSensitivity: 0.5
   Display:
+    resolution: 0
+    fullscreenMode: 0
+    fpsLimit: 0
+    vsync: 0
     brightness: 1
     contrast: 1
     hdr: 0
-    fpsLimit: 0
-    vsync: 0
     filmGrain: 1
     vignette: 1
   defaultGraphicsPreset: 2

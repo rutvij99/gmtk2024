@@ -18,12 +18,13 @@ MonoBehaviour:
     sfx: 1
     subtitles: 0
   Gameplay:
+    language: 0
     panSensitivity: 0.5
     zoomSensitivity: 0.5
   Display:
     resolution: 0
     fullscreenMode: 0
-    fpsLimit: 0
+    fpsLimit: -1
     vsync: 0
     brightness: 1
     contrast: 1

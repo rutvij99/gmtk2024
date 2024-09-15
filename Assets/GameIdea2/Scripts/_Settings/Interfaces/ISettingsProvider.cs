@@ -20,6 +20,7 @@ namespace GravityWell.Core.Config
 
 	public interface IReadOnlyGameplaySettings
 	{
+		Languages Language { get; }
 		float PanSensitivity { get; }
 		float ZoomSensitivity { get; }
 	}

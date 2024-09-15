@@ -182,7 +182,23 @@ namespace GravityWell.Core.Config
 			{
 				if (!field.FieldType.IsClass)
 				{
-					iniData.Add($"{field.Name}={field.GetValue(settings)}");
+					object value = field.GetValue(settings);
+					// iniData.Add($"{field.Name}={value}");
+            
+					if (field.FieldType.IsEnum)
+					{
+						if(field.Name == "fpsLimit")
+							Debug.Log($"Setting {field.Name}: {value} -> {(int)value}");
+						iniData.Add($"{field.Name}={(int)value}");
+					}
+					else if (field.FieldType == typeof(bool))
+					{
+						iniData.Add($"{field.Name}={((bool)value ? 1 : 0)}");
+					}
+					else
+					{
+						iniData.Add($"{field.Name}={value}");
+					}
 				}
 			}
 			return iniData;
@@ -215,20 +231,32 @@ namespace GravityWell.Core.Config
 						{
 							try
 							{
-								object convertedValue = field.FieldType.IsEnum
-									? Enum.Parse(field.FieldType, value)
-									: Convert.ChangeType(value, field.FieldType);
-								field.SetValue(settings, convertedValue);
-								if (field.IsDefined(typeof(RangeAttribute), true))
+								// Load enum from int
+								if (field.FieldType.IsEnum)
+								{
+									object enumValue = Enum.ToObject(field.FieldType, int.Parse(value));
+									field.SetValue(settings, enumValue);
+								}
+								// Load boolean from 0 or 1
+								else if (field.FieldType == typeof(bool))
+								{
+									bool boolValue = value == "1";
+									field.SetValue(settings, boolValue);
+								}
+								else if (field.FieldType == typeof(int) || field.FieldType == typeof(float))
 								{
 									var range = (RangeAttribute)field.GetCustomAttribute(typeof(RangeAttribute), true);
 									if (field.FieldType == typeof(float))
 									{
-										float floatValue = (float)convertedValue;
+										float floatValue = (float)field.GetValue(settings);
 										floatValue = Mathf.Clamp(floatValue, range.min, range.max);
-										convertedValue = floatValue;
+										field.SetValue(settings, floatValue);
 									}
-									// Handle other types if necessary
+								}
+								else
+								{
+									object convertedValue = Convert.ChangeType(value, field.FieldType);
+									field.SetValue(settings, convertedValue);
 								}
 							}
 							catch (Exception ex)

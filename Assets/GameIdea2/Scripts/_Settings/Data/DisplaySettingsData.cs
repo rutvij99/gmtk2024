@@ -10,8 +10,8 @@ namespace GravityWell.Core.Config
 	[System.Serializable]
 	public class DisplaySettings : IReadOnlyDisplaySettings
 	{
-		[SerializeField] private int resolution;
 		// [SerializeField] private int outputMonitor;
+		[SerializeField] private int resolution;
 		[SerializeField] private FullscreenMode fullscreenMode;
 		[SerializeField] private FpsLimit fpsLimit = FpsLimit.unlimited;
 		[SerializeField] private VSync vsync = VSync.off;
@@ -25,9 +25,11 @@ namespace GravityWell.Core.Config
 		[SerializeField] private bool filmGrain = false;
 		[SerializeField] private bool vignette = false;
 
+		
+		
 
-		public int Resolution { get { return resolution; } internal set { resolution = value; } }
 		// public int OutputMonitor { get { return outputMonitor; } internal set { outputMonitor = value; } }
+		public int Resolution { get { return resolution; } internal set { resolution = value; } }
 		public FullscreenMode FullscreenMode { get { return fullscreenMode; } internal set { fullscreenMode = value; } }
 		
 		public FpsLimit FpsLimit { get { return fpsLimit; } internal set { fpsLimit = value; } }

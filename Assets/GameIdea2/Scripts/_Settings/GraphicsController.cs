@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 
 namespace GravityWell.Core.Config
@@ -23,9 +24,16 @@ namespace GravityWell.Core.Config
 			_settingsProvider.DisplaySettingsChanged += SettingsProviderOnDisplaySettingsChanged;
 			_settingsProvider.GraphicsSettingsChanged += SettingsProviderOnGraphicsSettingsChanged;
 			
+			SceneManager.activeSceneChanged += SceneManagerOnActiveSceneChanged;
+			
 			// _urpAsset = (UniversalRenderPipelineAsset)UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline;
 			_urpAsset = (UniversalRenderPipelineAsset)QualitySettings.renderPipeline;
 			SettingsProviderOnSettingsChangeConfirmed();
+		}
+
+		private void SceneManagerOnActiveSceneChanged(Scene currentScene, Scene nextScene)
+		{
+			// do scene based graphics changes
 		}
 
 		private void SettingsProviderOnSettingsChangeConfirmed()

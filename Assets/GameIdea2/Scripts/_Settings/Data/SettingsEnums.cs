@@ -16,11 +16,11 @@ namespace GravityWell.Core.Config
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum FpsLimit
 	{
-		unlimited,
-		_30,
-		_60,
-		_120,
-		_240
+		unlimited = -1,
+		_30 = 30,
+		_60 = 60,
+		_120 = 120,
+		_240 = 240
 	}
 
 	[JsonConverter(typeof(StringEnumConverter))]
@@ -43,18 +43,25 @@ namespace GravityWell.Core.Config
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum MSAAType
 	{
-		off,
-		x2,
-		x4,
-		x8
+		off = 0,
+		x2 = 2,
+		x4 = 4,
+		x8 = 8
 	}
 	
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum FullscreenMode
 	{
-		exclusiveFullscreen,
-		fullscreen,
-		windowed,
-		borderless,
+		exclusiveFullscreen = 0,
+		fullscreen = 1,
+		windowed = 2,
+		borderless = 3,
+	}
+	
+	
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum Languages
+	{
+		English = 0,
 	}
 }

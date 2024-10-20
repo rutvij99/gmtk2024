@@ -7,7 +7,7 @@ namespace GravityWell.Core.Config
 	{
 		Resolution[] AvailableScreenResolutions { get; }
 		event Action SettingsChangeConfirmed; 
-		event Action<IReadOnlyGameplaySettings> GamplaySettingsChanged;
+		event Action<IReadOnlyGameplaySettings> GameplaySettingsChanged;
 		event Action<IReadOnlyAudioSettings> AudioSettingsChanged; 
 		event Action<IReadOnlyDisplaySettings> DisplaySettingsChanged; 
 		event Action<IReadOnlyGraphicsSettings> GraphicsSettingsChanged; 
@@ -20,7 +20,7 @@ namespace GravityWell.Core.Config
 
 	public interface IReadOnlyGameplaySettings
 	{
-		Languages Language { get; }
+		Language Language { get; }
 		float PanSensitivity { get; }
 		float ZoomSensitivity { get; }
 	}

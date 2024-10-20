@@ -10,6 +10,7 @@ namespace GravityWell.Core.Config
 {
 	public class GraphicsController
 	{
+		private const string SCRIPT_NAME = "GraphicsController";
 		private GameConfig _config;
 		private ISettingsProvider _settingsProvider;
 		private UniversalRenderPipelineAsset _urpAsset;
@@ -67,11 +68,11 @@ namespace GravityWell.Core.Config
 			{
 				Resolution resolution = _settingsProvider.AvailableScreenResolutions[resolutionIndex];
 				Screen.SetResolution(resolution.width, resolution.height, GetFullScreenMode(fullscreenMode));
-				Debug.Log($"Resolution set to {resolution.width}x{resolution.height}, Fullscreen Mode: {fullscreenMode}");
+				Debug.Log($"[{SCRIPT_NAME}] Resolution set to {resolution.width}x{resolution.height}, Fullscreen Mode: {fullscreenMode}");
 			}
 			else
 			{
-				Debug.LogWarning($"Invalid resolution index: {resolutionIndex}");
+				Debug.LogWarning($"[{SCRIPT_NAME}] Invalid resolution index: {resolutionIndex}");
 			}
 		}
 
@@ -79,13 +80,13 @@ namespace GravityWell.Core.Config
 		{
 			int targetFrameRate = GetFpsLimitValue(fpsLimit);
 			Application.targetFrameRate = targetFrameRate;
-			Debug.Log($"FPS Limit set to {targetFrameRate}");
+			Debug.Log($"[{SCRIPT_NAME}] FPS Limit set to {targetFrameRate}");
 		}
 		
 		private void ApplyVSync(VSync vSync)
 		{
 			QualitySettings.vSyncCount = GetVSyncCount(vSync);
-			Debug.Log($"VSync set to {vSync}");
+			Debug.Log($"[{SCRIPT_NAME}] VSync set to {vSync}");
 		}
 		
 		private void ApplyHdr(bool hdrEnabled)
@@ -93,7 +94,7 @@ namespace GravityWell.Core.Config
 			// do this on every camera here or in their respective scenes
 			if(Camera.main != null)
 				Camera.main.allowHDR = hdrEnabled;
-			Debug.Log($"HDR set to {hdrEnabled}");
+			Debug.Log($"[{SCRIPT_NAME}] HDR set to {hdrEnabled}");
 		}
 		
 		
@@ -107,12 +108,12 @@ namespace GravityWell.Core.Config
 
 			if (qualityLevelIndex != -1)
 			{
-				Debug.Log($"[Graphics Controller] Quality settings set to {unityQualitySettingsNames[qualityLevelIndex]} (level {qualityLevelIndex})");
+				Debug.Log($"[{SCRIPT_NAME}] Quality settings set to {unityQualitySettingsNames[qualityLevelIndex]} (level {qualityLevelIndex})");
 				QualitySettings.SetQualityLevel(qualityLevelIndex, applyExpensiveChanges);
 			}
 			else
 			{
-				Debug.LogWarning($"[Graphics Controller] No matching quality setting found for preset '{presetName}'.");
+				Debug.LogWarning($"[{SCRIPT_NAME}] No matching quality setting found for preset '{presetName}'.");
 			}
 
 			_urpAsset = (UniversalRenderPipelineAsset)QualitySettings.renderPipeline;

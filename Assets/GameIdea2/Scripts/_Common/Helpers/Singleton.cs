@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GravityWell.Helpers
+namespace GravityWell.Common.Helpers
 {
 	public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 	{

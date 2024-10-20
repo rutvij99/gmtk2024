@@ -26,7 +26,7 @@ namespace GravityWell.Core.Config
 		{
 			_config = config;
 			LoadAllSettings();
-			GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			GameplaySettingsChanged?.Invoke(_settingsData.Gameplay);
 			AudioSettingsChanged?.Invoke(_settingsData.Audio);
 			DisplaySettingsChanged?.Invoke(_settingsData.Display);
 			GraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
@@ -36,7 +36,7 @@ namespace GravityWell.Core.Config
 		#region Provider Setup
 
 		public event Action SettingsChangeConfirmed;
-		public event Action<IReadOnlyGameplaySettings> GamplaySettingsChanged;
+		public event Action<IReadOnlyGameplaySettings> GameplaySettingsChanged;
 		public event Action<IReadOnlyAudioSettings> AudioSettingsChanged;
 		public event Action<IReadOnlyDisplaySettings> DisplaySettingsChanged;
 		public event Action<IReadOnlyGraphicsSettings> GraphicsSettingsChanged;
@@ -65,7 +65,7 @@ namespace GravityWell.Core.Config
 			modifyAction(_settingsData.Gameplay);
 			if (!originalSettings.Equals(_settingsData.Gameplay))
 			{
-				GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+				GameplaySettingsChanged?.Invoke(_settingsData.Gameplay);
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace GravityWell.Core.Config
 		{
 			if (_settingsData == null) return;
 			SaveAllSettings();
-			GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			GameplaySettingsChanged?.Invoke(_settingsData.Gameplay);
 			AudioSettingsChanged?.Invoke(_settingsData.Audio);
 			DisplaySettingsChanged?.Invoke(_settingsData.Display);
 			GraphicsSettingsChanged?.Invoke(_settingsData.Graphics);
@@ -104,7 +104,7 @@ namespace GravityWell.Core.Config
 		public void CancelChanges()
 		{
 			LoadAllSettings();
-			GamplaySettingsChanged?.Invoke(_settingsData.Gameplay);
+			GameplaySettingsChanged?.Invoke(_settingsData.Gameplay);
 			AudioSettingsChanged?.Invoke(_settingsData.Audio);
 			DisplaySettingsChanged?.Invoke(_settingsData.Display);
 			GraphicsSettingsChanged?.Invoke(_settingsData.Graphics);

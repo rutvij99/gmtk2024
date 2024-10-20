@@ -60,7 +60,7 @@ namespace GravityWell.Core.Config
 	
 	
 	[JsonConverter(typeof(StringEnumConverter))]
-	public enum Languages
+	public enum Language
 	{
 		English = 0,
 	}

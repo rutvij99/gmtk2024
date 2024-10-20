@@ -1,6 +1,6 @@
 using System;
 using DG.Tweening;
-using GravityWell.Helpers;
+using GravityWell.Common.Helpers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

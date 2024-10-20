@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace GravityWell.Helpers
+namespace GravityWell.Core.Helpers
 {
 	public static class AutoSpawner
 	{

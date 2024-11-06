@@ -47,7 +47,7 @@ namespace GameIdea2.Audio._UI
             transform.localPosition = new Vector3(localPoint.x, localPoint.y, 0) + posDelta * (anchorX == 0?1:-1);
         }
 
-        public void ShowHoverGUI(HoverWindowData hoverData)
+        public void ShowHoverGUI(TileData hoverData)
         {
             if(hoverRoutine != null)
                 StopCoroutine(hoverRoutine);

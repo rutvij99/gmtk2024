@@ -25,12 +25,13 @@ namespace GameIdea2
         [SerializeField] private Api api;
         [SerializeField] private EditorCursors editorCursors;
         [SerializeField] private EditmodeGUI gui;
-        [SerializeField] private Camera camera;
         [SerializeField] private float panSensitivity = 10;
         [SerializeField] private float scaleSensitivity = 10;
         [SerializeField] private float zoomSensitivity = 10;
         [SerializeField] private float minZoom = 50;
         [SerializeField] private float maxZoom = 250;
+        
+        public static Camera ReferenceCamera;
         
         private const int PAN_MOUSE_BTN = 2;
         private const int MOVE_MOUSE_BTN = 0;
@@ -43,8 +44,8 @@ namespace GameIdea2
         
         private void Start()
         {
-            if (!camera)
-                camera = Camera.main;
+            if (!ReferenceCamera)
+                ReferenceCamera = Camera.main;
 
             if(!gui)
                 gui = GetComponent<EditmodeGUI>();
@@ -137,8 +138,8 @@ namespace GameIdea2
             if (zoomDelta != 0)
                 HUDManager.instance.Interacted = true;
             
-            camera.orthographicSize += zoomDelta;
-            camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minZoom, maxZoom);
+            ReferenceCamera.orthographicSize += zoomDelta;
+            ReferenceCamera.orthographicSize = Mathf.Clamp(ReferenceCamera.orthographicSize, minZoom, maxZoom);
 
             var xAxis = Input.GetAxis("Horizontal");
             var yAxis = Input.GetAxis("Vertical");
@@ -148,7 +149,7 @@ namespace GameIdea2
                 HUDManager.instance.Interacted = true;
                 var pD = new Vector3(xAxis, yAxis) * -1f;
                 var tD = new Vector3(-pD.x * Time.deltaTime * panSensitivity, 0, -pD.y * panSensitivity * Time.deltaTime);
-                camera.transform.position += tD;
+                ReferenceCamera.transform.position += tD;
                 return;
             }
             
@@ -166,7 +167,7 @@ namespace GameIdea2
             
             var panDelta = Input.mousePositionDelta;
             var translationDelta = new Vector3(-panDelta.x * Time.deltaTime * panSensitivity, 0, -panDelta.y * panSensitivity * Time.deltaTime);
-            camera.transform.position += translationDelta;
+            ReferenceCamera.transform.position += translationDelta;
         }
 
         private void ManageSelection()
@@ -180,7 +181,7 @@ namespace GameIdea2
                     return;
                 
                 RaycastHit hit;
-                var ray = camera.ScreenPointToRay(Input.mousePosition);
+                var ray = ReferenceCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
                     if(!hit.collider)
@@ -209,7 +210,7 @@ namespace GameIdea2
             }
         }
 
-        private Vector3 GetMousePosition()
+        public static Vector3 GetMousePosition(Camera camera)
         {
             var pos = Input.mousePosition;
             if (camera.orthographic)
@@ -274,7 +275,7 @@ namespace GameIdea2
 
             if (Input.GetMouseButton(MOVE_MOUSE_BTN))
             {
-                var worldPos = camera.ScreenToWorldPoint(GetMousePosition());
+                var worldPos = TransformMouseToWorld(ReferenceCamera, GetMousePosition(ReferenceCamera));
                 var newPos = new Vector3(worldPos.x, 0, worldPos.z);
 
                 var dirty = !Mathf.Approximately(Vector3.Distance(selected.transform.position, newPos), 0);
@@ -284,7 +285,19 @@ namespace GameIdea2
             }
         }
 
-        public void  SpawnTerrestial(string key)
+        public static Vector3 TransformMouseToWorld(Camera camera, Vector3 mousePos)
+        {
+            var worldPos = camera.ScreenToWorldPoint(mousePos);
+            return new Vector3(worldPos.x, 0, worldPos.z);
+        }
+
+        public void SpawnTerrestial(string key)
+        {
+            SpawnTerrestial(key,
+                new Vector3(ReferenceCamera.transform.position.x, 0, ReferenceCamera.transform.position.z));
+        }        
+        
+        public void  SpawnTerrestial(string key, Vector3 position)
         {
             if (!currentWorkspace)
             {
@@ -298,7 +311,7 @@ namespace GameIdea2
             var asset = Resources.Load<GameObject>(key);
             if (asset)
             {
-                var go = Instantiate(asset, new Vector3(camera.transform.position.x, 0, camera.transform.position.z),
+                var go = Instantiate(asset, position,
                     Quaternion.identity, currentWorkspace.transform);
                 go.AddComponent<Editable>();
                 go.AddComponent<Spawned>();

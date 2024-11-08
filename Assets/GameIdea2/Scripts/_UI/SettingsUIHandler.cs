@@ -61,6 +61,11 @@ namespace GravityWell.UI
 			ShowContextMenu(false);
 		}
 		
+		public void ShowContextMenu(bool show)
+		{
+			ShowContextMenu(show, 0);
+		}
+		
 		public void ShowContextMenu(bool show, float toggleDuration = 0f, Action onComplete = null)
 		{
 			_contextMenuCanvasGroup.gameObject.SetActive(show);

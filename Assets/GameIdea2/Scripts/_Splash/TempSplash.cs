@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -10,12 +11,17 @@ public class TempSplash : MonoBehaviour
 	public float fadeDuration = 1.0f; // How long each image and text will fade out
 	public float delayBetweenSplashes = 0.5f; // Delay between images
 
-	private void Start()
+	private void Awake()
 	{
 		foreach (CanvasGroup imageCanvasGroup in splashImages)
 		{
+			imageCanvasGroup.gameObject.SetActive(false);
 			imageCanvasGroup.alpha = 0.0f;
 		}
+	}
+
+	private void Start()
+	{
 		PlaySplashSequence();
 	}
 
@@ -26,6 +32,7 @@ public class TempSplash : MonoBehaviour
 		// Play fade for each image's CanvasGroup one after another
 		foreach (CanvasGroup imageCanvasGroup in splashImages)
 		{
+			imageCanvasGroup.gameObject.SetActive(true);
 			sequence.Append(imageCanvasGroup.DOFade(1, fadeDuration / 2)) // Fade in
 				.AppendInterval(fadeDuration / 2) // Hold the fully visible state
 				.Append(imageCanvasGroup.DOFade(0, fadeDuration)) // Fade out

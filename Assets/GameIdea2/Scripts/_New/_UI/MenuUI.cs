@@ -67,7 +67,7 @@ namespace GravityWell.UI
 		public void SelectFirstElement()
 		{
 			// Find the first Button in the children of the current transform
-			var firstButton = GetComponentInChildren<Selectable>();
+			var firstButton = GetComponentInChildren<Selectable>(false);
 			if (firstButton != null)
 			{
 				// Cache it as firstSelected

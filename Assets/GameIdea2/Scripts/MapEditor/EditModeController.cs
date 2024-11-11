@@ -169,6 +169,8 @@ namespace GameIdea2
             var translationDelta = new Vector3(-panDelta.x * Time.deltaTime * panSensitivity, 0, -panDelta.y * panSensitivity * Time.deltaTime);
             ReferenceCamera.transform.position += translationDelta;
         }
+        
+        
 
         private void ManageSelection()
         {

@@ -1,17 +1,13 @@
 using DG.Tweening;
 using UnityEngine;
 using GravityWell.UI;
+using UnityEngine.Video;
 
 
 namespace GravityWell.MainMenu
 {
-    public class CreditsUI : MenuUI
+    public class ControlsUI : MenuUI
     {
-        [SerializeField] private float startYAnimationPosition;
-        [SerializeField] private float endYAnimationPosition;
-        [SerializeField] private float animationDuration;
-
-        [SerializeField] private RectTransform creditsHolder;
         public override void Initialize(IMenuHandler handler)
         {
             Debug.Log($"CreditsUI Initializing -> isMain: {IsMain}");
@@ -25,24 +21,26 @@ namespace GravityWell.MainMenu
                 SettingsUIHandler.Instance.ShowContextMenu(true);
                 SettingsUIHandler.Instance.ShowSelectContext(false);
             }
-            if (creditsHolder != null)
-            {
-                creditsHolder.DOKill();
-                creditsHolder.anchoredPosition = new Vector2(0, startYAnimationPosition);
-                creditsHolder.DOAnchorPosY(endYAnimationPosition, animationDuration);
-            }
             ShowUI(true);
+            SelectFirstElement();
         }
 
         public override void Disable()
         {
             if (SettingsUIHandler.Instance != null)
                 SettingsUIHandler.Instance.ShowContextMenu(false);
-            if (creditsHolder != null)
-            {
-                creditsHolder.DOKill();
-            }
+            
             ShowUI(false);
+        }
+
+        private VideoPlayer currentVideoPlayer;
+        public void OnSelectionChanged(GameObject videoObj)
+        {
+            if(currentVideoPlayer != null)
+                currentVideoPlayer.Stop();
+            
+            currentVideoPlayer = videoObj.GetComponent<VideoPlayer>();
+            currentVideoPlayer.Play();
         }
     }
 }

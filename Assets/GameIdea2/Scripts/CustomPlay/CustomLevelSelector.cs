@@ -17,7 +17,7 @@ namespace GameIdea2.CustomPlay
         
         public void Close()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MainMenu_New");
         }
 
         private async void Start()

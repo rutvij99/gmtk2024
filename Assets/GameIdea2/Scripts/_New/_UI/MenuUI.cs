@@ -1,8 +1,10 @@
 using System;
 using DG.Tweening;
 using GravityWell.Core.Config;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace GravityWell.UI
@@ -29,11 +31,28 @@ namespace GravityWell.UI
 		{
 			this.gameObject.SetActive(true);
 			_handler = handler;
+			_handler.PlayerInput.actions["cancel"].performed += OnBackClicked;
 			_canvasGroup = this.GetComponent<CanvasGroup>();
+		}
+
+		private void OnBackClicked(InputAction.CallbackContext obj)
+		{
+			if (IsEnabled)
+			{
+				GoBack();
+			}
 		}
 
 		public abstract void Enable();
 		public abstract void Disable();
+		
+		protected virtual void Update()
+		{
+			// if (IsEnabled && Input.GetKeyDown(KeyCode.Escape))
+			// {
+			// 	GoBack();
+			// }
+		}
 
 		protected void ShowUI(bool show, float toggleDuration = 0f, Action onComplete = null)
 		{
@@ -45,7 +64,7 @@ namespace GravityWell.UI
 		}
 
 
-		protected void SelectFirstElement()
+		public void SelectFirstElement()
 		{
 			// Find the first Button in the children of the current transform
 			var firstButton = GetComponentInChildren<Selectable>();

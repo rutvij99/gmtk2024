@@ -20,7 +20,7 @@ namespace GravityWell.UI
         public override void Enable()
         {
             base.Enable();
-            
+            SettingsUIHandler.Instance.ShowSelectContext(false);
             UpdateCurrentUI();
         }
 

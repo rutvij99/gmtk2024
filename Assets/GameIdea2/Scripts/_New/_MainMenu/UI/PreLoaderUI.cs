@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 // using AYellowpaper.SerializedCollections;
 using DG.Tweening;
@@ -17,6 +18,10 @@ namespace GravityWell.MainMenu
 		[SerializeField] private GameObject _continueLabel;
 
 		private bool loadingComplete = false;
+		
+		private bool isReEntry = false;
+		
+		private Coroutine manualUpdateCoroutine;
 		public override void Initialize(IMenuHandler handler)
 		{
 			Debug.Log($"PreLoaderUI Initializing -> isMain: {IsMain}");
@@ -29,27 +34,45 @@ namespace GravityWell.MainMenu
 			_continueLabel?.SetActive(loadingComplete);
 			_downloadingConfigs.SetActive(!loadingComplete);
 			loadingComplete = false;
+			if (manualUpdateCoroutine != null)
+			{
+				StopCoroutine(manualUpdateCoroutine);
+			}
+			manualUpdateCoroutine = StartCoroutine(ManualUpdate());
 		}
 
+		private IEnumerator ManualUpdate()
+		{
+			yield return new WaitForSeconds(0.1f);
+			while (true)
+			{
+				if (!this.IsEnabled) yield return null;
+
+				if (!loadingComplete && Core.Config.GameConfig.IsConfigReady)
+				{
+					loadingComplete = true;
+					DOTween.Sequence().AppendInterval(1)
+						.AppendCallback(() =>
+						{
+							_continueLabel?.SetActive(loadingComplete);
+							_downloadingConfigs.SetActive(!loadingComplete);
+						});
+				}
+			
+
+				if (loadingComplete && Input.anyKeyDown)
+				{
+					isReEntry = true;
+					CompleteLoading();
+					manualUpdateCoroutine = null;
+					yield break;
+				}
+				yield return null;
+			}
+		}
 		private void Update()
 		{
-			if (!this.IsEnabled) return;
-
-			if (!loadingComplete && Core.Config.GameConfig.IsConfigReady)
-			{
-				loadingComplete = true;
-				DOTween.Sequence().AppendInterval(1)
-					.AppendCallback(() =>
-					{
-						_continueLabel?.SetActive(loadingComplete);
-						_downloadingConfigs.SetActive(!loadingComplete);
-					});
-			}
-
-			if (loadingComplete && Input.anyKeyDown)
-			{
-				CompleteLoading();
-			}
+			
 		}
 
 		private void CompleteLoading()

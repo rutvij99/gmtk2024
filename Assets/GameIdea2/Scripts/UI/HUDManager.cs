@@ -231,7 +231,8 @@ public class HUDManager : MonoBehaviour
     {
         OnExitToMainMenuClicked?.Invoke();
         // do other cleanup
-        GameConfig.LoadMainMenu();
+        GameConfig.LoadLevel("MainMenu_New");
+
         PlayClick();
     }
 

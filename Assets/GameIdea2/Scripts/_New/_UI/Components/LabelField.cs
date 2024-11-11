@@ -46,6 +46,7 @@ namespace GravityWell.UI
         
         public void SetTextByKey(string key)
         {
+            contentKey = key;
             // find content with key and then set key
             labelText.text = key;
         }
@@ -53,6 +54,7 @@ namespace GravityWell.UI
         public void SetText(string text)
         {
             // find localized content
+            content = text;
             labelText.text = text;
         }
     }

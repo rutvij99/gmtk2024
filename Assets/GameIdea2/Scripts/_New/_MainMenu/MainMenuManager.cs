@@ -5,6 +5,8 @@ using GravityWell.Core.Config;
 using GravityWell.Common.Helpers;
 using GravityWell.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace GravityWell.MainMenu
 {
@@ -15,9 +17,15 @@ namespace GravityWell.MainMenu
         private Stack<MenuUI> menuStack = new Stack<MenuUI>();
         private List<MenuUI> menus;
         private MenuUI stackRoot;
+        
+        
+        private PlayerInput playerInput;
+        public PlayerInput PlayerInput => playerInput;
 
         protected void Awake()
         {
+            playerInput = GetComponent<PlayerInput>();
+            playerInput.actions["navigate"].performed += OnValueChanged;
             List<MenuUI> menuList = new List<MenuUI>();
             mainMenuCanvas.GetComponentsInChildren(true, menuList);
             
@@ -31,6 +39,14 @@ namespace GravityWell.MainMenu
                 {
                     stackRoot = menu;
                 }
+            }
+        }
+
+        private void OnValueChanged(InputAction.CallbackContext obj)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null)
+            {
+                menuStack.Peek().SelectFirstElement();
             }
         }
 
@@ -51,7 +67,7 @@ namespace GravityWell.MainMenu
             // mainmenu
             // free flow
         }
-        
+
         private IEnumerator EnterStateRoutine()
         {
             yield break;

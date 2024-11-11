@@ -8,7 +8,7 @@ namespace GravityWell.UI
 {
 	public class AdvancedSelectable : Selectable, IPointerClickHandler, ISubmitHandler
 	{
-		private TMP_Text textField;
+		protected TMP_Text textField;
 		private FontStyles originalStyle;
 		private Vector3 originalScale;
 
@@ -16,12 +16,38 @@ namespace GravityWell.UI
 		private float scaleDuration = 0.2f; // Time it takes to scale
 		private float scalePunchAmount = 1.2f; // Target scale size when pointer enters
 
-		protected override void Start()
+
+		[SerializeField] private bool m_isEnabled = true;
+		public bool isEnabled
 		{
-			base.Start();
+			get { return m_isEnabled; }
+			set
+			{
+				if (SetPropertyUtility.SetStruct(ref m_isEnabled, value))
+				{
+					if (m_isEnabled)
+					{
+						Enable();
+					}
+					else
+					{
+						Disable();
+					}
+				}
+			}
+		}
+		protected override void Awake()
+		{
 			textField = GetComponentInChildren<TMP_Text>();
 			originalStyle = textField.fontStyle; // Store the original font style
 			originalScale = textField.transform.localScale; // Store the original scale of the button
+			base.Awake();
+		}
+
+		protected override void Start()
+		{
+			base.Start();
+			
 		}
 
 		public virtual void OnPointerClick(PointerEventData eventData)
@@ -80,6 +106,26 @@ namespace GravityWell.UI
 
 			// Smooth scale down back to original using DOTween
 			textField.transform.DOScale(originalScale, scaleDuration).SetEase(Ease.OutBack);
+		}
+		
+		public virtual void Enable()
+		{
+#if UNITY_EDITOR
+			if (!Application.isPlaying)
+				return;
+#endif
+			// interactable = true;
+			textField.DOFade(1f, 0);
+		}
+		public virtual void Disable()
+		{
+#if UNITY_EDITOR
+			if (!Application.isPlaying)
+				return;
+#endif
+			Debug.Log($"{this.gameObject.name} is disabled 1");
+			// interactable = false;
+			textField.DOFade(0.25f, 0);
 		}
 	}
 }

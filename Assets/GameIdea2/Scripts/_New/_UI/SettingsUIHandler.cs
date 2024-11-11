@@ -2,20 +2,45 @@ using System;
 using DG.Tweening;
 using GravityWell.Common.Helpers;
 using GravityWell.Core.Config;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace GravityWell.UI
 {
+	[System.Serializable]
+	public class ControlIconSet
+	{
+		public string name;
+		public Image keyboard;
+		public Image xbox;
+		public Image ps;
+	}
 	[DefaultExecutionOrder(-1)]
 	public class SettingsUIHandler : MonoBehaviour
 	{
 		public static SettingsUIHandler Instance { get; private set; }
 
 		public bool IsConfirmationRequired { get; private set; }
+		
+		private const string backTextFormat = "Back";
+		private const string selectTextFormat = "Select";
+		[SerializeField] private ControlIconSet backIconSet;
+		[SerializeField] private ControlIconSet selectIconSet;
+		[SerializeField] private TMP_Text backText;
+		[SerializeField] private TMP_Text selectText;
+		private string backTextValue;
+		private string selectTextValue;
+		private PlayerInput playerInput;
+
 
 		protected void Awake()
 		{
+			playerInput = this.GetComponent<PlayerInput>();
 			if (Instance == null)
 			{
 				Instance = this;
@@ -26,6 +51,29 @@ namespace GravityWell.UI
 				return;
 			}
 			ResetContextMenu();
+			OnControlsChanged();
+			// InputSystem.onDeviceChange += 
+		}
+		
+		public void OnControlsChanged()
+		{
+			if (playerInput == null)
+			{
+				playerInput = this.GetComponent<PlayerInput>();
+			}
+
+			backTextValue = backTextFormat.Replace("{action}", playerInput.actions[backIconSet.name].GetBindingDisplayString());
+			selectTextValue = selectTextFormat.Replace("{action}", playerInput.actions[backIconSet.name].GetBindingDisplayString());
+			backText.text = backTextValue;
+			selectText.text = selectTextValue;
+			
+			backIconSet.keyboard.gameObject.SetActive(playerInput.currentControlScheme == "Keyboard&Mouse");
+			backIconSet.ps.gameObject.SetActive(false);
+			backIconSet.xbox.gameObject.SetActive(playerInput.currentControlScheme != "Keyboard&Mouse");
+			
+			selectIconSet.keyboard.gameObject.SetActive(playerInput.currentControlScheme == "Keyboard&Mouse");
+			selectIconSet.ps.gameObject.SetActive(false);
+			selectIconSet.xbox.gameObject.SetActive(playerInput.currentControlScheme != "Keyboard&Mouse");
 		}
 
 		#region Gameplay Settings
@@ -53,6 +101,7 @@ namespace GravityWell.UI
 		#region Settings Context Menu
 		[SerializeField] private CanvasGroup _contextMenuCanvasGroup;
 		[SerializeField] private GameObject _applySettingsButton;
+		[SerializeField] private GameObject _selectSettingsButton;
 		[SerializeField] private GameObject _resetToDefaultsButton;
 
 
@@ -78,10 +127,15 @@ namespace GravityWell.UI
 				_contextMenuCanvasGroup.blocksRaycasts = _contextMenuCanvasGroup.interactable = show;
 				onComplete?.Invoke();
 			});
+			ShowSelectContext(true);
 			ShowApplyContext(false);
 			ShowResetContext(false);
 		}
 		
+		public void ShowSelectContext(bool show)
+		{
+			_selectSettingsButton.gameObject.SetActive(show);
+		}
 		public void ShowApplyContext(bool show)
 		{
 			_applySettingsButton.gameObject.SetActive(show);

@@ -18,21 +18,17 @@ namespace GravityWell.MainMenu
 
         public override void Enable()
         {
+            if(SettingsUIHandler.Instance != null)
+                SettingsUIHandler.Instance.ShowContextMenu(true);
             ShowUI(true);
             SelectFirstElement();
         }
 
         public override void Disable()
         {
+            if (SettingsUIHandler.Instance != null)
+                SettingsUIHandler.Instance.ShowContextMenu(false);
             ShowUI(false);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                _handler.CloseMenu();
-            }
         }
         
         public void ShowCredits()

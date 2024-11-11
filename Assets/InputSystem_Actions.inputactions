@@ -73,6 +73,50 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "1b3b525c-4901-4b49-b30d-cf4daf456f10",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d1825d3-8153-49d7-a7e6-fb869b639e5a",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7427133b-0ed6-4d29-923d-acf98d49aae6",
+                    "path": "<Pen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17cdbfa8-bb62-4762-aa8b-ffd1a3b4f661",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "Gamepad",
                     "id": "d968dba7-56b3-4f53-b453-5a617f60b3f2",
                     "path": "2DVector",
@@ -86,7 +130,7 @@
                 {
                     "name": "up",
                     "id": "58bbf52c-06b3-4313-8734-723653f93ef4",
-                    "path": "<Gamepad>/leftStick/up",
+                    "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -97,7 +141,7 @@
                 {
                     "name": "down",
                     "id": "8f637fa0-875e-47b2-950a-d0eec3514af7",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -108,7 +152,7 @@
                 {
                     "name": "left",
                     "id": "55c594f2-e4b8-4c3a-a4d6-a2dbcd159b1f",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -119,7 +163,7 @@
                 {
                     "name": "right",
                     "id": "ec3a8963-b3aa-4f32-ac2d-855329828995",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -305,6 +349,28 @@
                 },
                 {
                     "name": "",
+                    "id": "1a3b1dfa-ab79-4ddf-a86b-98c6bb4b5028",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0601a4f9-be51-4900-87da-ab2582915b19",
+                    "path": "<Touchscreen>/touch*/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "22194be5-f4f8-4fa5-bea7-20d4a5692697",
                     "path": "<VirtualMouse>/leftButton",
                     "interactions": "",
@@ -332,6 +398,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4389b987-809c-44eb-98c3-3874e116ff5a",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false

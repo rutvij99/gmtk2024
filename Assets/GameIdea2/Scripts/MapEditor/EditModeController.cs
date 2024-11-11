@@ -7,6 +7,7 @@ using GameIdea2.Scripts.MapEditor;
 using GameIdea2.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace GameIdea2
 {
@@ -56,6 +57,18 @@ namespace GameIdea2
                 currentWorkspace = Universe.Instance.CreateWorkspace();
 
             HUDManager.instance.OnUploadClicked.AddListener(SaveLevel);
+        }
+
+        private Vector2 panInput;
+        private Vector2 scrollInput;
+        public void OnNaivgationChanged(InputAction.CallbackContext context)
+        {
+            panInput = context.ReadValue<Vector2>();
+        }
+        public void OnScrollChanged(InputAction.CallbackContext context)
+        {
+            Debug.Log($"context {context.ReadValue<Vector2>()}");
+            scrollInput = context.ReadValue<Vector2>();
         }
 
         private bool IsUIOverGUI()
@@ -135,14 +148,18 @@ namespace GameIdea2
         private void UpdateCamera()
         {
             var zoomDelta = -Input.mouseScrollDelta.y * zoomSensitivity;
+            // var zoomDelta = -scrollInput.y * zoomSensitivity;
             if (zoomDelta != 0)
                 HUDManager.instance.Interacted = true;
             
             ReferenceCamera.orthographicSize += zoomDelta;
             ReferenceCamera.orthographicSize = Mathf.Clamp(ReferenceCamera.orthographicSize, minZoom, maxZoom);
 
-            var xAxis = Input.GetAxis("Horizontal");
-            var yAxis = Input.GetAxis("Vertical");
+            // var xAxis = Input.GetAxis("Horizontal");
+            // var yAxis = Input.GetAxis("Vertical");
+            //
+            var xAxis = panInput.x;
+            var yAxis = panInput.y;
 
             if ((yAxis != 0 || xAxis != 0) && !Input.GetMouseButton(PAN_MOUSE_BTN))
             {

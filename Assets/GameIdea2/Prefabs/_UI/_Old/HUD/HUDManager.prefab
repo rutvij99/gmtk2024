@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 91.5, y: -1098.5}
+  m_AnchoredPosition: {x: 91.5, y: -617.5}
   m_SizeDelta: {x: 183, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2573905487470945015
@@ -900,7 +900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 91.5, y: -721.5}
+  m_AnchoredPosition: {x: 91.5, y: -240.5}
   m_SizeDelta: {x: 183, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7281571286266328295
@@ -10627,7 +10627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 91.5, y: -1371.5}
+  m_AnchoredPosition: {x: 91.5, y: -890.5}
   m_SizeDelta: {x: 183, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6615138918693125228
@@ -12288,7 +12288,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4916702888385104872}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5106101
+  m_Size: 0.7497566
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13935,7 +13935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3960542871357722721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13956,7 +13956,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 91.5, y: -240.5}
-  m_SizeDelta: {x: 183, y: 0}
+  m_SizeDelta: {x: 183, y: 481}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791161622010545986
 MonoBehaviour:
@@ -17441,6 +17441,8 @@ MonoBehaviour:
   Desc: 'Desc: A region in space with gravitational pull so strong, light can''t
     escape'
   MassRange: 'Mass: 100000'
+  PrefabName: 
+  DragRepresentator: 
 --- !u!114 &5412982480485742764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17464,8 +17466,7 @@ MonoBehaviour:
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 3716238056706127454}
-            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData,
-              Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -17928,6 +17929,8 @@ MonoBehaviour:
   Title: Star
   Desc: 'Desc: A luminous celestial body of hot gases.'
   MassRange: 'Mass: Ranges from 250 to 1500'
+  PrefabName: 
+  DragRepresentator: 
 --- !u!114 &7440874717067537801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17951,8 +17954,7 @@ MonoBehaviour:
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 5627458717079817250}
-            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData,
-              Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -18045,7 +18047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchorMin.x
@@ -18053,7 +18055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_SizeDelta.x
@@ -18093,11 +18095,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 91.5
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -364.5
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18143,6 +18145,8 @@ MonoBehaviour:
   Title: Target
   Desc: 'Desc: The goal or objective the player aims to reach or achieve.'
   MassRange: 'Mass: N/A'
+  PrefabName: 
+  DragRepresentator: 
 --- !u!114 &5920755803036379122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18166,8 +18170,7 @@ MonoBehaviour:
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 1857253145287546085}
-            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData,
-              Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -18220,7 +18223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4482024575589967613, guid: f765d7939f3874e6ca1e1e641c989bf2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4482024575589967613, guid: f765d7939f3874e6ca1e1e641c989bf2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -18228,7 +18231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4482024575589967613, guid: f765d7939f3874e6ca1e1e641c989bf2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4482024575589967613, guid: f765d7939f3874e6ca1e1e641c989bf2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -18268,11 +18271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4482024575589967613, guid: f765d7939f3874e6ca1e1e641c989bf2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 91.5
       objectReference: {fileID: 0}
     - target: {fileID: 4482024575589967613, guid: f765d7939f3874e6ca1e1e641c989bf2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4482024575589967613, guid: f765d7939f3874e6ca1e1e641c989bf2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18958,6 +18961,8 @@ MonoBehaviour:
   Title: Rocky Planet
   Desc: 'Desc: Solid, dense planet with a rocky surface.'
   MassRange: 'Mass: Ranges from 50 to 100'
+  PrefabName: 
+  DragRepresentator: 
 --- !u!114 &2461402754728928259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18981,8 +18986,7 @@ MonoBehaviour:
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 2518108456205293195}
-            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData,
-              Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -21312,6 +21316,8 @@ MonoBehaviour:
   Title: Gaseous Planet
   Desc: 'Desc: Large, low-density planet composed mostly of gases.'
   MassRange: 'Mass: Ranges from 75 to 175'
+  PrefabName: 
+  DragRepresentator: 
 --- !u!114 &8058769159835264799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21335,8 +21341,7 @@ MonoBehaviour:
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 2196436828534321314}
-            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData,
-              Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -21931,7 +21936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchorMin.x
@@ -21939,7 +21944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_SizeDelta.x
@@ -21979,11 +21984,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 91.5
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -156.5
       objectReference: {fileID: 0}
     - target: {fileID: 8865840596673842647, guid: 3783f9a5e831a4e3580cbd6bd121f2fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -22034,6 +22039,8 @@ MonoBehaviour:
   Title: Rocket
   Desc: 'Desc: A spacecraft designed to propel itself toward a designated target.'
   MassRange: 'Mass: N/A'
+  PrefabName: 
+  DragRepresentator: 
 --- !u!114 &1551382881024029988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22057,8 +22064,7 @@ MonoBehaviour:
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 5843110729958471808}
-            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData,
-              Assembly-CSharp
+            m_ObjectArgumentAssemblyTypeName: GameIdea2.Audio._UI.TileData, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

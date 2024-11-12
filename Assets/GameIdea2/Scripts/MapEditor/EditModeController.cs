@@ -155,11 +155,11 @@ namespace GameIdea2
             ReferenceCamera.orthographicSize += zoomDelta;
             ReferenceCamera.orthographicSize = Mathf.Clamp(ReferenceCamera.orthographicSize, minZoom, maxZoom);
 
-            // var xAxis = Input.GetAxis("Horizontal");
-            // var yAxis = Input.GetAxis("Vertical");
+            var xAxis = Input.GetAxis("Horizontal");
+            var yAxis = Input.GetAxis("Vertical");
             //
-            var xAxis = panInput.x;
-            var yAxis = panInput.y;
+            // var xAxis = panInput.x;
+            // var yAxis = panInput.y;
 
             if ((yAxis != 0 || xAxis != 0) && !Input.GetMouseButton(PAN_MOUSE_BTN))
             {

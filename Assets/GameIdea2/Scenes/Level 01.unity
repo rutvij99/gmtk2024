@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -185,7 +186,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 200
+      value: 174.7
       objectReference: {fileID: 0}
     - target: {fileID: 3826392826714475599, guid: e078e2c78a31ea54d8acc3013da6d06f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -286,7 +287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 269447327387642599, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 465.37
+      value: 370.37
       objectReference: {fileID: 0}
     - target: {fileID: 269447327387642599, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -910,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4954402280353670005, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 632.70996
+      value: 537.70996
       objectReference: {fileID: 0}
     - target: {fileID: 4954402280353670005, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1102,7 +1103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5960514214095068287, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 215.265
+      value: 120.265
       objectReference: {fileID: 0}
     - target: {fileID: 5960514214095068287, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.y

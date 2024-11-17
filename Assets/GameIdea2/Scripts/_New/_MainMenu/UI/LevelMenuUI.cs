@@ -24,7 +24,7 @@ namespace GravityWell.MainMenu
 		private void Awake()
 		{
 			levelButtonPrefab.SetActive(true);
-			var lastUnlocked = GameConfig.GetLastCompletedLevel();
+			var lastUnlocked = GameConfig.MAX_LEVELS;
 			for (int i = 0; i < GameConfig.MAX_LEVELS; i++)
 			{
 				var obj = Instantiate(levelButtonPrefab, levelSelectHolder);

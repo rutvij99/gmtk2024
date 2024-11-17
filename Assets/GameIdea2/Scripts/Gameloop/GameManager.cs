@@ -41,6 +41,7 @@ namespace GameIdea2.Gameloop
         
         private void Start()
         {
+            Cursor.visible = true;
             if (Universe.Instance)
                 Universe.Instance.OnSimStarted += OnSimStarted;
         }

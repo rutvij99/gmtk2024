@@ -24,7 +24,8 @@ namespace GravityWell.MainMenu
 
         protected void Awake()
         {
-            Cursor.visible = false;
+            // Cursor.visible = false;
+            // Cursor.lockState = CursorLockMode.Locked;
             playerInput = GetComponent<PlayerInput>();
             playerInput.actions["navigate"].performed += OnValueChanged;
             List<MenuUI> menuList = new List<MenuUI>();

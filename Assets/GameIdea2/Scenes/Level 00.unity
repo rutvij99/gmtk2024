@@ -4781,15 +4781,11 @@ PrefabInstance:
     - target: {fileID: 575009116307279336, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_MoveAction
       value: 
-      objectReference: {fileID: 2664109643169430823, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+      objectReference: {fileID: -8784545083839296357, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 575009116307279336, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_PointAction
       value: 
-      objectReference: {fileID: 3223422771353739556, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-    - target: {fileID: 575009116307279336, guid: 95ef320a977d580459506cee14190692, type: 3}
-      propertyPath: m_ActionsAsset
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+      objectReference: {fileID: -1654692200621890270, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 575009116307279336, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_CancelAction
       value: 
@@ -6956,7 +6952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6685929061787614741, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -74.99999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6685929061787614741, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7236,7 +7232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7738749388148810209, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7738749388148810209, guid: 95ef320a977d580459506cee14190692, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7754,7 +7750,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 881642877802076066, guid: 95ef320a977d580459506cee14190692, type: 3}
-      insertIndex: 10
+      insertIndex: -1
       addedObject: {fileID: 273939776}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4319585534045138405, guid: 95ef320a977d580459506cee14190692, type: 3}

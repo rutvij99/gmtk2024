@@ -100,6 +100,10 @@ public class HUDManager : MonoBehaviour
 
     public void EnableLevelComplete()
     {
+        hud.DOFade(0, 0.5f).OnComplete(() =>
+        {
+            hud.gameObject.SetActive(false);
+        });
         levelCompleteWindow?.gameObject.SetActive(true);
         // levelCompleteWindow.DOFade(1, 0.5f).OnComplete(() =>
         // {
@@ -229,6 +233,7 @@ public class HUDManager : MonoBehaviour
 
     public void Button_ExitToMainMenu()
     {
+        Universe.Instance.CleanWorkspace();
         OnExitToMainMenuClicked?.Invoke();
         // do other cleanup
         GameConfig.LoadLevel("MainMenu_New");
@@ -275,6 +280,7 @@ public class HUDManager : MonoBehaviour
 
     public void Button_LoadNextLevel()
     {
+        Universe.Instance.CleanWorkspace();
         GameManager.Instance.NextLevelLoad();
         OnLoadNextLevelClicked?.Invoke();
         PlayClick();

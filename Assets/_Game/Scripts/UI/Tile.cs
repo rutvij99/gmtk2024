@@ -77,7 +77,6 @@ namespace GameIdea2.Audio._UI
         {
             if (!_isDragging) return;
             if(!_dragObj) return;
-            Debug.Log("Dragging");
             var pointerData = (PointerEventData)e;
             if(pointerData == null) return;
             _dragObj.transform.position =

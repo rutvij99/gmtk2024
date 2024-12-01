@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace RuntimeDeveloperConsole {
@@ -49,7 +50,11 @@ namespace RuntimeDeveloperConsole {
 
         private void Update()
         {
+#if ENABLE_LEGACY_INPUT_MANAGER
             if (Input.GetKeyDown(consoleKey))
+#elif ENABLE_INPUT_SYSTEM
+            if (Keyboard.current.backquoteKey.wasPressedThisFrame)
+#endif
                 ToggleWindow();
         }
 

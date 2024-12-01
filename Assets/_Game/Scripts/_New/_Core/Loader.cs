@@ -30,7 +30,7 @@ namespace GravityWell.Core
         private void Update()
         {
             if(!canDisable) return;
-            if (Input.anyKeyDown)
+            if (UnityEngine.Input.anyKeyDown)
             {
                 HideLoadingUI();
             }

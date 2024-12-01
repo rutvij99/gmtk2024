@@ -5,6 +5,7 @@ using GameIdea2.Gameloop;
 using GameIdea2.Scripts.Editor;
 using GameIdea2.Scripts.MapEditor;
 using GameIdea2.UI;
+using GravityWell.Core.Input;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -147,7 +148,7 @@ namespace GameIdea2
         
         private void UpdateCamera()
         {
-            var zoomDelta = -Input.mouseScrollDelta.y * zoomSensitivity;
+            var zoomDelta = -InputManager.ZoomInput * zoomSensitivity;
             // var zoomDelta = -scrollInput.y * zoomSensitivity;
             if (zoomDelta != 0)
                 HUDManager.instance.Interacted = true;
@@ -155,13 +156,10 @@ namespace GameIdea2
             ReferenceCamera.orthographicSize += zoomDelta;
             ReferenceCamera.orthographicSize = Mathf.Clamp(ReferenceCamera.orthographicSize, minZoom, maxZoom);
 
-            var xAxis = Input.GetAxis("Horizontal");
-            var yAxis = Input.GetAxis("Vertical");
-            //
-            // var xAxis = panInput.x;
-            // var yAxis = panInput.y;
+            var xAxis = InputManager.MoveInput.x;
+            var yAxis = InputManager.MoveInput.y;
 
-            if ((yAxis != 0 || xAxis != 0) && !Input.GetMouseButton(PAN_MOUSE_BTN))
+            if ((yAxis != 0 || xAxis != 0) && !InputManager.PanCamera)
             {
                 HUDManager.instance.Interacted = true;
                 var pD = new Vector3(xAxis, yAxis) * -1f;
@@ -170,19 +168,19 @@ namespace GameIdea2
                 return;
             }
             
-            if (!Input.GetMouseButton(PAN_MOUSE_BTN))
+            if (!InputManager.PanCamera)
             {
                 TryResetInteraction(Interaction.Pan);
                 return;
             }
 
-            if (Input.GetMouseButton(PAN_MOUSE_BTN) && InteractionAvailable())
+            if (InputManager.PanCamera && InteractionAvailable())
             {
                 HUDManager.instance.Interacted = true;
                 SetCurrentInteraction(Interaction.Pan);
             }
             
-            var panDelta = Input.mousePositionDelta;
+            var panDelta = InputManager.MousePositionDelta;
             var translationDelta = new Vector3(-panDelta.x * Time.deltaTime * panSensitivity, 0, -panDelta.y * panSensitivity * Time.deltaTime);
             ReferenceCamera.transform.position += translationDelta;
         }
@@ -191,7 +189,7 @@ namespace GameIdea2
 
         private void ManageSelection()
         {
-            if (Input.GetMouseButton(MOVE_MOUSE_BTN) || Input.GetMouseButton(SCALE_MOUSE_BTN))
+            if (InputManager.SelectItem || InputManager.ScaleItem)
             {
                 if(!InteractionAvailable())
                     return;
@@ -200,7 +198,7 @@ namespace GameIdea2
                     return;
                 
                 RaycastHit hit;
-                var ray = ReferenceCamera.ScreenPointToRay(Input.mousePosition);
+                var ray = ReferenceCamera.ScreenPointToRay(InputManager.MousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
                     if(!hit.collider)
@@ -210,11 +208,11 @@ namespace GameIdea2
                         return;
                     HUDManager.instance.Interacted = true;
                     editable.Select();
-                    if (Input.GetMouseButton(MOVE_MOUSE_BTN))
+                    if (InputManager.SelectItem)
                     {
                         SetCurrentInteraction(Interaction.Move);
                     }
-                    else if (Input.GetMouseButton(SCALE_MOUSE_BTN))
+                    else if (InputManager.ScaleItem)
                     {
                         SetCurrentInteraction(Interaction.Scale);
                     }
@@ -231,9 +229,9 @@ namespace GameIdea2
 
         public static Vector3 GetMousePosition(Camera camera)
         {
-            var pos = Input.mousePosition;
+            var pos = InputManager.MousePosition;
             if (camera.orthographic)
-                return Input.mousePosition;
+                return InputManager.MousePosition;
             
             return new Vector3(pos.x, pos.y, camera.transform.position.y);
         }
@@ -257,13 +255,13 @@ namespace GameIdea2
                 return;
             }
             
-            if (Input.GetMouseButton(SCALE_MOUSE_BTN))
+            if (InputManager.ScaleItem)
             {
                 /*var pos = camera.ScreenToWorldPoint(GetMousePosition());
                 var mouseWorldPos = new Vector3(pos.x, 0, pos.y);
                 var scaleDir = (mouseWorldPos - mouseStartWorldPos).normalized.x;*/
 
-                var mouseDelta = Input.mousePositionDelta.normalized;
+                var mouseDelta = InputManager.MousePositionDelta.normalized;
                 
                 var scaleDelta = mouseDelta.x * scaleSensitivity;
                 //Debug.Log($"Scale Delta : {scaleDelta}");
@@ -292,7 +290,7 @@ namespace GameIdea2
                 return;
             }
 
-            if (Input.GetMouseButton(MOVE_MOUSE_BTN))
+            if (InputManager.SelectItem)
             {
                 var worldPos = TransformMouseToWorld(ReferenceCamera, GetMousePosition(ReferenceCamera));
                 var newPos = new Vector3(worldPos.x, 0, worldPos.z);

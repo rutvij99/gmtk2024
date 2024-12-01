@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace RuntimeDeveloperConsole
@@ -41,21 +42,33 @@ namespace RuntimeDeveloperConsole
 
         private void Update()
         {
+#if ENABLE_LEGACY_INPUT_MANAGER
             if (Input.GetKeyDown(KeyCode.UpArrow))
+#elif ENABLE_INPUT_SYSTEM
+            if (Keyboard.current.upArrowKey.wasPressedThisFrame)
+#endif
             {
                 commandStackPointer -= 1;
                 commandStackPointer = Mathf.Clamp(commandStackPointer, 0, commandStack.Count - 1);
                 SelectFromCommandStack(commandStackPointer);
                 OnInputfieldCarret();
             }
+#if ENABLE_LEGACY_INPUT_MANAGER
             else if (Input.GetKeyDown(KeyCode.DownArrow))
+#elif ENABLE_INPUT_SYSTEM
+            else if (Keyboard.current.downArrowKey.wasPressedThisFrame)
+#endif
             {
                 commandStackPointer += 1;
                 commandStackPointer = Mathf.Clamp(commandStackPointer, 0, commandStack.Count - 1);
                 SelectFromCommandStack(commandStackPointer);
                 OnInputfieldCarret();
             }
+#if ENABLE_LEGACY_INPUT_MANAGER
             else if (Input.GetKeyDown(KeyCode.Tab))
+#elif ENABLE_INPUT_SYSTEM
+            else if (Keyboard.current.tabKey.wasPressedThisFrame)
+#endif
             {
                 inputField.text = currentSuggestion;
                 OnInputfieldCarret();

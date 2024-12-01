@@ -356,11 +356,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7041397260834554843}
-  - {fileID: 6285368705350529611}
   - {fileID: 6771575114666563381}
+  - {fileID: 3843193693744475373}
+  - {fileID: 6285368705350529611}
   - {fileID: 3742004742522940132}
   - {fileID: 4670711183854768043}
-  - {fileID: 3843193693744475373}
   - {fileID: 1263654650710660381}
   - {fileID: 8592994525414669925}
   - {fileID: 8818371804842884097}
@@ -2595,7 +2595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7298573732058257636, guid: 6fa4a32b041894a63bc988bd47f8ad92, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7387033725986130888, guid: 6fa4a32b041894a63bc988bd47f8ad92, type: 3}
       propertyPath: m_IsActive

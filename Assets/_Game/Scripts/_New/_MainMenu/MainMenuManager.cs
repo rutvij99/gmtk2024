@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GravityWell.Core.Config;
 using GravityWell.Common.Helpers;
+using GravityWell.Core.Input;
 using GravityWell.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -27,7 +28,6 @@ namespace GravityWell.MainMenu
             // Cursor.visible = false;
             // Cursor.lockState = CursorLockMode.Locked;
             playerInput = GetComponent<PlayerInput>();
-            playerInput.actions["navigate"].performed += OnValueChanged;
             List<MenuUI> menuList = new List<MenuUI>();
             mainMenuCanvas.GetComponentsInChildren(true, menuList);
             
@@ -44,7 +44,17 @@ namespace GravityWell.MainMenu
             }
         }
 
-        private void OnValueChanged(InputAction.CallbackContext obj)
+        private void OnEnable()
+        {
+            InputManager.OnNavigatePerformed += OnNavigationValueChanged;
+        }
+
+        private void OnDisable()
+        {
+            InputManager.OnNavigatePerformed -= OnNavigationValueChanged;
+        }
+
+        private void OnNavigationValueChanged()
         {
             if (EventSystem.current.currentSelectedGameObject == null)
             {

@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using GravityWell.Core.Config;
+using GravityWell.Core.Input;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,11 +32,11 @@ namespace GravityWell.UI
 		{
 			this.gameObject.SetActive(true);
 			_handler = handler;
-			_handler.PlayerInput.actions["cancel"].performed += OnBackClicked;
+			InputManager.OnCancelPressed += OnBackClicked;
 			_canvasGroup = this.GetComponent<CanvasGroup>();
 		}
 
-		private void OnBackClicked(InputAction.CallbackContext obj)
+		private void OnBackClicked()
 		{
 			if (IsEnabled)
 			{

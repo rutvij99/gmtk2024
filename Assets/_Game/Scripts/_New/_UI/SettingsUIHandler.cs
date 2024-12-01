@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using GravityWell.Common.Helpers;
 using GravityWell.Core.Config;
+using GravityWell.Core.Input;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -35,12 +36,10 @@ namespace GravityWell.UI
 		[SerializeField] private TMP_Text selectText;
 		private string backTextValue;
 		private string selectTextValue;
-		private PlayerInput playerInput;
 
 
 		protected void Awake()
 		{
-			playerInput = this.GetComponent<PlayerInput>();
 			if (Instance == null)
 			{
 				Instance = this;
@@ -51,29 +50,28 @@ namespace GravityWell.UI
 				return;
 			}
 			ResetContextMenu();
-			OnControlsChanged();
-			// InputSystem.onDeviceChange += 
 		}
-		
-		public void OnControlsChanged()
-		{
-			if (playerInput == null)
-			{
-				playerInput = this.GetComponent<PlayerInput>();
-			}
 
-			backTextValue = backTextFormat.Replace("{action}", playerInput.actions[backIconSet.name].GetBindingDisplayString());
-			selectTextValue = selectTextFormat.Replace("{action}", playerInput.actions[backIconSet.name].GetBindingDisplayString());
-			backText.text = backTextValue;
-			selectText.text = selectTextValue;
-			
-			backIconSet.keyboard.gameObject.SetActive(playerInput.currentControlScheme == "Keyboard&Mouse");
+		private void OnEnable()
+		{
+			OnControlsChanged(InputManager.ControlType);
+			InputManager.OnControlChanged += OnControlsChanged;
+		}
+
+		private void OnDisable()
+		{
+			InputManager.OnControlChanged -= OnControlsChanged;
+		}
+
+		public void OnControlsChanged(ControlType controlType)
+		{
+			backIconSet.keyboard.gameObject.SetActive(controlType == ControlType.Keyboard);
 			backIconSet.ps.gameObject.SetActive(false);
-			backIconSet.xbox.gameObject.SetActive(playerInput.currentControlScheme != "Keyboard&Mouse");
+			backIconSet.xbox.gameObject.SetActive(controlType != ControlType.Keyboard);
 			
-			selectIconSet.keyboard.gameObject.SetActive(playerInput.currentControlScheme == "Keyboard&Mouse");
+			selectIconSet.keyboard.gameObject.SetActive(controlType == ControlType.Keyboard);
 			selectIconSet.ps.gameObject.SetActive(false);
-			selectIconSet.xbox.gameObject.SetActive(playerInput.currentControlScheme != "Keyboard&Mouse");
+			selectIconSet.xbox.gameObject.SetActive(controlType != ControlType.Keyboard);
 		}
 
 		#region Gameplay Settings

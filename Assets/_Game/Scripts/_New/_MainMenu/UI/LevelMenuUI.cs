@@ -74,13 +74,6 @@ namespace GravityWell.MainMenu
 		private void Update()
 		{
 			if (!IsEnabled) return;
-
-			if (Input.GetKeyDown(KeyCode.Escape))
-			{
-				GoBack();
-				return;
-			}
-
 			// In unity if the selected button is inside a scroll view and it is masked and not visible in the viewport
 			// then scroll till it is inside viewport
 			

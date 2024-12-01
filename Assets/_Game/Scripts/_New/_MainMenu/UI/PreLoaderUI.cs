@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 // using AYellowpaper.SerializedCollections;
 using DG.Tweening;
+using GravityWell.Core.Input;
 using GravityWell.UI;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace GravityWell.MainMenu
 		[SerializeField] private MenuUI nextMenu;
 		[SerializeField] private GameObject _downloadingConfigs;
 		[SerializeField] private GameObject _continueLabel;
+		[SerializeField] private ControlIconSet continueIconSet;
 
 		private bool loadingComplete = false;
 		
@@ -39,6 +41,15 @@ namespace GravityWell.MainMenu
 				StopCoroutine(manualUpdateCoroutine);
 			}
 			manualUpdateCoroutine = StartCoroutine(ManualUpdate());
+			OnControlsChanged(InputManager.ControlType);
+			InputManager.OnControlChanged += OnControlsChanged;
+		}
+		
+		public void OnControlsChanged(ControlType controlType)
+		{
+			continueIconSet.keyboard.gameObject.SetActive(controlType == ControlType.Keyboard);
+			continueIconSet.ps.gameObject.SetActive(false);
+			continueIconSet.xbox.gameObject.SetActive(controlType != ControlType.Keyboard);
 		}
 
 		private IEnumerator ManualUpdate()
@@ -60,7 +71,7 @@ namespace GravityWell.MainMenu
 				}
 			
 
-				if (loadingComplete && Input.anyKeyDown)
+				if (loadingComplete && InputManager.SubmitStarted)
 				{
 					isReEntry = true;
 					CompleteLoading();
@@ -82,6 +93,7 @@ namespace GravityWell.MainMenu
 
 		public override void Disable()
 		{
+			InputManager.OnControlChanged -= OnControlsChanged;
 			ShowUI(false);
 		}
 	}

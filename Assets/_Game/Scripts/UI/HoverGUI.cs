@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using GravityWell.Core.Input;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -33,7 +34,7 @@ namespace GameIdea2.Audio._UI
             if(!parentRt)
                 return;
             
-            var mousePos = Input.mousePosition;
+            var mousePos = InputManager.MousePosition;
             var midX = Screen.width / 2;
             var midY = Screen.height / 2;
             
@@ -42,7 +43,7 @@ namespace GameIdea2.Audio._UI
             
             rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(anchorX, anchorY);
             
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRt, Input.mousePosition, null,
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRt, mousePos, null,
                 out var localPoint);
             transform.localPosition = new Vector3(localPoint.x, localPoint.y, 0) + posDelta * (anchorX == 0?1:-1);
         }
